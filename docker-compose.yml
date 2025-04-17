@@ -1,0 +1,9 @@
+services:
+  main_react:
+    container_name: main_react
+    build: ./Hi-Match
+    ports:
+      - "5173:5173"
+    volumes:
+      - /react:/image
+    restart: always
