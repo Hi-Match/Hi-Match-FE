@@ -19,7 +19,6 @@ import BizSignUpDone from "@/pages/SignUp/business/BizSignUpDone";
 import BizFindPwForm from "@/pages/FindPw/business/BizFindPwForm";
 import BizFindPwSuccess from "@/pages/FindPw/business/BizFindPwSuccess";
 import MyPageLayout from "@/layout/MyPageLayout";
-import MyPage from "@/pages/MyPage/MyPage";
 import UserHome from "@/pages/MyPage/UserHome/UserHome";
 import UserProfile from "@/pages/MyPage/Profile/UserProfile";
 import UserResume from "@/pages/MyPage/Resume/UserResume";

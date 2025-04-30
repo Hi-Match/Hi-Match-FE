@@ -98,8 +98,7 @@ const LoginForm = ({ user }: LoginFormProps) => {
 
         await axiosInstance
             .post("/himatch/company/member/login", memberInfo)
-            .then(response => {
-                // console.log(response);
+            .then(() => {
                 if (isChecked) {
                     localStorage.setItem("saveBizId", id);
                 } else {
