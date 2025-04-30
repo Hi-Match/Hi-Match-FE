@@ -17,7 +17,7 @@ const AuthTimer = ({ duration, onExpire, trigger }: AuthTimerProps) => {
 
             if (intervalRef.current) clearInterval(intervalRef.current);
 
-            intervalRef.current = setInterval(() => {
+            intervalRef.current = window.setInterval(() => {
                 setTimeLeft(prev => {
                     if (prev <= 1) {
                         clearInterval(intervalRef.current!);
