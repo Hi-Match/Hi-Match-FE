@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+/* 기본 테마 변수 수정 */
+@theme {
+    /* 색상 */
+    --color-gray01: #666;
+    --color-gray02: #aaa;
+    --color-gray03: #ddd;
+    --color-black: #333;
+}
+
+@layer base {
+    * {
+        --font-sans:
+            "Pretendard Variable", Pretendard, -apple-system,
+            BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+            "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+            "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    }
+
+    button {
+        @apply rounded-[5px] transition duration-200;
+    }
+
+    input:focus {
+        @apply outline-offset-0 outline-blue-400;
+    }
+
+    a {
+        @apply font-medium text-black transition duration-200;
+    }
+
+    h2 {
+        @apply text-2xl font-semibold;
+    }
+}
+
+@layer components {
+    /* 버튼 사이즈 */
+    .btn-sm {
+        @apply px-3 py-2 text-sm;
+    }
+
+    .btn-md {
+        @apply h-[50px] w-[192px] text-base;
+    }
+
+    .btn-lg {
+        @apply h-[50px] w-87 text-base;
+    }
+
+    .btn-xl {
+        @apply h-[50px] w-full text-base;
+    }
+
+    /* 버튼 색상 */
+    .btn-blue {
+        @apply cursor-pointer bg-blue-500 font-bold text-white hover:bg-blue-600;
+    }
+
+    .btn-white {
+        @apply cursor-pointer border border-solid border-blue-500 bg-white font-semibold text-blue-500 hover:bg-blue-50;
+    }
+
+    .btn-gray {
+        @apply cursor-pointer border border-solid border-gray-200 bg-white font-semibold hover:bg-gray-100;
+    }
+
+    .btn-disabled {
+        @apply bg-gray-300 font-bold text-white;
+    }
+
+    .btn-category {
+        @apply cursor-pointer border border-solid border-gray-300 px-[15px] text-base font-medium text-black;
+    }
+
+    /* Input */
+    .input {
+        @apply h-[50px] rounded-[5px] border border-solid border-gray-300 px-[15px] text-base font-medium text-black;
+    }
+
+    .input-sm {
+        @apply w-87;
+    }
+
+    .input-md {
+        @apply w-[450px];
+    }
+
+    .input-lg {
+        @apply w-full;
+    }
+
+    .input-fail {
+        @apply border-red-400;
+    }
+}
+
+@layer utilities {
+    .grid-center {
+        @apply grid place-content-center place-items-center;
+    }
+
+    .flex-center {
+        @apply flex items-center justify-center;
+    }
+
+    /* scrollbar 커스텀 */
+    .scroll-custom::-webkit-scrollbar {
+        width: 14px;
+    }
+
+    .scroll-custom::-webkit-scrollbar-thumb {
+        height: 40px;
+        border: 4px solid transparent;
+        border-radius: 10px;
+        background-color: #e7e7e7;
+        background-clip: padding-box;
+    }
+
+    .scroll-custom::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* input type=number 화살표 버튼 제거 */
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox  */
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+}
