@@ -5,6 +5,7 @@ import ResumeIcon from "@/assets/icons/resume-icon.svg?react";
 import StarIcon from "@/assets/icons/star-icon.svg?react";
 import UserIcon from "@/assets/icons/user-icon.svg?react";
 import LogoutIcon from "@/assets/icons/logout-icon.svg?react";
+import PersonalityTestIcon from "@/assets/icons/personality-test-icon.svg?react";
 import axiosInstance from "@/apis/axiosInstance";
 import { useAuthStore } from "@/store/authStore";
 import toast from "react-hot-toast";
@@ -13,10 +14,15 @@ const sidebarMenu = [
     { label: "홈", link: "/mypage/home", Icon: HomeIcon },
     { label: "이력서", link: "/mypage/resume", Icon: ResumeIcon },
     { label: "북마크한 공고", link: "/mypage/bookmark", Icon: StarIcon },
+    {
+        label: "인성 검사",
+        link: "/mypage/personality-test",
+        Icon: PersonalityTestIcon,
+    },
     { label: "내 정보", link: "/mypage/profile", Icon: UserIcon },
 ];
 
-const Sidebar = () => {
+const UserSidebar = () => {
     const navigate = useNavigate();
 
     const handleClickLogout = () => {
@@ -76,4 +82,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default UserSidebar;
