@@ -5,7 +5,7 @@ interface DateSelectProps {
     range: number[];
     value: number;
     isOpen: boolean;
-    onChange: (value: number) => void;
+    onChange: (val: number) => void;
 }
 
 const DateSelect = ({
