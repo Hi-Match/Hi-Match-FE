@@ -23,8 +23,10 @@ import UserHome from "@/pages/MyPage/UserHome/UserHome";
 import UserProfile from "@/pages/MyPage/Profile/UserProfile";
 import UserResume from "@/pages/MyPage/Resume/UserResume";
 import UserBookmark from "@/pages/MyPage/Bookmark/UserBookmark";
-import ResumeDetail from "@/pages/MyPage/Resume/ResumeDetail";
-import WriteResume from "@/pages/MyPage/Resume/WriteResume";
+import ResumeDetail from "@/pages/MyPage/Resume/ResumeDetail/ResumeDetail";
+import ResumeWrite from "@/pages/MyPage/Resume/ResumeWrite/ResumeWrite";
+import ResumeEdit from "@/pages/MyPage/Resume/ResumeEdit/ResumeEdit";
+import PersonalityTest from "@/pages/MyPage/Test/PersonalityTest";
 
 const AppRoutes = () => {
     return (
@@ -74,9 +76,17 @@ const AppRoutes = () => {
 
                     <Route path="resume" element={<UserResume />} />
                     <Route path="resume/:resumeNo" element={<ResumeDetail />} />
-                    <Route path="resume/write" element={<WriteResume />} />
+                    <Route path="resume/write" element={<ResumeWrite />} />
+                    <Route
+                        path="resume/edit/:resumeNo"
+                        element={<ResumeEdit />}
+                    />
 
                     <Route path="bookmark" element={<UserBookmark />} />
+                    <Route
+                        path="personality-test"
+                        element={<PersonalityTest />}
+                    />
                     <Route path="profile" element={<UserProfile />} />
                 </Route>
             </Route>

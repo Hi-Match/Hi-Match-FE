@@ -4,7 +4,9 @@ import DateSelect from "./DateSelect";
 
 interface DatePickerProps {
     label?: string;
-    onChange: (date: string) => void;
+    select?: string;
+    disabled?: boolean;
+    onChange: (val: string) => void;
 }
 
 // 윤년 체크
@@ -29,24 +31,36 @@ const getDaysInMonth = (year: number, month: number) => {
     return monthDays[month - 1];
 };
 
-const DatePicker = ({ label, onChange }: DatePickerProps) => {
+const DatePicker = ({
+    label,
+    select,
+    disabled = false,
+    onChange,
+}: DatePickerProps) => {
     const current = new Date();
 
-    const [year, setYear] = useState(1990);
+    const [year, setYear] = useState(current.getFullYear());
     const [month, setMonth] = useState(current.getMonth() + 1);
     const [day, setDay] = useState(current.getDate());
 
+    const [isSelected, setIsSelected] = useState(false);
     const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
 
     const [dayOptions, setDayOptions] = useState<number[]>([]);
 
     const years = Array.from(
-        { length: 100 },
-        (_, i) => current.getFullYear() - 113 + i
+        { length: 101 },
+        (_, i) => current.getFullYear() - 100 + i
     );
     const months = Array.from({ length: 12 }, (_, i) => i + 1);
 
     const wrapperRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!select) {
+            setIsSelected(true);
+        }
+    }, [select]);
 
     useEffect(() => {
         const days = getDaysInMonth(year, month);
@@ -59,8 +73,12 @@ const DatePicker = ({ label, onChange }: DatePickerProps) => {
     }, [year, month, day]);
 
     useEffect(() => {
-        onChange(`${year}년 ${month}월 ${day}일`);
-    }, [year, month, day, onChange]);
+        const formatted = `${year}${String(month).padStart(2, "0")}${String(day).padStart(2, "0")}`;
+
+        if (isSelected) {
+            onChange(formatted);
+        }
+    }, [year, month, day, onChange, isSelected]);
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
@@ -80,24 +98,43 @@ const DatePicker = ({ label, onChange }: DatePickerProps) => {
     }, [isSelectOpen]);
 
     const handleClickDate = () => {
+        if (disabled) return;
         setIsSelectOpen(!isSelectOpen);
+    };
+
+    const handleChangeYear = (selectYear: number) => {
+        setYear(selectYear);
+        setIsSelected(true);
+    };
+
+    const handleChangeMonth = (selectMonth: number) => {
+        setMonth(selectMonth);
+        setIsSelected(true);
+    };
+
+    const handleChangeDay = (selectDay: number) => {
+        setDay(selectDay);
+        setIsSelected(true);
     };
 
     return (
         <div className="date_picker_wrapper" ref={wrapperRef}>
-            <label
-                htmlFor="date"
-                className="mb-2.5 inline-block w-full font-semibold text-black"
-            >
-                {label}
-            </label>
+            {label && (
+                <label
+                    htmlFor="date"
+                    className="mb-2.5 inline-block w-full font-semibold text-black"
+                >
+                    {label}
+                </label>
+            )}
             <div className="relative">
                 <button
                     type="button"
-                    className={`btn-category btn-xl flex items-center justify-between text-black duration-0`}
+                    className={`btn-category btn-xl flex items-center justify-between duration-0 ${disabled ? "bg-gray-100" : ""} ${isSelected ? "text-black" : "text-gray02"}`}
                     onClick={handleClickDate}
+                    disabled={disabled}
                 >
-                    {year}년 {month}월 {day}일
+                    {isSelected ? `${year}년 ${month}월 ${day}일` : select}
                     {isSelectOpen ? (
                         <IoChevronUp className="text-gray01" />
                     ) : (
@@ -112,21 +149,21 @@ const DatePicker = ({ label, onChange }: DatePickerProps) => {
                         range={years}
                         value={year}
                         isOpen={isSelectOpen}
-                        onChange={year => setYear(year)}
+                        onChange={handleChangeYear}
                     />
                     <DateSelect
                         label="월(Month)"
                         range={months}
                         value={month}
                         isOpen={isSelectOpen}
-                        onChange={month => setMonth(month)}
+                        onChange={handleChangeMonth}
                     />
                     <DateSelect
                         label="일(Day)"
                         range={dayOptions}
                         value={day}
                         isOpen={isSelectOpen}
-                        onChange={day => setDay(day)}
+                        onChange={handleChangeDay}
                     />
                 </div>
             </div>

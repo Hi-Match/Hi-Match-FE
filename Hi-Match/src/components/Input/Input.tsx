@@ -35,7 +35,7 @@ const Input = ({
     };
 
     return (
-        <div className={`grid-center ${inputSize[variant]}`}>
+        <div className="input_wrapper flex w-full flex-col">
             {label && (
                 <label
                     htmlFor={id}
@@ -54,7 +54,7 @@ const Input = ({
                 {buttonHandler && (
                     <button
                         type="button"
-                        className={`absolute top-[13px] right-[15px] bg-transparent text-base font-semibold ${value && value.length && isValid ? "cursor-pointer text-blue-500" : "text-gray02"}`}
+                        className={`absolute top-[13px] right-[15px] bg-transparent text-base font-semibold ${buttonHandler.buttonEnabled && isValid ? "cursor-pointer text-blue-500" : "text-gray02"}`}
                         onClick={buttonHandler.onClick}
                         disabled={!buttonHandler.buttonEnabled}
                     >
@@ -63,9 +63,9 @@ const Input = ({
                 )}
             </div>
             {validMessage && (
-                <div className="mt-1.25 w-full justify-start">
+                <div className="mt-1.25 w-full">
                     <span
-                        className={`text-sm ${isValid ? "text-green-500" : "text-red-400"}`}
+                        className={`text-sm break-words ${isValid ? "text-green-500" : "text-red-400"}`}
                     >
                         {validMessage}
                     </span>
