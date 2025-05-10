@@ -1,15 +1,10 @@
-import Input from "@/components/Input/Input";
 import PostInput from "@/components/Input/PostInput";
-import { useEffect, useState } from "react";
 
 interface AddressInputProps {
     setResumeData: React.Dispatch<React.SetStateAction<ResumeDetailData>>;
 }
 
 const AddressInput = ({ setResumeData }: AddressInputProps) => {
-    const [mainAddress, setMainAddress] = useState("");
-    const [detailAddress, setDetailAddress] = useState<string>("");
-
     const handleChange = <K extends keyof ResumeDetailData>(
         key: K,
         value: ResumeDetailData[K]
@@ -17,37 +12,12 @@ const AddressInput = ({ setResumeData }: AddressInputProps) => {
         setResumeData(prev => ({ ...prev, [key]: value }));
     };
 
-    const handlePostChange = (mainAddress: string) => {
-        setMainAddress(mainAddress);
-        handleChange("resumeAddress", `${mainAddress}`);
-    };
-
-    const handleChangeDetailAddress = (
-        event: React.ChangeEvent<HTMLInputElement>
-    ) => {
-        const value = event.target.value;
-
-        setDetailAddress(value);
-    };
-
-    useEffect(() => {
-        if (mainAddress) {
-            handleChange("resumeAddress", `${mainAddress} ${detailAddress}`);
-        }
-    }, [mainAddress, detailAddress]);
-
     return (
         <div className="address_wrapper space-y-2.5">
             <PostInput
-                onChange={fullAddress => handlePostChange(fullAddress)}
-            />
-            <Input
-                id="detailAddress"
-                type="text"
-                value={detailAddress}
-                variant="large"
-                placeholder="상세주소"
-                onChange={handleChangeDetailAddress}
+                onChange={fullAddress =>
+                    handleChange("resumeAddress", fullAddress)
+                }
             />
         </div>
     );
