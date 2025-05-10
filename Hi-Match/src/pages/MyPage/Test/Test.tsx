@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import TestTable from "./components/TestTable";
 import TestFooter from "./components/TestFooter";
 import { usePersonalityTest } from "../../../hooks/test/usePersonalityTest";
 
 const Test = () => {
+    const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const {
         type,
@@ -23,8 +25,12 @@ const Test = () => {
         if (canSubmit) {
             try {
                 setIsSubmitting(true);
-                await handleSubmit();
+                const result = await handleSubmit();
                 toast.success("인성 검사가 성공적으로 제출되었습니다.");
+                navigate("/mypage/test-result", {
+                    state: { testResult: result },
+                    replace: true,
+                });
             } catch (error) {
                 console.error("제출 실패:", error);
                 toast.error("제출 중 오류가 발생했습니다. 다시 시도해 주세요.");
@@ -42,7 +48,7 @@ const Test = () => {
             <p className="text-gray01 rounded-md bg-[#F5F5F5] px-6 py-4 text-base">
                 인성 검사는 회원님과 기업의 매칭을 돕기 위한 검사입니다.
                 <br />
-                검사는 총 220문항으로 구성되어 있으며, 검사 시간은 약 30분이
+                검사는 총 220문항으로 구성되어 있으며, 검사 시간은 약 40분이
                 소요됩니다.
             </p>
             <TestTable
