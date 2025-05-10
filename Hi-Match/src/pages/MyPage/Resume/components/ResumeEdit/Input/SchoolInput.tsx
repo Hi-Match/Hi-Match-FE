@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import SchoolForm from "../Form/SchoolForm";
 import PlusIcon from "@/assets/icons/plus-icon.svg?react";
 
