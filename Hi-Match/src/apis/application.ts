@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 
-// 지원서 조회 --------------------------------------------------------------------------------
+// 개인 (회원 / member) --------------------------------------------------------------------------------
 
 /**
  * 지원서 페이지 조회 API
@@ -112,3 +112,79 @@ export const getFailApplications = async (page: number) => {
     );
     return data;
 };
+
+/**
+ * 지원서 상세 조회 API
+ * @param applicationNo 지원서 번호
+ * @returns 지원서 상세 정보
+ */
+export const getApplicationDetail = async (applicationNo: number) => {
+    const { data } = await axiosInstance.get(
+        `/himatch/application/member/detail?applicationNo=${applicationNo}`
+    );
+    return data;
+};
+
+/**
+ * 지원서 지원(제출) API
+ * @param payload 지원서 제출 데이터
+ * @returns 성공 메시지
+ */
+export const applyApplication = async (payload: {
+    postingNo: number;
+    resumeNo: number;
+    question: Array<{
+        question: string;
+        questionLength: number;
+        questionContent: string;
+    }>;
+}) => {
+    const { data } = await axiosInstance.post(
+        "/himatch/application/member/apply",
+        payload
+    );
+    return data;
+};
+
+/**
+ * 개인 채용 목록 검색 API
+ * @param params 검색 조건
+ * @returns 채용 목록
+ */
+export const getMemberJobList = async (params: {
+    companyAddress?: string[];
+    companyPart?: string[];
+    companyType?: string[];
+    postingEducation?: string[];
+    keyword?: string;
+    page: number;
+}) => {
+    const { data } = await axiosInstance.post(
+        "/himatch/application/member/job-list",
+        params
+    );
+    return data;
+};
+
+/**
+ * 개인 채용 목록 page 검색 API
+ * @param params 검색 조건
+ * @returns 페이지 수
+ */
+export const getMemberJobListPage = async (params: {
+    companyAddress?: string[];
+    companyPart?: string[];
+    companyType?: string[];
+    postingEducation?: string[];
+    keyword?: string;
+}) => {
+    const { data } = await axiosInstance.post(
+        "/himatch/application/member/search-page",
+        params
+    );
+    return data;
+};
+
+// 공통 --------------------------------------------------------------------------------
+
+// 기업 (business) --------------------------------------------------------------------------------
