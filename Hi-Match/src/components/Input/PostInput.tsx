@@ -1,8 +1,9 @@
 import Input from "@/components/Input/Input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 
 interface PostInputProps {
+    value?: string;
     onChange: (val: string) => void;
 }
 
@@ -17,8 +18,12 @@ interface DaumPostcodeData {
     [key: string]: any; // 필요 시 추가 필드
 }
 
-const PostInput = ({ onChange }: PostInputProps) => {
+const PostInput = ({ value, onChange }: PostInputProps) => {
     const [address, setAddress] = useState<string>("");
+
+    useEffect(() => {
+        setAddress(value ?? "");
+    }, [value]);
 
     const open = useDaumPostcodePopup(
         "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
@@ -27,7 +32,6 @@ const PostInput = ({ onChange }: PostInputProps) => {
     const handleComplete = (data: DaumPostcodeData) => {
         let fullAddress = data.address;
         let extraAddress = "";
-        let zipAddress = "";
 
         if (data.addressType === "R") {
             if (data.bname !== "") {
@@ -41,14 +45,8 @@ const PostInput = ({ onChange }: PostInputProps) => {
                         : data.buildingName;
             }
 
-            if (data.zonecode !== "") {
-                zipAddress += data.zonecode;
-            }
-
             fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
             onChange(fullAddress);
-
-            fullAddress += `  [${zipAddress}]`;
         }
 
         setAddress(fullAddress);

@@ -20,3 +20,9 @@ export const AUTHCODE_REGEX = /^[0-9]{6}$/;
 
 // 사업자등록번호 10자리
 export const LICENSENUMBER_REGEX = /^[0-9]{10}$/;
+
+// 이름 - 공백, 특수문자 X (2글자 이상)
+export const ENGNAME_REGEX = /^[a-zA-Z]$/;
+
+// 학점 - 소수점 둘째자리 (0.00)
+export const GPA_REGEX = /^\d*\.?\d{0,2}$/;

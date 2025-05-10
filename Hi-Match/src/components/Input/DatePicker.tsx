@@ -5,6 +5,7 @@ import DateSelect from "./DateSelect";
 interface DatePickerProps {
     label?: string;
     select?: string;
+    value?: string;
     disabled?: boolean;
     onChange: (val: string) => void;
 }
@@ -13,6 +14,7 @@ interface DatePickerProps {
 const isLeapYear = (year: number) =>
     (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 
+// 월에 맞는 일 수
 const getDaysInMonth = (year: number, month: number) => {
     const monthDays = [
         31,
@@ -34,6 +36,7 @@ const getDaysInMonth = (year: number, month: number) => {
 const DatePicker = ({
     label,
     select,
+    value,
     disabled = false,
     onChange,
 }: DatePickerProps) => {
@@ -60,7 +63,20 @@ const DatePicker = ({
         if (!select) {
             setIsSelected(true);
         }
-    }, [select]);
+    }, []);
+
+    useEffect(() => {
+        if (value && /^\d{8}$/.test(value)) {
+            const y = parseInt(value.slice(0, 4), 10);
+            const m = parseInt(value.slice(4, 6), 10);
+            const d = parseInt(value.slice(6, 8), 10);
+
+            setYear(y);
+            setMonth(m);
+            setDay(d);
+            setIsSelected(true);
+        }
+    }, [value]);
 
     useEffect(() => {
         const days = getDaysInMonth(year, month);
@@ -73,12 +89,11 @@ const DatePicker = ({
     }, [year, month, day]);
 
     useEffect(() => {
-        const formatted = `${year}${String(month).padStart(2, "0")}${String(day).padStart(2, "0")}`;
+        if (!isSelected) return;
 
-        if (isSelected) {
-            onChange(formatted);
-        }
-    }, [year, month, day, onChange, isSelected]);
+        const formatted = `${year}${String(month).padStart(2, "0")}${String(day).padStart(2, "0")}`;
+        onChange(formatted);
+    }, [year, month, day, isSelected]);
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {

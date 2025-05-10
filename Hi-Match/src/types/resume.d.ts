@@ -1,5 +1,6 @@
 // 자기소개서
 interface ResumeDetailData {
+    resumeDate: string;
     resumeTitle: string;
     resumeIMG?: string;
     resumeName: string;
@@ -12,12 +13,12 @@ interface ResumeDetailData {
     resumeAmbition?: string; // 포부 한마디
     resumePortFolio?: string;
     resumeArmyType: string; // 군복무 타입(대상, 비대상, 면제)
-    resumeArmyPart: string; // 소속
-    resumeArmyDate: string; // 입대일
-    resumeArmyEnd: string; // 제대일
-    resumeDisability: string; // 장애명
-    resumeDisabilityType: string; // 장애증상정도
-    resumeRewardingPatriotism: string; // 보훈번호
+    resumeArmyPart?: string; // 소속
+    resumeArmyDate?: string; // 입대일
+    resumeArmyEnd?: string; // 제대일
+    resumeDisability?: string; // 장애명
+    resumeDisabilityType?: string; // 장애증상정도
+    resumeRewardingPatriotism?: string; // 보훈번호
     resumeSchool: ResumeSchool[]; // 학력
     resumeExperience?: ResumeExperience[]; // 경력
     resumeCertificate?: ResumeCertificate[]; // 자격증
@@ -32,8 +33,8 @@ interface ResumeSchool {
     schoolMinor?: string; // 부전공
     schoolMultiple?: string; // 복수전공
     schoolDegree: string; // 입학, 편입
-    schoolGPA?: string; // 학점(고등학생은 null)
-    schoolStandardGPA?: string; // 기준학점
+    schoolGPA?: number | string | null; // 학점(고등학생은 null)
+    schoolStandardGPA?: number | string | null; // 기준학점
     schoolPart: string; // 학위 구분(검정고시 1, 고등학교 1, 전문학사 2, 학사 3, 석사 4, 박사 5)
     schoolLev: number; // 학위 값
     schoolAdmissionDate: string; // 입학일
