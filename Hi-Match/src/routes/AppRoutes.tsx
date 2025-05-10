@@ -23,9 +23,16 @@ import UserHome from "@/pages/MyPage/UserHome/UserHome";
 import UserProfile from "@/pages/MyPage/Profile/UserProfile";
 import UserResume from "@/pages/MyPage/Resume/UserResume";
 import UserBookmark from "@/pages/MyPage/Bookmark/UserBookmark";
+import PersonalityResult from "@/pages/MyPage/PersonalityResult/PersonalityResult";
+import Test from "@/pages/MyPage/Test/Test";
+import Application from "@/pages/MyPage/Application/Application";
 import ResumeDetail from "@/pages/MyPage/Resume/ResumeDetail/ResumeDetail";
 import ResumeWrite from "@/pages/MyPage/Resume/ResumeWrite/ResumeWrite";
 import ResumeEdit from "@/pages/MyPage/Resume/ResumeEdit/ResumeEdit";
+import CompanyHome from "@/pages/CompanyHome/CompanyHome";
+import CompanyInfo from "@/pages/CompanyInfo/CompanyInfo";
+import BizLayout from "@/layout/BizLayout";
+import CompanySetting from "@/pages/CompanySetting/CompanySetting";
 
 const AppRoutes = () => {
     return (
@@ -81,8 +88,24 @@ const AppRoutes = () => {
                         element={<ResumeEdit />}
                     />
 
+                    <Route path="test" element={<Test />} />
+                    <Route
+                        path="personality-result"
+                        element={<PersonalityResult />}
+                    />
+
+                    <Route path="application" element={<Application />} />
+
                     <Route path="bookmark" element={<UserBookmark />} />
                     <Route path="profile" element={<UserProfile />} />
+                </Route>
+            </Route>
+
+            <Route element={<BizLayout />}>
+                <Route path="/company">
+                    <Route path="home" element={<CompanyHome />} />
+                    <Route path="info" element={<CompanyInfo />} />
+                    <Route path="setting" element={<CompanySetting />} />
                 </Route>
             </Route>
         </Routes>
