@@ -1,37 +1,37 @@
 import AppRoutes from "./routes/AppRoutes";
 import { Toaster } from "react-hot-toast";
-import SuccessIcon from "@/assets/icons/check-icon.svg?react";
-import ErrorIcon from "@/assets/icons/error-icon.svg?react";
 
-function App() {
+const App = () => {
     return (
         <>
-            <AppRoutes />
             <Toaster
-                position="bottom-center"
-                reverseOrder={false}
+                position="top-right"
                 toastOptions={{
+                    duration: 4000,
                     style: {
-                        background: "#333",
-                        color: "#fff",
-                        fontSize: "15px",
-                        fontWeight: "600",
-                        borderRadius: "50px",
+                        padding: "16px",
+                        borderRadius: "8px",
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                        fontSize: "16px",
+                        maxWidth: "400px",
                     },
                     success: {
-                        icon: (
-                            <SuccessIcon className="h-5 w-5 fill-green-500" />
-                        ),
-                        className: "border-1 border-solid border-green-500",
+                        iconTheme: {
+                            primary: "#4CAF50",
+                            secondary: "white",
+                        },
                     },
                     error: {
-                        icon: <ErrorIcon className="h-5 w-5 fill-red-600" />,
-                        className: "border-1 border-solid border-red-600",
+                        iconTheme: {
+                            primary: "#EF4444",
+                            secondary: "white",
+                        },
                     },
                 }}
             />
+            <AppRoutes />
         </>
     );
-}
+};
 
 export default App;
