@@ -8,6 +8,8 @@ import {
 const STORAGE_KEY = "personality_test_answers";
 const QUESTIONS_PER_PAGE = 10;
 const TOTAL_A_QUESTIONS = 120;
+const TOTAL_B_QUESTIONS = 100;
+const TOTAL_QUESTIONS = TOTAL_A_QUESTIONS + TOTAL_B_QUESTIONS;
 
 export const usePersonalityTest = () => {
     const [questions, setQuestions] = useState<PersonalityTestQuestion[]>([]);
@@ -19,8 +21,27 @@ export const usePersonalityTest = () => {
 
     useEffect(() => {
         const fetchQuestions = async () => {
-            const data = await getMemberQuestionListA();
-            setQuestions(data);
+            try {
+                // A형과 B형 문제를 모두 가져옵니다
+                const [aTypeQuestions, bTypeQuestions] = await Promise.all([
+                    getMemberQuestionListA(),
+                    getMemberQuestionListB(),
+                ]);
+
+                if (
+                    aTypeQuestions.length !== TOTAL_A_QUESTIONS ||
+                    bTypeQuestions.length !== TOTAL_B_QUESTIONS
+                ) {
+                    console.error("문제 개수가 올바르지 않습니다:", {
+                        aCount: aTypeQuestions.length,
+                        bCount: bTypeQuestions.length,
+                    });
+                }
+
+                setQuestions([...aTypeQuestions, ...bTypeQuestions]);
+            } catch (error) {
+                console.error("문제 불러오기 실패:", error);
+            }
         };
         fetchQuestions();
     }, []);
@@ -40,37 +61,36 @@ export const usePersonalityTest = () => {
     };
 
     const isLastPage = () => {
-        if (questions.length === TOTAL_A_QUESTIONS) {
-            // A형 문제일 때
-            return (page + 1) * QUESTIONS_PER_PAGE >= TOTAL_A_QUESTIONS;
-        }
-        // B형 문제일 때
-        return (page + 1) * QUESTIONS_PER_PAGE >= questions.length;
+        const maxPage = Math.ceil(TOTAL_QUESTIONS / QUESTIONS_PER_PAGE) - 1;
+        return page === maxPage;
     };
 
-    const handleNextPage = async () => {
-        if (
-            (page + 1) * QUESTIONS_PER_PAGE >= TOTAL_A_QUESTIONS &&
-            questions.length === TOTAL_A_QUESTIONS
-        ) {
-            // A형 마지막 페이지에서 다음 버튼 클릭 시 B형 문제 가져오기
-            const bTypeQuestions = await getMemberQuestionListB();
-            setQuestions(bTypeQuestions);
-            setPage(0);
-        } else {
-            setPage(page + 1);
+    const canSubmit = () => {
+        return isLastPage() && Object.keys(answers).length >= TOTAL_QUESTIONS;
+    };
+
+    const handleNextPage = () => {
+        const nextPage = page + 1;
+        const maxPage = Math.ceil(TOTAL_QUESTIONS / QUESTIONS_PER_PAGE) - 1;
+
+        if (nextPage <= maxPage) {
+            setPage(nextPage);
         }
+    };
+
+    const handlePrevPage = () => {
+        setPage(Math.max(0, page - 1));
     };
 
     const handleSubmit = async () => {
         try {
-            const allQuestions = [
-                ...(await getMemberQuestionListA()),
-                ...(await getMemberQuestionListB()),
-            ];
+            if (Object.keys(answers).length < TOTAL_QUESTIONS) {
+                throw new Error("모든 문제를 풀어야 합니다.");
+            }
+
             const formattedAnswers = Object.entries(answers).map(
                 ([idx, response]) => ({
-                    question: allQuestions[Number(idx)].question,
+                    question: questions[Number(idx)].question,
                     response,
                 })
             );
@@ -83,7 +103,7 @@ export const usePersonalityTest = () => {
         }
     };
 
-    const type = questions.length === TOTAL_A_QUESTIONS ? "A" : "B";
+    const type = page * QUESTIONS_PER_PAGE < TOTAL_A_QUESTIONS ? "A" : "B";
 
     return {
         type,
@@ -91,8 +111,10 @@ export const usePersonalityTest = () => {
         questions: pagedQuestions,
         answers,
         isLastPage: isLastPage(),
+        canSubmit: canSubmit(),
         handleAnswerChange,
         handleNextPage,
+        handlePrevPage,
         handleSubmit,
         QUESTIONS_PER_PAGE,
     };

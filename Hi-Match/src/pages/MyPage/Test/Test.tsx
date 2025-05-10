@@ -1,28 +1,35 @@
+import { useState } from "react";
+import { toast } from "react-hot-toast";
 import TestTable from "./components/TestTable";
 import TestFooter from "./components/TestFooter";
 import { usePersonalityTest } from "../../../hooks/test/usePersonalityTest";
 
 const Test = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const {
         type,
         page,
         questions: pagedQuestions,
         answers,
-        isLastPage,
+        canSubmit,
         handleAnswerChange,
         handleNextPage,
+        handlePrevPage,
         handleSubmit,
         QUESTIONS_PER_PAGE,
     } = usePersonalityTest();
 
     const handleAction = async () => {
-        if (isLastPage) {
+        if (canSubmit) {
             try {
-                const result = await handleSubmit();
-                // TODO: 결과 페이지로 이동
-                console.log("검사 결과:", result);
+                setIsSubmitting(true);
+                await handleSubmit();
+                toast.success("인성 검사가 성공적으로 제출되었습니다.");
             } catch (error) {
                 console.error("제출 실패:", error);
+                toast.error("제출 중 오류가 발생했습니다. 다시 시도해 주세요.");
+            } finally {
+                setIsSubmitting(false);
             }
         } else {
             handleNextPage();
@@ -49,10 +56,12 @@ const Test = () => {
             <TestFooter
                 page={page}
                 onNextPage={handleAction}
+                onPrevPage={handlePrevPage}
                 pagedQuestions={pagedQuestions}
                 answers={answers}
                 QUESTIONS_PER_PAGE={QUESTIONS_PER_PAGE}
-                isLastPage={isLastPage}
+                canSubmit={canSubmit}
+                isSubmitting={isSubmitting}
             />
         </div>
     );

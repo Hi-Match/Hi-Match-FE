@@ -18,13 +18,8 @@ const TestTable = ({
     onAnswerChange,
     QUESTIONS_PER_PAGE,
 }: TestTableProps) => {
-    // B형일 때는 번호가 121부터 시작
-    const getQuestionNumber = (idx: number) => {
-        if (type === "B") {
-            return page * QUESTIONS_PER_PAGE + idx + 121;
-        }
-        return page * QUESTIONS_PER_PAGE + idx + 1;
-    };
+    const getQuestionNumber = (idx: number) =>
+        page * QUESTIONS_PER_PAGE + idx + 1;
 
     return (
         <div>
@@ -38,11 +33,11 @@ const TestTable = ({
                             question={q.question}
                             type={type}
                             checkedValue={
-                                answers[getQuestionNumber(idx) - 1] || ""
+                                answers[page * QUESTIONS_PER_PAGE + idx] || ""
                             }
                             onChange={value =>
                                 onAnswerChange(
-                                    getQuestionNumber(idx) - 1,
+                                    page * QUESTIONS_PER_PAGE + idx,
                                     value
                                 )
                             }
