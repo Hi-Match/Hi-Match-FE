@@ -84,7 +84,7 @@ const ResumeEdit = () => {
             queryClient.invalidateQueries({
                 queryKey: ["resume-detail", resumeNo],
             });
-            navigate(`/mypage/resume/${resumeNo}`);
+            navigate("/mypage/resume");
             toast.success("이력서 수정이 완료되었습니다.");
         },
         onError: () => {
