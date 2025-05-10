@@ -1,7 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "@/assets/images/header/logo-header.svg";
-import AnnouncementIcon from "@/assets/icons/announcement-icon.svg?react";
-import UserIcon from "@/assets/icons/user-icon.svg?react";
 import CompanyIcon from "@/assets/icons/company-icon.svg?react";
 import BadgeIcon from "@/assets/icons/badge-icon.svg?react";
 import SettingIcon from "@/assets/icons/settings-icon.svg?react";
@@ -9,11 +7,6 @@ import LogoutIcon from "@/assets/icons/logout-icon.svg?react";
 import axiosInstance from "@/apis/axiosInstance";
 import { useAuthStore } from "@/store/authStore";
 import toast from "react-hot-toast";
-
-const recruitMenu = [
-    { label: "채용 공고 관리", link: "", Icon: AnnouncementIcon },
-    { label: "지원자 관리", link: "", Icon: UserIcon },
-];
 
 const companyMenu = [
     { label: "기업 정보 관리", link: "/company/info", Icon: CompanyIcon },
