@@ -47,7 +47,7 @@ const PersonalityResult = () => {
                         <b>{last.format("YYYY년 MM월 DD일")}</b>입니다.
                     </p>
                 ) : (
-                    <p className="w-full text-center text-black/80">
+                    <p className="w-full text-lg text-center text-black/80">
                         <strong>{user.memberName}</strong>님은 아직 인성 검사를
                         진행하지 않았습니다.
                         <br />
@@ -57,7 +57,7 @@ const PersonalityResult = () => {
                 )}
                 {canRetest ? (
                     <>
-                        <button className="mx-auto w-fit cursor-pointer rounded-md bg-blue-500 px-6 py-2 text-white hover:bg-blue-600">
+                        <button className="mx-auto w-fit cursor-pointer rounded-md bg-blue-500 px-6 py-3 text-white hover:bg-blue-600">
                             <Link
                                 to="/mypage/test"
                                 className="w-full text-white"
