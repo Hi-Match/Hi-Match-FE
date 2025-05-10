@@ -41,3 +41,10 @@ interface ApplicationItem {
 // (API 응답이 배열 형태이므로 아래와 같이 정의)
 
 type ApplicationListResponse = ApplicationItem[];
+
+interface AppIndexProps {
+    indexList: { key: string; label: string }[];
+    selectedIndex: string;
+    onChange: (key: string) => void;
+    counts: Record<string, number>;
+}

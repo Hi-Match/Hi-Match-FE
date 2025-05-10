@@ -6,6 +6,7 @@ import StarIcon from "@/assets/icons/star-icon.svg?react";
 import UserIcon from "@/assets/icons/user-icon.svg?react";
 import LogoutIcon from "@/assets/icons/logout-icon.svg?react";
 import PersonalityTestIcon from "@/assets/icons/personality-test-icon.svg?react";
+import ListIcon from "@/assets/icons/list-icon.svg?react";
 import axiosInstance from "@/apis/axiosInstance";
 import { useAuthStore } from "@/store/authStore";
 import toast from "react-hot-toast";
@@ -20,6 +21,7 @@ const sidebarMenu = [
         Icon: PersonalityTestIcon,
     },
     { label: "내 정보", link: "/mypage/profile", Icon: UserIcon },
+    { label: "지원 내역", link: "/mypage/application", Icon: ListIcon },
 ];
 
 const Sidebar = () => {

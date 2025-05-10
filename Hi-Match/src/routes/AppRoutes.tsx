@@ -26,6 +26,7 @@ import UserBookmark from "@/pages/MyPage/Bookmark/UserBookmark";
 import ResumeDetail from "@/pages/MyPage/Resume/ResumeDetail";
 import PersonalityResult from "@/pages/MyPage/PersonalityResult/PersonalityResult";
 import Test from "@/pages/MyPage/Test/Test";
+import Application from "@/pages/MyPage/Application/Application";
 // import ResumeWrite from "@/pages/MyPage/Resume/components/ResumeWrite";
 // import ResumeEdit from "@/pages/MyPage/Resume/components/ResumeEdit";
 
@@ -88,6 +89,8 @@ const AppRoutes = () => {
                         path="personality-result"
                         element={<PersonalityResult />}
                     />
+
+                    <Route path="application" element={<Application />} />
 
                     <Route path="bookmark" element={<UserBookmark />} />
                     <Route path="profile" element={<UserProfile />} />
