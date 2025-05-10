@@ -40,13 +40,13 @@ const PersonalityResult = () => {
             </h2>
             <div className="flex flex-col gap-4">
                 {last ? (
-                    <p className="w-full text-center text-black/80 leading-6 text-lg">
+                    <p className="w-full text-center text-lg leading-8 text-black/80">
                         <strong>{user.memberName}</strong>님의 마지막 검사
                         일자는
                         <b>{last.format("YYYY년 MM월 DD일")}</b>입니다.
                     </p>
                 ) : (
-                    <p className="w-full text-center text-black/80 leading-6 text-lg">
+                    <p className="w-full text-center text-lg leading-8 text-black/80">
                         <strong>{user.memberName}</strong>님은 아직 인성 검사를
                         진행하지 않았습니다.
                         <br />
@@ -67,7 +67,7 @@ const PersonalityResult = () => {
                     </>
                 ) : (
                     <>
-                        <p className="text-center text-black/80 text-lg">
+                        <p className="text-center text-lg text-black/80">
                             {RE_TEST_LIMIT_DAYS - diff}일 이후에 재응시
                             가능합니다.
                         </p>

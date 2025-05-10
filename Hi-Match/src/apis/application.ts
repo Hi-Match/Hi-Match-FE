@@ -9,7 +9,7 @@ import axiosInstance from "./axiosInstance";
  */
 export const getApplicationPage = async (category: string) => {
     const { data } = await axiosInstance.get(
-        `/himatch/application/member/page?category=${category}`
+        `/himatch/application/member/page?applicationStatus=${category}`
     );
     return data;
 };
@@ -31,9 +31,11 @@ export const getApplicationCount = async () => {
  * @returns 지원서 목록 (maxPage, list[])
  */
 
-export const searchApplications = async (
-    params: ApplicationSearchParams
-): Promise<ApplicationResponse> => {
+export const searchApplications = async (params: {
+    keyword: string;
+    category: string;
+    page: number;
+}): Promise<ApplicationResponse> => {
     const { data } = await axiosInstance.post(
         "/himatch/application/member/search",
         params
