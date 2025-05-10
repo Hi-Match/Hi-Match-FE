@@ -1,22 +1,23 @@
-const AIAnalysisCard = () => {
-    const secretTips = {
-        code: "NBLS\n",
-        description:
-            '## 인재상 분석 결과\n\n제공된 질문과 답변, 인재상 코드 정보를 바탕으로 분석한 결과는 다음과 같습니다.\n\n### 1. 인재상 코드별 비율 분석\n\n각 질문에 대한 답변을 통해 얻은 인재상 코드의 빈도를 계산했습니다.\n\n*   **Network (소통):** 23회\n*   **Focus (몰입):** 20회\n*   **Structure (수직):** 20회\n*   **Open (수평):** 19회\n*   **Creative (창의):** 23회\n*   **Logical (분석):** 23회\n*   **Drive (주도):** 20회\n*   **Balance (안정):** 20회\n\n**분석 결과:**\n\n*   **가장 높은 비율:** Network(소통), Creative(창의), Logical(분석) (각 23회)\n*   **중간 비율:** Focus(몰입), Structure(수직), Open(수평), Drive(주도), Balance(안정) (각 20회)\n\n### 2. 강점과 약점 분석\n\n제공된 데이터와 답변을 바탕으로 업무와 관련된 강점과 약점을 구체적인 근거와 함께 분석했습니다.\n\n**강점:**\n\n*   **창의적 사고:** "문제를 해결할 때 새로운 방법을 떠올리는 편이다", "아이디어가 많다는 이야기를 종종 듣는다", "일상의 소소한 것들에서도 아이디어를 얻는다" 등의 답변을 통해 창의적인 사고 능력이 뛰어남을 알 수 있습니다. 특히, "기술적인 제약보다 표현 가능성이 중요하다"는 답변은 아이디어를 시각적으로 구현하는 능력도 갖추고 있음을 시사합니다.\n*   **논리적 분석:** "숫자와 근거를 기반으로 결정을 내린다", "데이터를 기반으로 한 판단이 신뢰할 수 있다고 느낀다", "복잡한 문제를 논리적으로 분해하는 것을 잘한다" 등의 답변에서 논리적이고 분석적인 사고 능력이 뛰어남을 알 수 있습니다. "자료를 구조화하고 정리하는 일을 즐긴다"는 답변은 정보를 체계적으로 정리하고 분석하는 데 능숙함을 보여줍니다.\n*    **주도성:** "나는 어려운 목표일수록 오히려 의욕이 생긴다", "나는 새로운 프로젝트를 맡는 것이 즐겁다", "나는 주도권을 가지고 일할 때 성과가 높다" 등의 답변을 통해 주도적인 성향을 파악할 수 있습니다.\n*   **의사소통 능력:** "나는 평소에 질문이 많은 편이다", "대화를 통해 일을 더 잘하게 된다", "동료의 생각을 먼저 이해하려고 한다" 등의 답변을 통해 뛰어난 의사소통 능력을 갖추고 있음을 알 수 있습니다. 또한, "나는 팀원들과 함께하는 프로젝트가 더 성과가 좋다"는 답변은 협업을 통해 시너지를 창출하는 능력이 있음을 시사합니다.\n\n**약점:**\n\n*   **지나치게 솔직한 감정 표현:** "나는 짜증이 날 땐 말투가 달라지는 것을 스스로도 안다"는 답변은 감정 조절에 어려움을 겪을 수 있음을 시사합니다. 이는 팀워크를 저해하거나 대인 관계에 부정적인 영향을 미칠 수 있습니다.\n*   **융통성 부족:** "팀 내에서 결정된 의견을 그대로 따르는 편이다"라는 답변은 상황에 따라 유연하게 대처하는 능력이 부족할 수 있음을 시사합니다. 때로는 비판적인 시각으로 문제점을 파악하고 개선하려는 노력이 필요합니다.\n*   **확실한 근거에 대한 집착:** "나는 확실한 근거가 없으면 행동하지 않는다"는 답변은 신중한 성격을 보여주지만, 때로는 빠른 의사결정이 필요한 상황에서 지나치게 시간을 지체하게 만들 수 있습니다.\n*   **수직적인 구조에 대한 적응:** "팀 내에서 결정된 의견을 그대로 따르는 편이다", "조직의 체계나 규율을 굳이 바꾸려 노력하지 않는다", "상사의 결정에는 이유가 없어도 따른다"와 같은 답변은 수직적인 조직 문화에 순응하는 경향을 보여줍니다. 이는 변화와 혁신을 추구하는 조직에서는 단점으로 작용할 수 있습니다.\n\n**종합:**\n\n전반적으로 창의적이고 논리적인 사고 능력을 바탕으로 주도적인 업무 수행이 가능한 인재입니다. 뛰어난 의사소통 능력을 바탕으로 팀워크를 향상시키는 데 기여할 수 있습니다. 다만, 감정 조절 능력과 융통성을 개선하고, 지나치게 수직적인 구조에 순응하는 태도를 보완한다면 더욱 뛰어난 성과를 낼 수 있을 것으로 기대됩니다.\n',
-        suitability: "부적합\n",
-    };
-    return (
-        <div className="gradient-card-bg rounded-md p-[1px]">
-            <div className="flex flex-col rounded-sm bg-white/95 px-6 py-4 text-xl backdrop-blur-2xl">
-                <p className="mb-2 text-sm text-gray-600">
-                    하이매치의 시크릿 팁 ✨
-                </p>
-                <p className="text-base text-black/70">
-                    {secretTips.description}
-                </p>
-            </div>
+interface AIAnalysisCardProps {
+    detail: { title: string; detailContent: string[] }[];
+}
+const AIAnalysisCard = ({ detail }: AIAnalysisCardProps) => (
+    <div className="gradient-card-bg rounded-md p-[1px]">
+        <div className="flex flex-col rounded-sm bg-white/95 px-6 py-4 text-xl backdrop-blur-2xl">
+            <p className="mb-2 text-sm text-gray-600">
+                하이매치의 시크릿 팁 ✨
+            </p>
+            {detail.map((item, idx) => (
+                <div key={idx} className="mb-2">
+                    <div className="text-lg text-black/80">{item.title}</div>
+                    <ul className="ml-4 list-disc text-black/70 text-base">
+                        {item.detailContent.map((d, i) => (
+                            <li key={i}>{d}</li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
         </div>
-    );
-};
-
+    </div>
+);
 export default AIAnalysisCard;

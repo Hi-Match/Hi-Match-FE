@@ -13,3 +13,25 @@ interface TestFooterProps {
     answers: { [idx: number]: string };
     QUESTIONS_PER_PAGE: number;
 }
+
+interface PersonalityDetail {
+    title: string;
+    detailContent: string[];
+}
+
+interface PersonalityResult {
+    code: string;
+    slogan: string;
+    description: string;
+    rate: {
+        n: string;
+        f: string;
+        d: string;
+        b: string;
+        c: string;
+        l: string;
+        s: string;
+        o: string;
+    };
+    detail: PersonalityDetail[];
+}

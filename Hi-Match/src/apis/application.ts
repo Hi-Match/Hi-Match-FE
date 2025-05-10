@@ -30,29 +30,6 @@ export const getApplicationCount = async () => {
  * @param params 검색 조건 (category: 'TOTAL', keyword: string, page: number)
  * @returns 지원서 목록 (maxPage, list[])
  */
-export interface ApplicationSearchParams {
-    category: "TOTAL";
-    keyword: string;
-    page: number;
-}
-
-export interface ApplicationResponse {
-    maxPage: number;
-    list: Array<{
-        applicationNo: number;
-        applicationName: string;
-        applicationPart: string;
-        applicationContract: string;
-        applicationDate: string;
-        applicationStatus:
-            | "TOTAL"
-            | "SUBMIT"
-            | "PROGRESS"
-            | "RESUME_PASS"
-            | "FINAL_PASS"
-            | "FAIL";
-    }>;
-}
 
 export const searchApplications = async (
     params: ApplicationSearchParams
@@ -60,6 +37,78 @@ export const searchApplications = async (
     const { data } = await axiosInstance.post(
         "/himatch/application/member/search",
         params
+    );
+    return data;
+};
+
+/**
+ * 지원자 전체 목록 조회 API
+ * @param page 페이지 번호
+ * @returns 지원자 전체 목록
+ */
+export const getAllApplications = async (page: number) => {
+    const { data } = await axiosInstance.get(
+        `/himatch/application/member/total?page=${page}`
+    );
+    return data;
+};
+
+/**
+ * 지원자 접수 완료 목록 조회 API
+ * @param page 페이지 번호
+ * @returns 지원자 접수 완료 목록
+ */
+export const getSubmittedApplications = async (page: number) => {
+    const { data } = await axiosInstance.get(
+        `/himatch/application/member/submit?page=${page}`
+    );
+    return data;
+};
+
+/**
+ * 지원자 서류 검토 목록 조회 API
+ * @param page 페이지 번호
+ * @returns 지원자 서류 검토 목록
+ */
+export const getProgressApplications = async (page: number) => {
+    const { data } = await axiosInstance.get(
+        `/himatch/application/member/progress?page=${page}`
+    );
+    return data;
+};
+
+/**
+ * 지원자 서류 합격 목록 조회 API
+ * @param page 페이지 번호
+ * @returns 지원자 서류 합격 목록
+ */
+export const getResumePassApplications = async (page: number) => {
+    const { data } = await axiosInstance.get(
+        `/himatch/application/member/resume_pass?page=${page}`
+    );
+    return data;
+};
+
+/**
+ * 지원자 최종 합격 목록 조회 API
+ * @param page 페이지 번호
+ * @returns 지원자 최종 합격 목록
+ */
+export const getFinalPassApplications = async (page: number) => {
+    const { data } = await axiosInstance.get(
+        `/himatch/application/member/final_pass?page=${page}`
+    );
+    return data;
+};
+
+/**
+ * 지원자 불합격 목록 조회 API
+ * @param page 페이지 번호
+ * @returns 지원자 불합격 목록
+ */
+export const getFailApplications = async (page: number) => {
+    const { data } = await axiosInstance.get(
+        `/himatch/application/member/fail?page=${page}`
     );
     return data;
 };

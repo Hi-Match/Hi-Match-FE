@@ -27,7 +27,7 @@ const Test = () => {
                 setIsSubmitting(true);
                 const result = await handleSubmit();
                 toast.success("인성 검사가 성공적으로 제출되었습니다.");
-                navigate("/mypage/test-result", {
+                navigate("/mypage/personality-result", {
                     state: { testResult: result },
                     replace: true,
                 });

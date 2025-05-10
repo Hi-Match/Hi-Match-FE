@@ -26,7 +26,7 @@ const TestFooter = ({
     return (
         <div className="flex justify-end gap-2">
             <button
-                className={`rounded-md px-4 py-2 text-white ${
+                className={`rounded-md px-4 py-2 text-white cursor-pointer ${
                     page > 0
                         ? "bg-blue-400 hover:bg-blue-500"
                         : "bg-gray02 cursor-not-allowed"
@@ -37,7 +37,7 @@ const TestFooter = ({
                 이전
             </button>
             <button
-                className={`rounded-md px-4 py-2 text-white ${
+                className={`rounded-md px-4 py-2 text-white cursor-pointer ${
                     isAllAnswered
                         ? "bg-blue-400 hover:bg-blue-500"
                         : "bg-gray02 cursor-not-allowed"
