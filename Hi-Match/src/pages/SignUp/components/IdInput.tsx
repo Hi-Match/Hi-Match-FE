@@ -13,7 +13,7 @@ interface IdInputProps {
 const IdInput = ({ user, formID, setValid }: IdInputProps) => {
     const [id, setId] = useState<string>("");
     const [validationMessage, setValidationMessage] = useState({
-        success: true,
+        success: false,
         message: "",
     });
 

@@ -91,7 +91,7 @@ const ResumeList = () => {
             ),
         onSuccess: () => {
             toast.success("이력서가 삭제되었습니다.");
-            setIsModalOpen(true);
+            setIsModalOpen(false);
             queryClient.invalidateQueries({ queryKey: ["resume-list"] });
         },
         onError: () => {

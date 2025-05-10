@@ -11,7 +11,7 @@ interface NameInputProps {
 const NameInput = ({ label, formName, setValid }: NameInputProps) => {
     const [name, setName] = useState<string>("");
     const [validationMessage, setValidationMessage] = useState({
-        success: true,
+        success: false,
         message: "",
     });
 
