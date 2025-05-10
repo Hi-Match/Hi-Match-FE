@@ -38,7 +38,7 @@ interface ResumeSchool {
     schoolPart: string; // 학위 구분(검정고시 1, 고등학교 1, 전문학사 2, 학사 3, 석사 4, 박사 5)
     schoolLev: number; // 학위 값
     schoolAdmissionDate: string; // 입학일
-    schoolGraduationDate?: string; // 졸업일
+    schoolGraduationDate?: string | null; // 졸업일
 }
 
 // 경력
