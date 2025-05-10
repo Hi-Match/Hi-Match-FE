@@ -110,11 +110,15 @@ const ResumeForm = () => {
                 <div className="[&>div:not(:first-child)]:py-12.5">
                     <div className="user_profile_wrapper">
                         <div className="user_profile flex">
-                            <div className="profile_image border-gray03 grid-center h-62.5 w-48 rounded-[5px] border-1 border-solid">
-                                {resumeIMG === "" ? (
-                                    <ProfileIcon className="h-auto w-40 fill-blue-100" />
+                            <div className="profile_image border-gray03 flex h-62.5 w-48 items-center rounded-[5px] border-1 border-solid">
+                                {resumeIMG ? (
+                                    <img
+                                        src={resumeIMG}
+                                        alt="이력서 사진"
+                                        className="h-full w-full object-cover"
+                                    />
                                 ) : (
-                                    <img src={resumeIMG} alt="이력서 사진" />
+                                    <ProfileIcon className="h-auto w-40 fill-blue-100" />
                                 )}
                             </div>
                             <div className="user_info_wrapper flex-grow px-12.5">
@@ -246,20 +250,22 @@ const ResumeForm = () => {
                 <div className="border-gray03 space-y-7.5 border-t-1 border-solid">
                     <h4 className="text-xl font-semibold text-black">학력</h4>
                     {resumeSchool.map(
-                        ({
-                            schoolName,
-                            schoolMajor,
-                            schoolMinor,
-                            schoolMultiple,
-                            schoolDegree,
-                            schoolGPA,
-                            schoolStandardGPA,
-                            schoolLev,
-                            schoolPart,
-                            schoolGraduationDate,
-                            schoolAdmissionDate,
-                        }) => (
-                            <div key={schoolLev} className="space-y-2.5">
+                        (
+                            {
+                                schoolName,
+                                schoolMajor,
+                                schoolMinor,
+                                schoolMultiple,
+                                schoolDegree,
+                                schoolGPA,
+                                schoolStandardGPA,
+                                schoolPart,
+                                schoolGraduationDate,
+                                schoolAdmissionDate,
+                            },
+                            index
+                        ) => (
+                            <div key={index} className="space-y-2.5">
                                 <p className="text-lg font-medium text-black">
                                     {schoolName}
                                 </p>
@@ -295,19 +301,23 @@ const ResumeForm = () => {
                                     )}
                                     <div className="school_date flex items-center space-x-1">
                                         <p>{formatDate(schoolAdmissionDate)}</p>
-                                        {schoolGraduationDate ? (
+                                        {schoolPart !== "검정고시" && (
                                             <>
-                                                <span>&#126;</span>
-                                                <p>
-                                                    {formatDate(
-                                                        schoolGraduationDate
-                                                    )}
-                                                </p>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <span>&#126;</span>
-                                                <p>재학중</p>
+                                                {schoolGraduationDate ? (
+                                                    <>
+                                                        <span>&#126;</span>
+                                                        <p>
+                                                            {formatDate(
+                                                                schoolGraduationDate
+                                                            )}
+                                                        </p>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <span>&#126;</span>
+                                                        <p>재학중</p>
+                                                    </>
+                                                )}
                                             </>
                                         )}
                                     </div>

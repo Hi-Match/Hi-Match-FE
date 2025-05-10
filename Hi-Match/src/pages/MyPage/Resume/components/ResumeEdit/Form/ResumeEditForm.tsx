@@ -30,7 +30,8 @@ const ResumeEditForm = ({ resumeData, setResumeData }: ResumeEditFormProps) => {
             <div className="user_profile_wrapper space-y-12.5">
                 <div className="user_profile flex">
                     <ImageUploadInput
-                        onChange={file => updateForm("resumeIMG", file.name)}
+                        resumeData={resumeData}
+                        onChange={file => updateForm("resumeIMG", file)}
                     />
                     <div className="user_info_wrapper flex-grow space-y-12.5 pl-12.5">
                         <ProfileInfoInput

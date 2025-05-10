@@ -1,13 +1,35 @@
 import { useState } from "react";
 import ProfileIcon from "@/assets/icons/profile-icon.svg?react";
 import toast from "react-hot-toast";
+import { useMutation } from "@tanstack/react-query";
+import axiosInstance from "@/apis/axiosInstance";
 
 interface ImageUploadInputProps {
-    onChange: (file: File) => void;
+    onChange: (file: string) => void;
 }
 
 const ImageUploadInput = ({ onChange }: ImageUploadInputProps) => {
     const [profileImage, setProfileImage] = useState<string>("");
+
+    const { mutate } = useMutation({
+        mutationFn: async (file: File) => {
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const response = await axiosInstance.post(
+                "/himatch/resume/file",
+                formData
+            );
+
+            return response.data;
+        },
+        onSuccess: data => {
+            onChange(data.file);
+        },
+        onError: () => {
+            toast.error("이미지 업로드에 실패했습니다. 다시 업로드 해 주세요.");
+        },
+    });
 
     const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -31,8 +53,8 @@ const ImageUploadInput = ({ onChange }: ImageUploadInputProps) => {
         } else {
             const imageUrl = URL.createObjectURL(file);
 
+            mutate(file);
             setProfileImage(imageUrl);
-            onChange(file);
         }
     };
 
