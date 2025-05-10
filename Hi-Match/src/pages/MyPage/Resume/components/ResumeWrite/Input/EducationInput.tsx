@@ -1,4 +1,3 @@
-import { useState } from "react";
 import PlusIcon from "@/assets/icons/plus-icon.svg?react";
 import EducationForm from "../Form/EducationForm";
 
