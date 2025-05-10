@@ -17,15 +17,18 @@ const TestTableRow = ({
                 ? ["예", "아니오"].map(label => (
                       <td
                           key={label}
-                          className="cursor-pointer border-b border-l border-gray-200"
+                          className="h-12 border-b border-l border-gray-200"
                       >
-                          <input
-                              type="radio"
-                              value={label}
-                              checked={checkedValue === label}
-                              onChange={() => onChange?.(label)}
-                              className="h-full w-full cursor-pointer align-middle"
-                          />
+                          <label className="flex h-full w-full cursor-pointer items-center justify-center">
+                              <input
+                                  type="radio"
+                                  value={label}
+                                  checked={checkedValue === label}
+                                  onChange={() => onChange?.(label)}
+                                  className="cursor-pointer"
+                                  style={{ accentColor: "#2563eb" }}
+                              />
+                          </label>
                       </td>
                   ))
                 : [
@@ -38,15 +41,18 @@ const TestTableRow = ({
                   ].map(label => (
                       <td
                           key={label}
-                          className="cursor-pointer border-b border-l border-gray-200"
+                          className="h-12 cursor-pointer border-b border-l border-gray-200"
                       >
-                          <input
-                              type="radio"
-                              value={label}
-                              checked={checkedValue === label}
-                              onChange={() => onChange?.(label)}
-                              className="h-full w-full cursor-pointer align-middle"
-                          />
+                          <label className="flex h-full w-full cursor-pointer items-center justify-center">
+                              <input
+                                  type="radio"
+                                  value={label}
+                                  checked={checkedValue === label}
+                                  onChange={() => onChange?.(label)}
+                                  className="cursor-pointer"
+                                  style={{ accentColor: "#2563eb" }}
+                              />
+                          </label>
                       </td>
                   ))}
         </tr>
