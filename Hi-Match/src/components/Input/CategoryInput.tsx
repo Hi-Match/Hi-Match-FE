@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoChevronUp, IoChevronDown } from "react-icons/io5";
 
 type CategorySize = "small" | "medium" | "large" | "extraLarge";
@@ -22,7 +22,12 @@ const CategoryInput = ({
     options,
     onChange,
 }: CategoryInputProps) => {
+    const [selected, setSelected] = useState(value);
     const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    useEffect(() => {
+        setSelected(value);
+    }, [value]);
 
     const categorySize = {
         small: "btn-sm",
@@ -36,6 +41,7 @@ const CategoryInput = ({
     };
 
     const handleSelect = (option: string) => {
+        setSelected(option);
         onChange(option);
         setIsOpen(false);
     };
@@ -57,7 +63,7 @@ const CategoryInput = ({
                     onClick={handleClickCategory}
                     onBlur={() => setIsOpen(false)}
                 >
-                    {value === "" ? select : value}
+                    {selected || select}
                     {isOpen ? (
                         <IoChevronUp className="text-gray01" />
                     ) : (

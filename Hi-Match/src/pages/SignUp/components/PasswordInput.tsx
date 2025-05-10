@@ -12,7 +12,7 @@ const PasswordInput = ({ formPassword, setValid }: PasswordInputProps) => {
     const [password, setPassword] = useState<string>("");
     const [isViewPassword, setIsViewPassword] = useState<boolean>(false);
     const [validationMessage, setValidationMessage] = useState({
-        success: true,
+        success: false,
         message: "",
     });
 

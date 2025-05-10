@@ -59,13 +59,13 @@ const Login = () => {
                 ref={wrapperRef}
             >
                 <ul
-                    className={`grid-center mypage_list absolute top-12.5 left-[50%] translate-x-[-50%] rounded-[5px] border border-solid border-gray-200 bg-white shadow-sm [&>li:first-child>a]:rounded-t-[5px]`}
+                    className={`grid-center mypage_list absolute top-12.5 left-[50%] translate-x-[-50%] rounded-[5px] border-1 border-solid border-gray-200 bg-white shadow-sm [&>li:first-child>a]:rounded-t-[5px]`}
                 >
                     {mypageMenu.map(({ label, link }, index) => (
                         <li key={index} className="">
                             <Link
                                 to={link}
-                                className="flex-center h-12.5 w-37.5 text-base font-medium text-black hover:bg-blue-50"
+                                className="flex-center h-11 w-30 text-[15px] font-medium text-black hover:bg-blue-50"
                             >
                                 {label}
                             </Link>
@@ -74,7 +74,7 @@ const Login = () => {
 
                     <li>
                         <span
-                            className="flex-center h-12.5 w-37.5 cursor-pointer rounded-b-[5px] text-base text-red-400 hover:bg-blue-50"
+                            className="flex-center h-11 w-30 cursor-pointer rounded-b-[5px] text-[15px] text-red-400 hover:bg-blue-50"
                             onMouseDown={handleClickLogout}
                         >
                             로그아웃
