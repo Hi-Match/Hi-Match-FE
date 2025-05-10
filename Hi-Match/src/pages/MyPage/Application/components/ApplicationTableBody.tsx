@@ -2,6 +2,7 @@ import ApplicationTableRow from "./ApplicationTableRow";
 
 interface ApplicationTableBodyProps {
     data: ApplicationItem[];
+    loading: boolean;
 }
 const ApplicationTableBody = ({ data }: ApplicationTableBodyProps) => (
     <tbody>
