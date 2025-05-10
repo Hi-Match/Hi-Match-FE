@@ -42,15 +42,15 @@
     }
 
     .btn-md {
-        @apply h-[50px] w-[192px] text-base;
+        @apply h-12.5 w-48 text-base;
     }
 
     .btn-lg {
-        @apply h-[50px] w-87 text-base;
+        @apply h-12.5 w-87 text-base;
     }
 
     .btn-xl {
-        @apply h-[50px] w-full text-base;
+        @apply h-12.5 w-full text-base;
     }
 
     /* 버튼 색상 */
@@ -64,6 +64,10 @@
 
     .btn-gray {
         @apply cursor-pointer border border-solid border-gray-200 bg-white font-semibold hover:bg-gray-100;
+    }
+
+    .btn-red {
+        @apply cursor-pointer border border-solid border-red-400 bg-white font-semibold;
     }
 
     .btn-disabled {
@@ -84,7 +88,7 @@
     }
 
     .input-md {
-        @apply w-[450px];
+        @apply w-112.5;
     }
 
     .input-lg {

@@ -1,4 +1,4 @@
-import ResumeForm from "./components/ResumeDetail/ResumeForm";
+import ResumeForm from "../components/ResumeDetail/ResumeForm";
 
 const ResumeDetail = () => {
     return (

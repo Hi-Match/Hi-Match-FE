@@ -12,7 +12,7 @@ const PasswordConfirmInput = ({
 }: PasswordConfirmInputProps) => {
     const [passwordConfirm, setPasswordConfirm] = useState<string>("");
     const [validationMessage, setValidationMessage] = useState({
-        success: true,
+        success: false,
         message: "",
     });
 

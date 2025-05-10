@@ -24,7 +24,7 @@ const sidebarMenu = [
     { label: "지원 내역", link: "/mypage/application", Icon: ListIcon },
 ];
 
-const Sidebar = () => {
+const UserSidebar = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -99,4 +99,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default UserSidebar;

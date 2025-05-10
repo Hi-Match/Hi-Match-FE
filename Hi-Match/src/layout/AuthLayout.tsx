@@ -9,7 +9,7 @@ const AuthLayout = () => {
                     <img src={logo} alt="Hi Match" />
                 </Link>
             </header>
-            <main className="min-w-102">
+            <main className="min-w-87">
                 <Outlet />
             </main>
         </div>

@@ -23,12 +23,12 @@ import UserHome from "@/pages/MyPage/UserHome/UserHome";
 import UserProfile from "@/pages/MyPage/Profile/UserProfile";
 import UserResume from "@/pages/MyPage/Resume/UserResume";
 import UserBookmark from "@/pages/MyPage/Bookmark/UserBookmark";
-import ResumeDetail from "@/pages/MyPage/Resume/ResumeDetail";
 import PersonalityResult from "@/pages/MyPage/PersonalityResult/PersonalityResult";
 import Test from "@/pages/MyPage/Test/Test";
 import Application from "@/pages/MyPage/Application/Application";
-// import ResumeWrite from "@/pages/MyPage/Resume/components/ResumeWrite";
-// import ResumeEdit from "@/pages/MyPage/Resume/components/ResumeEdit";
+import ResumeDetail from "@/pages/MyPage/Resume/ResumeDetail/ResumeDetail";
+import ResumeWrite from "@/pages/MyPage/Resume/ResumeWrite/ResumeWrite";
+import ResumeEdit from "@/pages/MyPage/Resume/ResumeEdit/ResumeEdit";
 
 const AppRoutes = () => {
     return (
@@ -78,11 +78,11 @@ const AppRoutes = () => {
 
                     <Route path="resume" element={<UserResume />} />
                     <Route path="resume/:resumeNo" element={<ResumeDetail />} />
-                    {/* <Route path="resume/write" element={<ResumeWrite />} /> */}
-                    {/* <Route
+                    <Route path="resume/write" element={<ResumeWrite />} />
+                    <Route
                         path="resume/edit/:resumeNo"
                         element={<ResumeEdit />}
-                    /> */}
+                    />
 
                     <Route path="test" element={<Test />} />
                     <Route

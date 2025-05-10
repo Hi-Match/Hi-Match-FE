@@ -2,8 +2,11 @@ import { useState } from "react";
 import ProfileIcon from "@/assets/icons/profile-icon.svg?react";
 import toast from "react-hot-toast";
 
-const ImageUploadInput = () => {
-    const [imageFile, setImageFile] = useState<File | null>(null);
+interface ImageUploadInputProps {
+    onChange: (file: File) => void;
+}
+
+const ImageUploadInput = ({ onChange }: ImageUploadInputProps) => {
     const [profileImage, setProfileImage] = useState<string>("");
 
     const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,12 +32,12 @@ const ImageUploadInput = () => {
             const imageUrl = URL.createObjectURL(file);
 
             setProfileImage(imageUrl);
-            setImageFile(file);
+            onChange(file);
         }
     };
 
     return (
-        <div className="user_info">
+        <div className="user_info grid-center">
             <div className="profile_image h-62.5 w-48">
                 <label htmlFor="profileImage" className="cursor-pointer">
                     <div className="flex h-full w-full items-center overflow-hidden rounded-[5px] border-1 border-solid border-gray-200">

@@ -15,7 +15,7 @@ const LicenseNumberInput = ({
 }: LicenseNumberInputProps) => {
     const [licenseNumber, setLicenseNumber] = useState<string>("");
     const [validationMessage, setValidationMessage] = useState({
-        success: true,
+        success: false,
         message: "",
     });
 

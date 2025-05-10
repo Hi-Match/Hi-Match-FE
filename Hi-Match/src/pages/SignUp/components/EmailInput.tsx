@@ -10,7 +10,7 @@ interface EmailInputProps {
 const EmailInput = ({ formEmail, setValid }: EmailInputProps) => {
     const [email, setEmail] = useState<string>("");
     const [validationMessage, setValidationMessage] = useState({
-        success: true,
+        success: false,
         message: "",
     });
 

@@ -9,7 +9,7 @@ interface CompanyNameInputProps {
 const CompanyNameInput = ({ formName, setValid }: CompanyNameInputProps) => {
     const [companyName, setCompanyName] = useState<string>("");
     const [validationMessage, setValidationMessage] = useState({
-        success: true,
+        success: false,
         message: "",
     });
 
