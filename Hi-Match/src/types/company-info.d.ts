@@ -13,7 +13,7 @@ interface CompanyInfo {
     companyEmployee: string;
     companyURL: string;
     companyDescription: string; // 기업 소개
-    tag: CompanyTag[];
+    tag?: CompanyTag[];
 }
 
 interface CompanyTag {
