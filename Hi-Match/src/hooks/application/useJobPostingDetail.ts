@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import { getJobPostingDetail } from "@/apis/application";
+import axiosInstance from "@/apis/axiosInstance";
+
+const getCompanyInfo = async () => {
+    const { data } = await axiosInstance.get("/himatch/company/info/detail");
+    return data;
+};
 
 export const useJobPostingDetail = (postingNo: number) => {
     const [data, setData] = useState<JobPostingDetail | null>(null);
+    const [company, setCompany] = useState<CompanyInfo | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -10,8 +17,12 @@ export const useJobPostingDetail = (postingNo: number) => {
         if (!postingNo) return;
         setLoading(true);
         setError(null);
-        getJobPostingDetail(postingNo)
-            .then(res => setData(res))
+
+        Promise.all([getJobPostingDetail(postingNo), getCompanyInfo()])
+            .then(([posting, companyInfo]) => {
+                setData(posting);
+                setCompany(companyInfo);
+            })
             .catch(err => {
                 setError(
                     err instanceof Error
@@ -22,5 +33,5 @@ export const useJobPostingDetail = (postingNo: number) => {
             .finally(() => setLoading(false));
     }, [postingNo]);
 
-    return { data, loading, error };
+    return { data, company, loading, error };
 };
