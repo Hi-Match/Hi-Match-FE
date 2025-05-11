@@ -47,6 +47,17 @@ const CompanyInfo = () => {
         },
     });
 
+    const isCompanyInfoValid = (info: CompanyInfoData): boolean => {
+        return (
+            !!info.companyLogo &&
+            !!info.companyImgA &&
+            !!info.companyName &&
+            !!info.companyManagerName &&
+            !!info.companyAddress &&
+            !!info.companyDescription
+        );
+    };
+
     const handleClickResumeSave = () => {
         mutate(companyInfo);
     };
@@ -61,8 +72,9 @@ const CompanyInfo = () => {
                 <div className="btn-wrapper">
                     <button
                         type="button"
-                        className="btn-blue h-10 w-25 text-base"
+                        className={`h-10 w-25 text-base ${!isCompanyInfoValid(companyInfo) ? "btn-disabled" : "btn-blue"}`}
                         onClick={handleClickResumeSave}
+                        disabled={!isCompanyInfoValid(companyInfo)}
                     >
                         저장
                     </button>
