@@ -7,9 +7,13 @@ import { useJobPostingDetail } from "@/hooks/application/useJobPostingDetail";
 import { toast } from "react-hot-toast";
 import { useEffect } from "react";
 import TagList from "./components/TagList";
+import { useParams } from "react-router-dom";
 
 const JobPostingDetail = () => {
-    const { data, company, loading, error } = useJobPostingDetail(1);
+    const { id } = useParams();
+    const postingNo = Number(id);
+
+    const { data, company, loading, error } = useJobPostingDetail(postingNo);
     const tags = Array.isArray(company?.tag)
         ? company!.tag.map((tag: { tagName: string }) => tag.tagName)
         : [];
