@@ -3,22 +3,6 @@ import { getBookmarkSearch } from "@/apis/bookmark";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 
-// export const useBookmarkSearch = (page: number = 1, keyword: string="") => {
-//     const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
-//     const [loading, setLoading] = useState(true);
-//     const [error, setError] = useState<string | null>(null);
-
-//     useEffect(() => {
-//         setLoading(true);
-//         getBookmarkSearch(page,keyword)
-//             .then(data => setBookmarks(data))
-//             .catch(() => setError("북마크 목록을 불러오지 못했습니다."))
-//             .finally(() => setLoading(false));
-//     }, [page]);
-
-//     return { bookmarks, loading, error };
-// };
-
 export const useBookmarkSearch = (page: number = 1, keyword: string = "") => {
     const queryResult = useQuery({
         queryKey: ["bookmarks", "search", page, keyword], // 검색 조건(페이지, 키워드)을 포함한 queryKey

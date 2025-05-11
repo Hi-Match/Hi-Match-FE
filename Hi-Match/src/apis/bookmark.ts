@@ -16,9 +16,9 @@ export const getBookmarkList = async (page: number) => {
  * 북마크 최대 페이지 조회 API
  * @returns 마지막 페이지
  */
-export const getBookmarkMaxPage = async () => {
+export const getBookmarkMaxPage = async (keyword: string) => {
     const { data } = await axiosInstance.get(
-        `/himatch/bookmark/page`
+        `/himatch/bookmark/page?keyword=${keyword}`
     );
     return data;
 };
