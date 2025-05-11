@@ -14,8 +14,8 @@ import DescriptionInput from "./DescriptionInput";
 import TagForm from "./TagForm";
 
 interface CompanyInfoFormProps {
-    companyInfo: CompanyInfo;
-    setCompanyInfo: React.Dispatch<React.SetStateAction<CompanyInfo>>;
+    companyInfo: CompanyInfoData;
+    setCompanyInfo: React.Dispatch<React.SetStateAction<CompanyInfoData>>;
 }
 
 const CompanyInfoForm = ({
@@ -56,7 +56,7 @@ const CompanyInfoForm = ({
         }
     }, [companyInfoData]);
 
-    const updateInfo = (key: keyof CompanyInfo, value: string) => {
+    const updateInfo = (key: keyof CompanyInfoData, value: string) => {
         setCompanyInfo(prev => {
             if (prev[key] === value) return prev;
             return { ...prev, [key]: value };

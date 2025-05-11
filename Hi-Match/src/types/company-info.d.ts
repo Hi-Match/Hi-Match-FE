@@ -1,5 +1,5 @@
 // 기업 정보 관리
-interface CompanyInfo {
+interface CompanyInfoData {
     companyLogo: string;
     companyImgA: string;
     companyImgB: string;
@@ -13,7 +13,7 @@ interface CompanyInfo {
     companyEmployee: string;
     companyURL: string;
     companyDescription: string; // 기업 소개
-    tag?: CompanyTag[];
+    tag: CompanyTag[];
 }
 
 interface CompanyTag {

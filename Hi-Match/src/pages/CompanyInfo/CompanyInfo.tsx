@@ -5,7 +5,7 @@ import axiosInstance from "@/apis/axiosInstance";
 import toast from "react-hot-toast";
 
 const CompanyInfo = () => {
-    const [companyInfo, setCompanyInfo] = useState<CompanyInfo>({
+    const [companyInfo, setCompanyInfo] = useState<CompanyInfoData>({
         companyLogo: "",
         companyImgA: "",
         companyImgB: "",
@@ -37,7 +37,7 @@ const CompanyInfo = () => {
     }, []);
 
     const { mutate } = useMutation({
-        mutationFn: (formData: CompanyInfo) =>
+        mutationFn: (formData: CompanyInfoData) =>
             axiosInstance.post("/himatch/company/info/register", formData),
         onSuccess: () => {
             toast.success("저장이 완료 되었습니다.");
