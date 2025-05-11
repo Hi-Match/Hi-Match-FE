@@ -3,11 +3,12 @@ import { getMemberRecentTestTime } from "@/apis/code";
 import dayjs from "dayjs";
 import PersonalityReportBox from "./components/PersonalityReportBox";
 import { Link } from "react-router-dom";
+import { useUserStore } from "@/store/userStore";
+
 const RE_TEST_LIMIT_DAYS = 30;
 
 const PersonalityResult = () => {
-    const userInfo = sessionStorage.getItem("user-info");
-    const user = userInfo ? JSON.parse(userInfo).state.user : null;
+    const { user } = useUserStore();
     const [lastTestDate, setLastTestDate] = useState<Date | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -41,13 +42,13 @@ const PersonalityResult = () => {
             <div className="flex flex-col gap-4">
                 {last ? (
                     <p className="w-full text-center text-lg leading-8 text-black/80">
-                        <strong>{user.memberName}</strong>님의 마지막 검사
+                        <strong>{user?.memberName}</strong>님의 마지막 검사
                         일자는
                         <b>{last.format("YYYY년 MM월 DD일")}</b>입니다.
                     </p>
                 ) : (
                     <p className="w-full text-center text-lg leading-8 text-black/80">
-                        <strong>{user.memberName}</strong>님은 아직 인성 검사를
+                        <strong>{user?.memberName}</strong>님은 아직 인성 검사를
                         진행하지 않았습니다.
                         <br />
                         아래 버튼을 눌러 인성 검사를 진행하고, 나와 같은

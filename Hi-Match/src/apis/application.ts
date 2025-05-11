@@ -187,6 +187,17 @@ export const getMemberJobListPage = async (params: {
     return data;
 };
 
+/**
+ * 개인 추천 직무 API
+ * @returns 추천 직무 목록 (JobPosting[])
+ */
+export const getRecommendJobList = async () => {
+    const { data } = await axiosInstance.get(
+        "/himatch/application/member/recommend"
+    );
+    return data;
+};
+
 // 공통 --------------------------------------------------------------------------------
 
 // 기업 (business) --------------------------------------------------------------------------------
