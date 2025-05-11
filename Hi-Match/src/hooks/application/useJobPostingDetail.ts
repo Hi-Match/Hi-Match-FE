@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { getJobPostingDetail } from "@/apis/application";
 import axiosInstance from "@/apis/axiosInstance";
 
-const getCompanyInfo = async () => {
-    const { data } = await axiosInstance.get("/himatch/company/info/detail");
+const getCompanyInfo = async (companyNo: number) => {
+    const { data } = await axiosInstance.get(
+        `/himatch/company/info/detail-select?companyNo=${companyNo}`
+    );
     return data;
 };
 
-export const useJobPostingDetail = (postingNo: number) => {
+export const useJobPostingDetail = (postingNo: number, companyNo: number) => {
     const [data, setData] = useState<JobPostingDetail | null>(null);
     const [company, setCompany] = useState<CompanyInfo | null>(null);
     const [loading, setLoading] = useState(false);
@@ -18,7 +20,7 @@ export const useJobPostingDetail = (postingNo: number) => {
         setLoading(true);
         setError(null);
 
-        Promise.all([getJobPostingDetail(postingNo), getCompanyInfo()])
+        Promise.all([getJobPostingDetail(postingNo), getCompanyInfo(companyNo)])
             .then(([posting, companyInfo]) => {
                 setData(posting);
                 setCompany(companyInfo);
