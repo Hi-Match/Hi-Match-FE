@@ -67,7 +67,7 @@ const Pagination = ({
                     <button
                         key={page}
                         onClick={() => onPageChange(page)}
-                        className={`rounded px-2 py-1 ${page === safeCurrentPage ? "text-semibold text-blue-500 underline" : "text-gray-400"}`}
+                        className={`rounded px-2 py-1 cursor-pointer ${page === safeCurrentPage ? "text-semibold text-blue-500 underline" : "text-gray-400"}`}
                     >
                         {page}
                     </button>

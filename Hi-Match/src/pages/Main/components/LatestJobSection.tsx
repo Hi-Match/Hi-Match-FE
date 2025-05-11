@@ -33,6 +33,10 @@ const LatestJobSection = ({
             </h3>
             {loading ? (
                 <div className="py-10 text-center">로딩 중...</div>
+            ) : jobPostings.length === 0 ? (
+                <div className="py-10 text-center text-xl text-gray-400">
+                    조회된 공고가 없습니다.
+                </div>
             ) : (
                 <>
                     <JobPostingCardList jobPostings={jobPostings} />

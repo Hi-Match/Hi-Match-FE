@@ -1,12 +1,20 @@
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { useUserStore } from "@/store/userStore";
-import { useRecommandJobPostings } from "@/hooks/application/useRecommandJobPostings";
 import JobPostingCardList from "@/components/JobPostingCard/JobPostingCardList";
 
-const RecommendJobSection = () => {
+interface RecommendJobSectionProps {
+    jobPostings: JobPosting[];
+    loading: boolean;
+    error: string | null;
+}
+
+const RecommendJobSection = ({
+    jobPostings,
+    loading,
+    error,
+}: RecommendJobSectionProps) => {
     const { user } = useUserStore();
-    const { jobPostings, loading, error } = useRecommandJobPostings();
 
     useEffect(() => {
         if (error) {
