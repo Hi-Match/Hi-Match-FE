@@ -7,7 +7,7 @@ const PersonalityReportBox = () => {
     const { result, isLoading } = usePersonalityResult();
 
     if (isLoading) return <div>로딩 중...</div>;
-    if (!result) return <div>결과가 없습니다.</div>;
+    if (!result) return <div className=" w-full py-20 text-center text-gray-500 text-lg">검사 결과를 기다리고 있어요!</div>;
 
     return (
         <div>
