@@ -22,7 +22,13 @@ const RecommendJobSection = ({
         }
     }, [error]);
 
-    return (
+    return (<>
+        {user && (
+            <p className=" text-lg text-black/80">
+                아직 {user?.memberName}님과 인재상이 비슷한 회사가
+                없어요 😢
+            </p>
+        )}
         <div className="flex flex-col gap-8">
             <h3 className="text-2xl font-semibold text-black">
                 {`${user?.memberName}님을 위한 추천 직무예요! 😎`}
@@ -33,6 +39,8 @@ const RecommendJobSection = ({
                 <JobPostingCardList jobPostings={jobPostings} />
             )}
         </div>
+        </>
+
     );
 };
 

@@ -24,14 +24,14 @@ interface PersonalityResult {
     slogan: string;
     description: string;
     rate: {
-        n: string;
-        f: string;
-        d: string;
-        b: string;
-        c: string;
-        l: string;
-        s: string;
-        o: string;
+        n: number;
+        f: number;
+        d: number;
+        b: number;
+        c: number;
+        l: number;
+        s: number;
+        o: number;
     };
     detail: PersonalityDetail[];
 }
