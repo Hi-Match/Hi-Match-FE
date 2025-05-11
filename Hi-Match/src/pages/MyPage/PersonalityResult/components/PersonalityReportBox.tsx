@@ -2,6 +2,7 @@ import { usePersonalityResult } from "@/hooks/test/usePersonalityResult";
 import PersonalityTypeCard from "./PersonalityTypeCard";
 import AIAnalysisCard from "./AIAnalysisCard";
 import PersonalityReportTitle from "./PersonalityReportTitle";
+import PersonalityReportRate from "./PersonalityReportRate";
 
 const PersonalityReportBox = () => {
     const { result, isLoading } = usePersonalityResult();
@@ -12,6 +13,7 @@ const PersonalityReportBox = () => {
     return (
         <div>
             <PersonalityReportTitle code={result.code} slogan={result.slogan} />
+            <PersonalityReportRate rate={result.rate} />
             <div className="mt-4">
                 <PersonalityTypeCard description={result.description} />
                 <div className="mt-6">

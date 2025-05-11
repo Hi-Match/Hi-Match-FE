@@ -9,8 +9,11 @@ const AIAnalysisCard = ({ detail }: AIAnalysisCardProps) => (
             </p>
             {detail.map((item, idx) => (
                 <div key={idx} className="mb-3">
-                    <div className="text-lg text-black/90">{item.title}</div>
-                    <ul className="ml-4 list-disc text-black/80 text-base">
+                    <div className="text-lg text-black/90 mb-1">
+                        <span className="mr-2">✅</span>
+                        {item.title}
+                    </div>
+                    <ul className="ml-4 list-disc text-base pl-2 text-black/80">
                         {item.detailContent.map((d, i) => (
                             <li key={i}>{d}</li>
                         ))}
