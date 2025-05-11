@@ -74,8 +74,8 @@ const PersonalityReportRate = ({
                                 data.find(d => d.axis === payload.value) || {};
 
                             // 줄바꿈(\n) 기준으로 분리
-                            const leftLines = left.split("\n");
-                            const rightLines = right.split("\n");
+                            const leftLines = (left ?? "").split("\n");
+                            const rightLines = (right ?? "").split("\n");
 
                             return (
                                 <g transform={`translate(${x},${y})`}>
@@ -129,7 +129,7 @@ const PersonalityReportRate = ({
                         width={120}
                     />
                     <Tooltip />
-                    <Bar dataKey="value" fill="#6b9ff4" radius={[0,8,8,0]}>
+                    <Bar dataKey="value" fill="#6b9ff4" radius={[0, 8, 8, 0]}>
                         <LabelList dataKey="value" position="right" />
                     </Bar>
                 </BarChart>

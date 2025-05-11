@@ -6,8 +6,8 @@ import { useState } from "react";
 
 const UserBookmark = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const {bookmarks} = useBookmarkSearch(currentPage);
-    const {totalPages} = useBookmarkMaxPage();
+    const { bookmarks } = useBookmarkSearch(currentPage);
+    const { totalPages } = useBookmarkMaxPage();
 
     return (
         <div className="mx-auto flex w-full flex-col gap-14 px-24">
@@ -15,12 +15,20 @@ const UserBookmark = () => {
                 회원님이 스크랩한 공고 💻
             </h2>
 
-            <BookmarkCardList bookmarks={bookmarks} />
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
+            {bookmarks && bookmarks.length > 0 ? (
+                <>
+                    <BookmarkCardList bookmarks={bookmarks} />
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={setCurrentPage}
+                    />
+                </>
+            ) : (
+                <div className="py-40 text-center text-xl text-gray-400">
+                    북마크가 없습니다.
+                </div>
+            )}
         </div>
     );
 };
