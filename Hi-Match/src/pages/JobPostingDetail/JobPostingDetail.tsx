@@ -12,8 +12,12 @@ import { useParams } from "react-router-dom";
 const JobPostingDetail = () => {
     const { id } = useParams();
     const postingNo = Number(id);
-
-    const { data, company, loading, error } = useJobPostingDetail(postingNo);
+    const companyNo = Number(id);
+    
+    const { data, company, loading, error } = useJobPostingDetail(
+        postingNo,
+        companyNo
+    );
     const tags = Array.isArray(company?.tag)
         ? company!.tag.map((tag: { tagName: string }) => tag.tagName)
         : [];
