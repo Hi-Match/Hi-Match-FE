@@ -1,4 +1,6 @@
 interface BookmarkCardProps {
+    bookMarkNo?: number;
+    postingNo?: number;
     imageUrl?: string;
     deadline?: string;
     isBookmarked?: boolean;
@@ -12,7 +14,7 @@ interface BookmarkCardProps {
 interface Bookmark {
     bookMarkNo: number;
     postingNo: number;
-    companyImage: string;
+    companyImgA: string;
     companyName: string;
     companyType: string;
     postingTitle: string;
