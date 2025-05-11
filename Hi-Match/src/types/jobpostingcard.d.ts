@@ -55,3 +55,25 @@ interface JobPostingDetail {
         questionLength: number;
     }>;
 }
+
+interface CompanyInfo {
+    companyName: string;
+    companyManagerName: string;
+    companyAddress: string;
+    companyPhone: string;
+    companyMail: string;
+    companyIndustry: string;
+    companyEmployee: string;
+    companyDescription: string;
+    companyLogo: string;
+    companyImgA?: string;
+    companyImgB?: string;
+    companyImgC?: string;
+    companyURL: string;
+    tag: Array<{
+        tagName: string;
+    }>;
+    img: Array<{
+        imgName: string;
+    }>;
+}

@@ -14,7 +14,7 @@ interface JobImageGalleryProps {
 const JobImageGallery = ({ images }: JobImageGalleryProps) => {
     if (!images || images.length === 0) return null;
     return (
-        <div className="relative h-[300px] w-full rounded-xl">
+        <figure className="relative h-[300px] w-full rounded-xl max-w-[1272px] mx-auto max-[1399px]:px-20">
             <Swiper
                 modules={[Navigation, Autoplay]}
                 navigation={{
@@ -48,7 +48,7 @@ const JobImageGallery = ({ images }: JobImageGalleryProps) => {
             >
                 <RightIcon />
             </button>
-        </div>
+        </figure>
     );
 };
 
