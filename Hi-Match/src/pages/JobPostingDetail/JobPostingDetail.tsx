@@ -32,6 +32,11 @@ const JobPostingDetail = () => {
                         companyName={data.companyName}
                         postingTitle={data.postingTitle}
                         postingPart={data.postingPart}
+                        postingExperience={data.postingExperience}
+                        postingEducation={data.postingEducation}
+                        postingType={data.postingType}
+                        postingWorkEndTime={data.postingWorkEndTime}
+                        postingLocation={data.postingLocation}
                     />
                     <JobMetaInfo />
                     <JobContentSection />

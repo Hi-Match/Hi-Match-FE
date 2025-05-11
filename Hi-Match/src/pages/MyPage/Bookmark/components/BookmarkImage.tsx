@@ -3,7 +3,7 @@ import { useBookmarkDelete } from "../../../../hooks/bookmark/useBookmarkListDel
 
 const BookmarkImage = ({
     bookMarkNo,
-    postingNo,  //TODO : 추후 이미지 클릭시 공고 상세 설명으로 이동하기 위한 데이터 입니다.
+    // postingNo,  //TODO : 추후 이미지 클릭시 공고 상세 설명으로 이동하기 위한 데이터 입니다.
     imageUrl,
     isBookmarked,
     title,
