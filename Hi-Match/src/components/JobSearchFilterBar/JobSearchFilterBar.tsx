@@ -38,39 +38,41 @@ const JobSearchFilterBar = ({
     onEmploymentTypeChange,
 }: JobSearchFilterBarProps) => {
     return (
-        <div className="flex w-full items-center gap-4 rounded-lg bg-white px-4 py-2 shadow">
+        <div className="flex flex-col w-full items-center rounded-lg border border-gray-200 bg-white">
             <JobSearchBar
                 value={searchValue}
                 onChange={onSearchChange}
                 onSearch={onSearch}
             />
-            <JobFilterSelect
-                icon={<JobIcon />}
-                label="직군 · 직무"
-                options={JOB_PARTS}
-                value={jobType}
-                onChange={onJobTypeChange}
-            />
-            <JobFilterCascadingSelect
-                icon={<LocationIcon />}
-                options={REGIONS}
-                value={region}
-                onChange={onRegionChange}
-            />
-            <JobFilterSelect
-                icon={<GraduationCapIcon />}
-                label="학력"
-                options={EDUCATIONS}
-                value={education}
-                onChange={onEducationChange}
-            />
-            <JobFilterSelect
-                icon={<PersonIcon />}
-                label="고용형태"
-                options={EMPLOYMENT_TYPES}
-                value={employmentType}
-                onChange={onEmploymentTypeChange}
-            />
+            <div className="flex w-full justify-between border-t border-gray-200 px-2">
+                <JobFilterSelect
+                    icon={<JobIcon />}
+                    label="직군 · 직무"
+                    options={JOB_PARTS}
+                    value={jobType}
+                    onChange={onJobTypeChange}
+                />
+                <JobFilterCascadingSelect
+                    icon={<LocationIcon />}
+                    options={REGIONS}
+                    value={region}
+                    onChange={onRegionChange}
+                />
+                <JobFilterSelect
+                    icon={<GraduationCapIcon />}
+                    label="학력"
+                    options={EDUCATIONS}
+                    value={education}
+                    onChange={onEducationChange}
+                />
+                <JobFilterSelect
+                    icon={<PersonIcon />}
+                    label="고용형태"
+                    options={EMPLOYMENT_TYPES}
+                    value={employmentType}
+                    onChange={onEmploymentTypeChange}
+                />
+            </div>
         </div>
     );
 };

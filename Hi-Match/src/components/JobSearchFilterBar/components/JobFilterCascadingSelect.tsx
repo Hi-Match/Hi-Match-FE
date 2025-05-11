@@ -35,9 +35,10 @@ const JobFilterCascadingSelect = ({
     const regionObj = REGIONS.find(r => r.value === selectedRegion);
 
     return (
-        <div className="flex gap-2">
+        <div className="flex flex-1 items-center gap-2 border-r border-gray-200 px-2 w-full">
             {icon}
             <select
+                className="w-[calc((100% - 25px)/2)]"
                 value={selectedRegion}
                 onChange={e =>
                     handleRegionChange({ region: e.target.value, district: "" })
@@ -51,6 +52,7 @@ const JobFilterCascadingSelect = ({
                 ))}
             </select>
             <select
+                className="w-[calc((100% - 25px)/2)]"
                 value={selectedDistrict}
                 onChange={e => handleDistrictChange(e.target.value)}
                 disabled={!selectedRegion}
