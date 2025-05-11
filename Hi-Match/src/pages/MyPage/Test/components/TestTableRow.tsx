@@ -17,7 +17,7 @@ const TestTableRow = ({
                 ? ["예", "아니오"].map(label => (
                       <td
                           key={label}
-                          className="h-12 border-b border-l border-gray-200"
+                          className="h-12 border-b border-l border-gray-200 w-1/10"
                       >
                           <label className="flex h-full w-full cursor-pointer items-center justify-center">
                               <input
@@ -41,7 +41,7 @@ const TestTableRow = ({
                   ].map(label => (
                       <td
                           key={label}
-                          className="h-12 cursor-pointer border-b border-l border-gray-200"
+                          className="h-12 cursor-pointer border-b border-l border-gray-200 w-1/15"
                       >
                           <label className="flex h-full w-full cursor-pointer items-center justify-center">
                               <input
