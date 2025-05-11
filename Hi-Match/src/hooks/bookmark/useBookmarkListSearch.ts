@@ -1,6 +1,6 @@
 // import { useEffect, useState } from "react";
 import { getBookmarkSearch } from "@/apis/bookmark";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 
 export const useBookmarkSearch = (page: number = 1, keyword: string = "") => {
