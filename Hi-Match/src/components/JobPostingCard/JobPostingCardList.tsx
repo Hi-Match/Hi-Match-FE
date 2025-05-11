@@ -7,6 +7,7 @@ const JobPostingCardList = ({ jobPostings }: { jobPostings: JobPosting[] }) => {
             {jobPostings.map(jobPosting => (
                 <JobPostingCard
                     key={jobPosting.postingNo}
+                    postingNo={jobPosting.postingNo}
                     imageUrl={jobPosting.companyImgA ?? undefined}
                     deadline={jobPosting.postingDeadLine}
                     isBookmarked={true}

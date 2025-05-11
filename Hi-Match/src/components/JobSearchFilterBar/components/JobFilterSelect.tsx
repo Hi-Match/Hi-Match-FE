@@ -1,5 +1,3 @@
-import DropdownIcon from "@/assets/icons/drop-down-icon.svg?react";
-
 interface Option {
     value: string;
     label: string;
@@ -20,12 +18,12 @@ const JobFilterSelect = ({
     value,
     onChange,
 }: JobFilterSelectProps) => (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 border-0 flex-1 border-r border-gray-200 p-2 last:border-r-0">
         {icon}
         <select
             value={value}
             onChange={e => onChange(e.target.value)}
-            className="rounded border px-2 py-1"
+            className="rounded border border-none px-2 py-1 w-full"
         >
             <option value="">{label}</option>
             {options.map(opt => (
@@ -34,7 +32,6 @@ const JobFilterSelect = ({
                 </option>
             ))}
         </select>
-        <DropdownIcon />
     </div>
 );
 export default JobFilterSelect;

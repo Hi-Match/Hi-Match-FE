@@ -4,6 +4,11 @@ import PersonIcon from "@/assets/icons/person-icon.svg?react";
 import LocationIcon from "@/assets/icons/location-icon.svg?react";
 import JobIcon from "@/assets/icons/job-icon.svg?react";
 import GraduationCapIcon from "@/assets/icons/graduation-cap-icon.svg?react";
+import { JOB_PARTS } from "@/constants/jobParts";
+import { REGIONS } from "@/constants/regions";
+import { EDUCATIONS } from "@/constants/educations";
+import { EMPLOYMENT_TYPES } from "@/constants/employmentTypes";
+import JobFilterCascadingSelect from "./components/JobFilterCascadingSelect";
 
 interface JobSearchFilterBarProps {
     searchValue: string;
@@ -11,8 +16,8 @@ interface JobSearchFilterBarProps {
     onSearch: () => void;
     jobType: string;
     onJobTypeChange: (value: string) => void;
-    region: string;
-    onRegionChange: (value: string) => void;
+    region: { region: string; district: string };
+    onRegionChange: (value: { region: string; district: string }) => void;
     education: string;
     onEducationChange: (value: string) => void;
     employmentType: string;
@@ -31,42 +36,45 @@ const JobSearchFilterBar = ({
     onEducationChange,
     employmentType,
     onEmploymentTypeChange,
-}: JobSearchFilterBarProps) => (
-    <div className="flex w-full items-center gap-4 rounded-lg bg-white px-4 py-2 shadow">
-        <JobSearchBar
-            value={searchValue}
-            onChange={onSearchChange}
-            onSearch={onSearch}
-        />
-        <JobFilterSelect
-            icon={<JobIcon />}
-            label="직군 · 직무"
-            options={[]}
-            value={jobType}
-            onChange={onJobTypeChange}
-        />
-        <JobFilterSelect
-            icon={<LocationIcon />}
-            label="지역"
-            options={[]}
-            value={region}
-            onChange={onRegionChange}
-        />
-        <JobFilterSelect
-            icon={<GraduationCapIcon />}
-            label="학력"
-            options={[]}
-            value={education}
-            onChange={onEducationChange}
-        />
-        <JobFilterSelect
-            icon={<PersonIcon />}
-            label="고용형태"
-            options={[]}
-            value={employmentType}
-            onChange={onEmploymentTypeChange}
-        />
-    </div>
-);
+}: JobSearchFilterBarProps) => {
+    return (
+        <div className="flex flex-col w-full items-center rounded-lg border border-gray-200 bg-white">
+            <JobSearchBar
+                value={searchValue}
+                onChange={onSearchChange}
+                onSearch={onSearch}
+            />
+            <div className="flex w-full justify-between border-t border-gray-200 px-2">
+                <JobFilterSelect
+                    icon={<JobIcon />}
+                    label="직군 · 직무"
+                    options={JOB_PARTS}
+                    value={jobType}
+                    onChange={onJobTypeChange}
+                />
+                <JobFilterCascadingSelect
+                    icon={<LocationIcon />}
+                    options={REGIONS}
+                    value={region}
+                    onChange={onRegionChange}
+                />
+                <JobFilterSelect
+                    icon={<GraduationCapIcon />}
+                    label="학력"
+                    options={EDUCATIONS}
+                    value={education}
+                    onChange={onEducationChange}
+                />
+                <JobFilterSelect
+                    icon={<PersonIcon />}
+                    label="고용형태"
+                    options={EMPLOYMENT_TYPES}
+                    value={employmentType}
+                    onChange={onEmploymentTypeChange}
+                />
+            </div>
+        </div>
+    );
+};
 
 export default JobSearchFilterBar;

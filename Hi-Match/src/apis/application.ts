@@ -200,4 +200,18 @@ export const getRecommendJobList = async () => {
 
 // 공통 --------------------------------------------------------------------------------
 
+/**
+ * 개인-기업(공통) 채용 공고 상세 조회 API
+ * @param postingNo 채용공고 번호
+ * @returns 채용공고 상세 정보
+ */
+export const getJobPostingDetail = async (postingNo: number) => {
+    const { data } = await axiosInstance.get(
+        `/himatch/application/company/select?postingNo=${postingNo}`
+    );
+    return data;
+};
+
 // 기업 (business) --------------------------------------------------------------------------------
+
+
