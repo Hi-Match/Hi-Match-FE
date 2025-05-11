@@ -20,3 +20,12 @@ interface JobPosting {
   companyImgA?: string | null;
   postingDeadLine: string;
 }
+
+interface JobPostingParams {
+    companyAddress?: string[];
+    companyPart?: string[];
+    companyType?: string[];
+    postingEducation?: string[];
+    keyword?: string;
+    page: number;
+}

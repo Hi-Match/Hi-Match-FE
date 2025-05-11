@@ -1,5 +1,3 @@
-import DropdownIcon from "@/assets/icons/drop-down-icon.svg?react";
-
 interface Option {
     value: string;
     label: string;
@@ -34,7 +32,6 @@ const JobFilterSelect = ({
                 </option>
             ))}
         </select>
-        <DropdownIcon />
     </div>
 );
 export default JobFilterSelect;
