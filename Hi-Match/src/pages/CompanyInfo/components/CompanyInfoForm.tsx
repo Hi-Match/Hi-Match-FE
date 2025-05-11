@@ -177,7 +177,7 @@ const CompanyInfoForm = ({
                     <p className="text-sm text-black">(최대 20개)</p>
                 </div>
                 <TagForm
-                    tags={companyInfo.tag}
+                    tags={companyInfo.tag ?? []}
                     setTags={newTags =>
                         setCompanyInfo(prev => ({ ...prev, tag: newTags }))
                     }
