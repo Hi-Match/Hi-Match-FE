@@ -2,6 +2,8 @@ import BookmarkCardInfo from "./BookmarkCardInfo";
 import BookmarkImage from "./BookmarkImage";
 
 const BookmarkCard = ({
+    bookMarkNo,
+    postingNo,
     imageUrl,
     deadline,
     isBookmarked,
@@ -13,6 +15,8 @@ const BookmarkCard = ({
 }: BookmarkCardProps) => (
     <div className="ratio-[3/4] overflow-hidden flex flex-col gap-4 cursor-pointer hover:scale-105 transition-all duration-300">
         <BookmarkImage
+            bookMarkNo={bookMarkNo}
+            postingNo={postingNo}
             imageUrl={imageUrl}
             deadline={deadline}
             isBookmarked={isBookmarked}

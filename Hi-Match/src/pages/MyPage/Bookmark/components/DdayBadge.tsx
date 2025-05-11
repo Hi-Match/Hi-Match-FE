@@ -6,9 +6,8 @@ interface DdayBadgeProps {
 
 const DdayBadge = ({ deadline }: DdayBadgeProps) => {
     let text = "확인 안됨";
-
     if (deadline) {
-        const end = dayjs(deadline, "YYYYMMDDTHHmmss");
+        const end = dayjs(deadline, "YYYY-MM-DDTHH:mm:ss");
         if (end.isValid()) {
             const today = dayjs();
             const diff = end.startOf("day").diff(today.startOf("day"), "day");

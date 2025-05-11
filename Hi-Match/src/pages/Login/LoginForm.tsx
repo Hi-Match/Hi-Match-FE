@@ -8,6 +8,7 @@ import { useUserInfo } from "@/hooks/user/useUserInfo";
 import AuthSaveInput from "./components/AuthSaveInput";
 import UserAuth from "./components/UserAuth";
 import BizAuth from "./components/BizAuth";
+import { useBizInfo } from "@/hooks/business/useBizInfo";
 
 interface LoginFormProps {
     user: "user" | "business";
@@ -27,7 +28,6 @@ const LoginForm = ({ user }: LoginFormProps) => {
     });
 
     const navigate = useNavigate();
-    const { fetchAndStore } = useUserInfo();
 
     const handleChangeId = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,6 +58,8 @@ const LoginForm = ({ user }: LoginFormProps) => {
         },
         []
     );
+
+    const { fetchAndStore } = useUserInfo();
 
     const handleUserLogin = async () => {
         const memberInfo = {
@@ -90,6 +92,8 @@ const LoginForm = ({ user }: LoginFormProps) => {
             });
     };
 
+    const { fetchAndStoreBiz } = useBizInfo();
+
     const handleBusinessLogin = async () => {
         const memberInfo = {
             memberID: id,
@@ -106,12 +110,13 @@ const LoginForm = ({ user }: LoginFormProps) => {
                 }
 
                 useAuthStore.getState().login(true);
+                fetchAndStoreBiz();
                 setValidationMessage({
                     success: true,
                     message: "",
                 });
-                // URL 주소 변경 예정
-                navigate("/");
+
+                navigate("/company/home");
             })
             .catch(() => {
                 setValidationMessage({

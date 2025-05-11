@@ -5,7 +5,9 @@ const BookmarkCardList = ({ bookmarks }: { bookmarks: Bookmark[] }) => (
         {bookmarks.map(bookmark => (
             <BookmarkCard
                 key={bookmark.bookMarkNo}
-                imageUrl={bookmark.companyImage}
+                bookMarkNo={bookmark.bookMarkNo}
+                postingNo={bookmark.postingNo}
+                imageUrl={bookmark.companyImgA}
                 deadline={bookmark.postingDeadLine}
                 isBookmarked={true}
                 title={bookmark.postingTitle}

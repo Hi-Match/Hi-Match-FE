@@ -37,7 +37,10 @@ const SchoolForm = ({ data, index, onChange, onRemove }: SchoolFormProps) => {
             setIsTransfer(false);
         }
 
-        if (!data.schoolGraduationDate || data.schoolGraduationDate === "") {
+        if (
+            data.schoolPart !== "고등학교" &&
+            (data.schoolGraduationDate === "" || !data.schoolGraduationDate)
+        ) {
             setIsGraduated(true);
         } else {
             setIsGraduated(false);
@@ -98,6 +101,12 @@ const SchoolForm = ({ data, index, onChange, onRemove }: SchoolFormProps) => {
     const handleCheckGraduate = () => {
         setIsGraduated(!isGraduated);
     };
+
+    useEffect(() => {
+        if (isGraduated) {
+            handleChange("schoolGraduationDate", "");
+        }
+    }, [isGraduated]);
 
     const handleClickAddMultiple = (
         event: React.MouseEvent<HTMLButtonElement>

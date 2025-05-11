@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import SchoolForm from "../Form/SchoolForm";
 import PlusIcon from "@/assets/icons/plus-icon.svg?react";
 
@@ -8,26 +7,6 @@ interface SchoolInputProps {
 }
 
 const SchoolInput = ({ resumeSchool, setResumeSchool }: SchoolInputProps) => {
-    useEffect(() => {
-        if (resumeSchool.length === 0) {
-            setResumeSchool([
-                {
-                    schoolName: "",
-                    schoolMajor: "",
-                    schoolMinor: "",
-                    schoolMultiple: "",
-                    schoolDegree: "",
-                    schoolGPA: "",
-                    schoolStandardGPA: "",
-                    schoolPart: "",
-                    schoolLev: 0,
-                    schoolAdmissionDate: "",
-                    schoolGraduationDate: "",
-                },
-            ]);
-        }
-    }, [resumeSchool, setResumeSchool]);
-
     const handleAddForm = () => {
         const newSchoolData: ResumeSchool = {
             schoolName: "",
@@ -40,7 +19,7 @@ const SchoolInput = ({ resumeSchool, setResumeSchool }: SchoolInputProps) => {
             schoolPart: "",
             schoolLev: 0,
             schoolAdmissionDate: "",
-            schoolGraduationDate: "",
+            schoolGraduationDate: null,
         };
 
         setResumeSchool(prev => [...prev, newSchoolData]);

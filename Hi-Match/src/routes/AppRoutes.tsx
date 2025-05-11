@@ -29,6 +29,10 @@ import Application from "@/pages/MyPage/Application/Application";
 import ResumeDetail from "@/pages/MyPage/Resume/ResumeDetail/ResumeDetail";
 import ResumeWrite from "@/pages/MyPage/Resume/ResumeWrite/ResumeWrite";
 import ResumeEdit from "@/pages/MyPage/Resume/ResumeEdit/ResumeEdit";
+import CompanyHome from "@/pages/CompanyHome/CompanyHome";
+import CompanyInfo from "@/pages/CompanyInfo/CompanyInfo";
+import BizLayout from "@/layout/BizLayout";
+import CompanySetting from "@/pages/CompanySetting/CompanySetting";
 
 const AppRoutes = () => {
     return (
@@ -94,6 +98,14 @@ const AppRoutes = () => {
 
                     <Route path="bookmark" element={<UserBookmark />} />
                     <Route path="profile" element={<UserProfile />} />
+                </Route>
+            </Route>
+
+            <Route element={<BizLayout />}>
+                <Route path="/company">
+                    <Route path="home" element={<CompanyHome />} />
+                    <Route path="info" element={<CompanyInfo />} />
+                    <Route path="setting" element={<CompanySetting />} />
                 </Route>
             </Route>
         </Routes>
