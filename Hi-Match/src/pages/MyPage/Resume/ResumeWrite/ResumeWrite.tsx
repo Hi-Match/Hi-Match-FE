@@ -118,6 +118,21 @@ const ResumeWrite = () => {
         mutate(cleanedResumeData);
     };
 
+    const isResumeValid = (data: ResumeDetailData): boolean => {
+        return (
+            data.resumeName.trim() !== "" &&
+            data.resumeEngName.trim() !== "" &&
+            data.resumeMail.trim() !== "" &&
+            data.resumeTel.trim() !== "" &&
+            data.resumeAddress.trim() !== "" &&
+            data.resumeBirthDay.trim() !== "" &&
+            data.resumeArmyType !== "" &&
+            data.resumeGender !== "" &&
+            data.resumeSchool.length > 0 &&
+            data.resumeSchool.some(school => !isEmptySchool(school))
+        );
+    };
+
     return (
         <div className="resume_write_wrapper">
             <div className="flex justify-center">
@@ -153,8 +168,9 @@ const ResumeWrite = () => {
                     </button>
                     <button
                         type="button"
-                        className="btn-blue h-10 w-25 text-base"
+                        className={`h-10 w-25 text-base ${!isResumeValid(resumeData) ? "btn-disabled" : "btn-blue"}`}
                         onClick={handleClickResumeSave}
+                        disabled={!isResumeValid(resumeData)}
                     >
                         저장
                     </button>

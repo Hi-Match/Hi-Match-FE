@@ -110,12 +110,12 @@ const ResumeForm = () => {
                 <div className="[&>div:not(:first-child)]:py-12.5">
                     <div className="user_profile_wrapper">
                         <div className="user_profile flex">
-                            <div className="profile_image border-gray03 flex h-62.5 w-48 items-center rounded-[5px] border-1 border-solid">
+                            <div className="profile_image border-gray03 flex-center h-62.5 w-48 rounded-[5px] border-1 border-solid">
                                 {resumeIMG ? (
                                     <img
                                         src={resumeIMG}
                                         alt="이력서 사진"
-                                        className="h-full w-full object-cover"
+                                        className="h-full w-full rounded-[5px] object-cover"
                                     />
                                 ) : (
                                     <ProfileIcon className="h-auto w-40 fill-blue-100" />
@@ -170,7 +170,7 @@ const ResumeForm = () => {
                         </div>
                         {resumeAmbition && (
                             <div className="user_ambition py-12.5">
-                                <p className="text-base text-black">
+                                <p className="text-base whitespace-pre-line text-black">
                                     {resumeAmbition}
                                 </p>
                             </div>
