@@ -1,15 +1,21 @@
 import DdayBadge from "./DdayBadge";
+import { useNavigate } from "react-router-dom";
 import { useBookmarkDelete } from "../../../../hooks/bookmark/useBookmarkListDelete";
 
 const BookmarkImage = ({
     bookMarkNo,
-    // postingNo,  //TODO : 추후 이미지 클릭시 공고 상세 설명으로 이동하기 위한 데이터 입니다.
+    postingNo,  //TODO : 추후 이미지 클릭시 공고 상세 설명으로 이동하기 위한 데이터 입니다.
     imageUrl,
     isBookmarked,
     title,
     deadline,
 }: BookmarkCardProps) => {
     const { handleDelete } = useBookmarkDelete();
+    const navigate = useNavigate();
+
+    const handleClickBookmark = () => {
+        navigate(`/jobs/${postingNo}`);
+    };
     
     const handleClick = () => {
         if (bookMarkNo) {
@@ -21,6 +27,7 @@ const BookmarkImage = ({
     return (
         <div className="relative max-h-[200px] w-full">
             <img
+                onClick={handleClickBookmark}
                 src={imageUrl}
                 alt={title}
                 draggable={false}

@@ -26,7 +26,7 @@ const ResumeList = ({ resumeList }: ResumeListProps) => {
     return (
         <div className="resume_list space-y-7.5">
             <div className="resume_title flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-black">이력서</h3>
+                <h3 className="text-2xl font-semibold text-black">이력서</h3>
                 <span
                     className="flex cursor-pointer items-center"
                     onClick={handleClickResume}
