@@ -47,73 +47,61 @@ const BizSignUpStep2 = ({
         Object.values(bizCheckList).every(Boolean);
 
     return (
-        <div className="sign_up_wrapper grid-center">
-            <form className="space-y-12.5" onSubmit={onSubmit}>
-                <div className="space-y-7.5">
-                    <IdInput
-                        user="business"
-                        formID={(newId: string) => updateForm("id", newId)}
-                        setValid={(valid: boolean) =>
-                            updateValid("isId", valid)
-                        }
-                    />
-                    <div className="password_wrapper space-y-2.5">
-                        <PasswordInput
-                            formPassword={(newPw: string) =>
-                                updateForm("password", newPw)
-                            }
-                            setValid={(valid: boolean) =>
-                                updateValid("isPassword", valid)
-                            }
-                        />
-                        <PasswordConfirmInput
-                            setValid={(valid: boolean) =>
-                                updateValid("isPasswordConfirm", valid)
-                            }
-                            password={bizForm.password}
-                        />
-                    </div>
-                    <NameInput
-                        label="담당자명"
-                        formName={(newName: string) =>
-                            updateForm("name", newName)
-                        }
-                        setValid={(valid: boolean) =>
-                            updateValid("isName", valid)
-                        }
-                    />
-                    <EmailInput
-                        formEmail={(newEmail: string) =>
-                            updateForm("email", newEmail)
-                        }
-                        setValid={(valid: boolean) =>
-                            updateValid("isEmail", valid)
-                        }
-                    />
-                    <AuthNumberInput
-                        formPhoneNumber={(newPhone: string) =>
-                            updateForm("phone", newPhone)
-                        }
-                        setValid={(valid: boolean) =>
-                            updateValid("isPhone", valid)
-                        }
-                    />
-                </div>
-                <BizAgreementForm
-                    checkList={bizCheckList}
-                    setCheckList={setBizCheckList}
+        <form className="sign_up_form space-y-12.5" onSubmit={onSubmit}>
+            <div className="input_wrapper space-y-7.5">
+                <IdInput
+                    user="business"
+                    formID={(newId: string) => updateForm("id", newId)}
+                    setValid={(valid: boolean) => updateValid("isId", valid)}
                 />
-                <div className="btn_wrapper">
-                    <button
-                        type="submit"
-                        className={`btn-lg ${buttonEnabled ? "btn-blue" : "btn-disabled"}`}
-                        disabled={buttonEnabled ? false : true}
-                    >
-                        가입하기
-                    </button>
+                <div className="password_wrapper w-full space-y-2.5">
+                    <PasswordInput
+                        formPassword={(newPw: string) =>
+                            updateForm("password", newPw)
+                        }
+                        setValid={(valid: boolean) =>
+                            updateValid("isPassword", valid)
+                        }
+                    />
+                    <PasswordConfirmInput
+                        setValid={(valid: boolean) =>
+                            updateValid("isPasswordConfirm", valid)
+                        }
+                        password={bizForm.password}
+                    />
                 </div>
-            </form>
-        </div>
+                <NameInput
+                    label="담당자명"
+                    formName={(newName: string) => updateForm("name", newName)}
+                    setValid={(valid: boolean) => updateValid("isName", valid)}
+                />
+                <EmailInput
+                    formEmail={(newEmail: string) =>
+                        updateForm("email", newEmail)
+                    }
+                    setValid={(valid: boolean) => updateValid("isEmail", valid)}
+                />
+                <AuthNumberInput
+                    formPhoneNumber={(newPhone: string) =>
+                        updateForm("phone", newPhone)
+                    }
+                    setValid={(valid: boolean) => updateValid("isPhone", valid)}
+                />
+            </div>
+            <BizAgreementForm
+                checkList={bizCheckList}
+                setCheckList={setBizCheckList}
+            />
+            <div className="btn_wrapper">
+                <button
+                    type="submit"
+                    className={`btn-lg ${buttonEnabled ? "btn-blue" : "btn-disabled"}`}
+                    disabled={buttonEnabled ? false : true}
+                >
+                    가입하기
+                </button>
+            </div>
+        </form>
     );
 };
 
