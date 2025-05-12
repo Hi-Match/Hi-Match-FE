@@ -1,55 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" version="1.1" viewBox="0 0 300 100.45">
-  <!-- Generator: Adobe Illustrator 29.0.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 186)  -->
-  <defs>
-    <style>
-      .st0 {
-        isolation: isolate;
-      }
+<svg width="84" height="82" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <!-- Generator: Adobe Illustrator 29.0.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 186)  -->
 
-      .st1 {
-        mix-blend-mode: multiply;
-      }
-
-      .st2 {
-        fill: #2869ac;
-      }
-
-      .st3 {
-        fill: #87c790;
-      }
-    </style>
-  </defs>
-  <g class="st0">
-    <g id="_레이어_1" data-name="레이어_1">
-      <g>
-        <g>
-          <path class="st3" d="M139.64,34.71v30.8h-6.74v-12.51h-13.33v12.51h-6.74v-30.8h6.74v12.21h13.33v-12.21h6.74Z"/>
-          <path class="st3" d="M152.12,36.79c0,2.38-1.7,4.12-4.04,4.12s-4.04-1.74-4.04-4.12,1.7-4.12,4.04-4.12,4.04,1.74,4.04,4.12ZM151.38,65.59h-6.59v-22.22h6.59v22.22Z"/>
-          <path class="st2" d="M156.53,34.71h5.37l10.4,17.23,10.4-17.23h5.37v30.8h-6.74v-16.89l-7,11.83h-4.07l-7-11.83v16.89h-6.74v-30.8Z"/>
-          <path class="st2" d="M192.12,54.44c0-6.73,4.33-11.6,10.55-11.6,2.85,0,4.92,1.02,6.22,2.8v-2.27h6.59v22.15h-6.59v-2.27c-1.3,1.77-3.37,2.8-6.22,2.8-6.22,0-10.55-4.87-10.55-11.6ZM209.01,54.44c0-3.4-2.07-5.86-5.3-5.86s-5.15,2.46-5.15,5.86,2,5.86,5.15,5.86,5.3-2.46,5.3-5.86Z"/>
-          <path class="st2" d="M233.75,49.15h-4.29v16.36h-6.59v-16.36h-4.29v-5.78h4.29v-6.58h6.59v6.58h4.29v5.78Z"/>
-          <path class="st2" d="M246.75,66.04c-6.7,0-11.52-4.87-11.52-11.6s4.81-11.6,11.52-11.6c5.67,0,9.92,3.7,10.7,8.43h-6.67c-.52-1.51-1.96-2.57-4.03-2.57-3.07,0-5.07,2.42-5.07,5.74s2,5.74,5.07,5.74c2.04,0,3.55-1.06,4.15-2.64h6.66c-1.11,5.14-5.33,8.5-10.81,8.5Z"/>
-          <path class="st2" d="M261.13,33.77h6.59v11.87c1.3-1.78,3.3-2.8,6.07-2.8,5.04,0,8.48,3.74,8.48,9.86v12.81h-6.59v-11.68c0-3.36-1.33-5.21-3.81-5.21s-4.15,2.08-4.15,5.52v11.38h-6.59v-31.75Z"/>
-        </g>
-        <g>
-          <g class="st1">
-            <polygon class="st3" points="59.48 68.59 45.3 44.22 54.59 44.31 60.01 53.62 73.91 33.27 73.91 11.96 18.96 11.96 18.96 69.17 73.91 69.17 73.91 47.43 59.48 68.59"/>
-          </g>
-          <g class="st1">
-            <polygon class="st2" points="98.47 33.2 59.62 94 24.39 33.2 73.96 33.2 60.01 53.62 54.59 44.31 45.3 44.22 59.48 68.59 83.62 33.2 98.47 33.2"/>
-          </g>
-          <g class="st1">
-            <circle class="st2" cx="95.11" cy="20.29" r="8.32"/>
-          </g>
-        </g>
-      </g>
-    </g>
-  </g>
-  <metadata>
-    <i:aipgfRef id="adobe_illustrator_pgf"/>
-    <i:aipgf id="adobe_illustrator_pgf" i:pgfEncoding="zstd/base64" i:pgfVersion="24">
-<![CDATA[
+ <metadata>
+  <![CDATA[
 KLUv/QBYLLgDTgXFwgpCAFWSpAMMAAAAAABFR+qdewCN0FAw9AkSVoTsg/w/n34oWv5P00CCQSYe
 4LGttcWMoSSllDLJ5Fk4DpDV0v/Q/0sJqg3+CakJVMiWmF+elo7vLu16QbLEkIqmjllWjpIIL3to
 xfCTlH5VXaoosTuDR5ZYHe/X5KPh8Qq51rphrdSUl/5cKbWT5LqNrBRRgpc05FJkSWH5qD6TU5Ao
@@ -5315,6 +5268,25 @@ IqBcl6/TulhxCJ2mxMBaVnjI6tk48iVetCigAizzfVKg4Z5j7EJaqxOSNQ3OSFChX21KqBRrFG21
 A+IIgi9pVqxoHhCxj5QexQFZlwOEYO8TAPEDYweg2/BuxNR/GmUXzpy69F4I8C8fsywk5FFhRTJ+
 AnAuCRMJdc3bRUAW
 ]]>
-    </i:aipgf>
-  </metadata>
+ </metadata>
+ <g>
+  <title>Layer 1</title>
+  <g stroke-width="0" id="svg_1" isolation="isolate" class="st0">
+   <g data-name="레이어_1" id="_레이어_1">
+    <g id="svg_2">
+     <g id="svg_3">
+      <g id="svg_4" mix-blend-mode="multiply" class="st1">
+       <polygon id="svg_5" fill="#87c790" points="40.52000045776367,56.62999629974365 26.34000015258789,32.26000118255615 35.630001068115234,32.35000133514404 41.04999923706055,41.65999889373779 54.95000457763672,21.3100004196167 54.95000457763672,0 0,0 0,57.20999813079834 54.95000457763672,57.20999813079834 54.95000457763672,35.47000026702881 40.52000045776367,56.62999629974365 " class="st3"/>
+      </g>
+      <g id="svg_6" mix-blend-mode="multiply" class="st1">
+       <polygon id="svg_7" fill="#2869ac" points="79.51000213623047,21.24000072479248 40.65999984741211,82.03999996185303 5.430000305175781,21.24000072479248 55,21.24000072479248 41.04999923706055,41.65999889373779 35.630001068115234,32.35000133514404 26.34000015258789,32.26000118255615 40.52000045776367,56.62999629974365 64.66000366210938,21.24000072479248 79.51000213623047,21.24000072479248 " class="st2"/>
+      </g>
+      <g id="svg_8" mix-blend-mode="multiply" class="st1">
+       <circle id="svg_9" fill="#2869ac" r="8.32" cy="8.33" cx="76.15" class="st2"/>
+      </g>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
 </svg>
