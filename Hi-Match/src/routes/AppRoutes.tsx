@@ -33,13 +33,12 @@ import CompanyHome from "@/pages/CompanyHome/CompanyHome";
 import CompanyInfo from "@/pages/CompanyInfo/CompanyInfo";
 import BizLayout from "@/layout/BizLayout";
 import CompanySetting from "@/pages/CompanySetting/CompanySetting";
-import JobPostingDetail from "@/pages/JobPostingDetail/JobPostingDetail";
+import RecruitPosting from "@/pages/RecruitPosting/RecruitPosting";
 
 const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/jobs/:id" element={<JobPostingDetail />} />
 
             <Route element={<AuthLayout />}>
                 <Route path="/login" element={<LoginPage />} />
@@ -108,6 +107,11 @@ const AppRoutes = () => {
                     <Route path="home" element={<CompanyHome />} />
                     <Route path="info" element={<CompanyInfo />} />
                     <Route path="setting" element={<CompanySetting />} />
+
+                    <Route
+                        path="recruit/posting"
+                        element={<RecruitPosting />}
+                    />
                 </Route>
             </Route>
         </Routes>
