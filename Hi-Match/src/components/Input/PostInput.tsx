@@ -72,7 +72,6 @@ const PostInput = ({ value, onChange }: PostInputProps) => {
 
     return (
         <Input
-            label="주소"
             id="address"
             type="text"
             value={address}

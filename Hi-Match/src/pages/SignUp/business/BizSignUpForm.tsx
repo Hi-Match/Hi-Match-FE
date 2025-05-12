@@ -5,7 +5,7 @@ import BizSignUpStep2 from "./BizSignUpStep2";
 import axiosInstance from "@/apis/axiosInstance";
 
 const BizSignUpForm = () => {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(2);
 
     const [companyForm, setCompanyForm] = useState<CompanyForm>({
         companyName: "",

@@ -1,4 +1,5 @@
 import CategoryInput from "@/components/Input/CategoryInput";
+import { COMPANY_EMPLOYEE } from "@/constants";
 import { useState } from "react";
 
 interface CompanyMembersInputProps {
@@ -11,17 +12,6 @@ const CompanyMembersInput = ({
     setValid,
 }: CompanyMembersInputProps) => {
     const [members, setMembers] = useState<string>("");
-
-    const membersOptions = [
-        "1~4명",
-        "5~10명",
-        "11~50명",
-        "51~100명",
-        "101~300명",
-        "301~1000명",
-        "1001명~5000명",
-        "5001명 이상",
-    ];
 
     const handleChangeMembers = (option: string) => {
         formMembers(option);
@@ -37,7 +27,7 @@ const CompanyMembersInput = ({
             label="직원 수"
             id="companyMembers"
             value={members}
-            options={membersOptions}
+            options={COMPANY_EMPLOYEE}
             onChange={option => handleChangeMembers(option)}
         />
     );
