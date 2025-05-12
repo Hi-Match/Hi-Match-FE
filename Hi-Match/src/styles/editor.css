@@ -1,0 +1,54 @@
+@layer utilities {
+    /* Tiptap 스타일링 */
+    .prose {
+        @apply focus:outline-none;
+    }
+
+    .editor h1 {
+        @apply mt-4 mb-2 text-2xl font-bold;
+    }
+
+    .editor h2 {
+        @apply mt-3 mb-1 text-xl font-semibold;
+    }
+
+    .editor h3 {
+        @apply mt-2 mb-1 text-lg font-medium;
+    }
+
+    .editor p {
+        @apply my-2 text-base text-gray-800;
+    }
+
+    .editor ul {
+        @apply list-disc pl-6;
+    }
+
+    .editor ol {
+        @apply list-decimal pl-6;
+    }
+
+    .editor a {
+        @apply cursor-pointer text-blue-500 underline;
+    }
+
+    .editor strong {
+        @apply font-semibold;
+    }
+
+    .editor em {
+        @apply italic;
+    }
+
+    .editor blockquote {
+        @apply border-l-4 border-gray-300 pl-4 text-gray-600 italic;
+    }
+
+    .editor code {
+        @apply rounded bg-gray-100 px-1 py-0.5 font-mono text-sm;
+    }
+
+    .editor pre {
+        @apply my-4 overflow-auto rounded bg-black p-4 text-white;
+    }
+}

@@ -59,7 +59,7 @@ const CategoryInput = ({
             <div className="relative">
                 <button
                     type="button"
-                    className={`btn-category ${categorySize[variant]} flex items-center justify-between duration-0 ${value === "" ? "text-gray02" : "text-black"}`}
+                    className={`btn-category ${categorySize[variant]} flex items-center justify-between duration-0 ${value === "" ? "text-gray02" : "text-black"} focus:outline-blue-400`}
                     onClick={handleClickCategory}
                     onBlur={() => setIsOpen(false)}
                 >
