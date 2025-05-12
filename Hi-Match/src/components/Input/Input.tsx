@@ -65,7 +65,7 @@ const Input = ({
             {validMessage && (
                 <div className="mt-1.25 w-full">
                     <span
-                        className={`text-sm break-words ${isValid ? "text-green-500" : "text-red-400"}`}
+                        className={`text-sm break-keep ${isValid ? "text-green-500" : "text-red-400"}`}
                     >
                         {validMessage}
                     </span>
