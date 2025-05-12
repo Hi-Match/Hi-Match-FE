@@ -54,10 +54,10 @@ const RecruitPostForm = ({
                             updateInfo("postingWorkType", workType)
                         }
                         setWorkStartTime={start =>
-                            updateInfo("postingWorkStartTime", start)
+                            updateInfo("postingWorkStartTime", start ?? "")
                         }
                         setWorkEndTime={end =>
-                            updateInfo("postingWorkEndTime", end)
+                            updateInfo("postingWorkEndTime", end ?? "")
                         }
                     />
                     <SalaryInput
