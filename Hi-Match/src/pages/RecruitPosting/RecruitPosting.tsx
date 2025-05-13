@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import axiosInstance from "@/apis/axiosInstance";
 import toast from "react-hot-toast";
 import CoverLetterFormList from "./components/Form/CoverLetterFormList";
+import { useNavigate } from "react-router-dom";
 
 const RecruitPosting = () => {
     const [recruitPost, setRecruitPost] = useState<RecruitPostData>({
@@ -22,6 +23,8 @@ const RecruitPosting = () => {
         postingIsFinish: false,
         postingQuestion: [{ question: "", questionLength: 0 }],
     });
+
+    const navigate = useNavigate();
 
     // 새로고침 시 window.confirm 호출
     useEffect(() => {
@@ -45,6 +48,7 @@ const RecruitPosting = () => {
             ),
         onSuccess: () => {
             toast.success("채용 공고 등록이 완료 되었습니다.");
+            navigate("/company/recruit/list");
         },
         onError: () => {
             toast.error("채용 공고 등록에 실패했습니다. 다시 시도해 주세요.");
@@ -94,9 +98,9 @@ const RecruitPosting = () => {
                         type="button"
                         className={`h-10 w-25 text-base ${!isRecruitPostingValid(recruitPost) ? "btn-disabled" : "btn-blue"}`}
                         onClick={handleClickPosting}
-                        // disabled={!isRecruitPostingValid(recruitPost)}
+                        disabled={!isRecruitPostingValid(recruitPost)}
                     >
-                        저장
+                        등록
                     </button>
                 </div>
             </div>
