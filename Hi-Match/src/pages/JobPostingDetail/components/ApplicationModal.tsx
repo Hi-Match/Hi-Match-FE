@@ -27,7 +27,7 @@ const ApplicationModal = ({
     questions,
 }: ApplicationModalProps) => {
     const { user } = useUserStore();
-    const { resumes, isLoading, selectedResumeNo, setSelectedResumeNo } =
+    const { isLoading, selectedResumeNo, setSelectedResumeNo } =
         useResumeList();
     const [portfolioUrl, setPortfolioUrl] = useState<string>("");
 
