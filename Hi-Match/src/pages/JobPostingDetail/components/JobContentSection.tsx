@@ -24,7 +24,7 @@ const JobContentSection = ({
                     {postingQuestion.map(question => (
                         <li
                             className="flex gap-2 rounded-sm border border-gray-200 bg-gray-50 p-4 text-black/80"
-                            key={question.questionNo}
+                            key={question.questionNo ?? question.question}
                         >
                             ✅
                             <p>
