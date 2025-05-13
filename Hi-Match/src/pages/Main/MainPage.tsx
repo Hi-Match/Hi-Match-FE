@@ -43,7 +43,7 @@ const MainPage = () => {
 
     return (
         <MainLayout>
-            <div className="mx-auto flex w-full max-w-[1272px] flex-col gap-20 max-[1399px]:px-20">
+            <div className="mx-auto mt-12.5 flex w-full max-w-[1272px] flex-col gap-20 max-[1399px]:px-20">
                 <JobSearchFilterBar
                     searchValue={searchValue}
                     onSearchChange={setSearchValue}
