@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import PersonalityReportBox from "./components/PersonalityReportBox";
 import { Link } from "react-router-dom";
 import { useUserStore } from "@/store/userStore";
-
+import WorknetLink from "./components/WorknetLink";
 const RE_TEST_LIMIT_DAYS = 30;
 
 const PersonalityResult = () => {
@@ -80,6 +80,7 @@ const PersonalityResult = () => {
                 인성 검사 리포트 📂
             </h2>
             <PersonalityReportBox />
+            <WorknetLink />
         </div>
     );
 };
