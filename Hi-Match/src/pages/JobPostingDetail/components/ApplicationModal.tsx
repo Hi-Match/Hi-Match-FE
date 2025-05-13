@@ -60,6 +60,9 @@ const ApplicationModal = ({
                     buttonEnabled={!isSubmitting}
                     onClose={onClose}
                     onSubmit={handleSubmit}
+                    modalClassName="w-[50vw] max-w-[800px] h-[70vh] overflow-y-auto"
+                    titleClassName="text-left text-xl text-blue-500"
+                    buttonClassName="w-full justify-center gap-2 flex"
                 >
                     <div className="space-y-6">
                         {/* 공고 정보 */}
