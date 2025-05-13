@@ -2,7 +2,7 @@ import axiosInstance from "@/apis/axiosInstance";
 import { useAuthStore } from "@/store/authStore";
 import { useUserStore } from "@/store/userStore";
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const mypageMenu = [
     { label: "마이페이지", link: "/mypage/home" },
@@ -15,8 +15,6 @@ const Login = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const wrapperRef = useRef<HTMLDivElement>(null);
-
-    const navigate = useNavigate();
 
     const { user } = useUserStore();
 
