@@ -14,7 +14,7 @@ const JobPostingDetail = () => {
     const { id } = useParams();
     const postingNo = Number(id);
     const companyNo = Number(id);
-    
+
     const { data, company, loading, error } = useJobPostingDetail(
         postingNo,
         companyNo
@@ -59,8 +59,16 @@ const JobPostingDetail = () => {
                             <TagList tags={tags} />
                         </div>
                         <div className="flex flex-col gap-10">
-                            {company && <CompanyProfileCard company={company} />}
-                            <DeadlineBanner deadline={data.postingDeadLine} />
+                            {company && (
+                                <CompanyProfileCard company={company} />
+                            )}
+                            <DeadlineBanner
+                                deadline={data.postingDeadLine}
+                                postingTitle={data.postingTitle}
+                                companyName={data.companyName}
+                                postingNo={postingNo}
+                                questions={data.postingQuestion}
+                            />
                         </div>
                     </section>
                 </>

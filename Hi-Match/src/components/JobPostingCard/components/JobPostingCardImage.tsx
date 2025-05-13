@@ -17,7 +17,7 @@ const JobPostingCardImage = ({
                 }
                 alt={title}
                 draggable={false}
-                className="ratio-[3/4] drag-none h-full w-full rounded-xl object-cover shadow-sm"
+                className="aspect-[3/4] drag-none h-full w-full rounded-xl object-cover shadow-sm"
             />
             <DdayBadge deadline={deadline ?? ""} />
             <ScrapButton bookMarkNo={bookMarkNo} postingNo={postingNo} />

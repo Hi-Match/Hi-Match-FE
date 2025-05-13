@@ -22,7 +22,7 @@ const JobPostingCard = ({
 
     return (
         <div
-            className="ratio-[3/4] flex cursor-pointer flex-col gap-4 overflow-hidden transition-all duration-300 hover:scale-105"
+            className="flex flex-shrink-0 cursor-pointer flex-col gap-4 overflow-hidden transition-all duration-300 hover:scale-105"
             onClick={handleClick}
         >
             <JobPostingCardImage

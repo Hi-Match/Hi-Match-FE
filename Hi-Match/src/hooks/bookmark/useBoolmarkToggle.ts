@@ -1,5 +1,4 @@
-// src/hooks/bookmark/useBookmark.ts
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { getBookmarkRegister, deleteBookmarkDelete } from "@/apis/bookmark";
 import { toast } from "react-hot-toast";
 
@@ -15,27 +14,40 @@ export const UseBoolmarkToggle = ({
     const [bookMarkNo, setBookMarkNo] = useState<number | null>(
         initialBookMarkNo
     );
+    const isProcessing = useRef(false);
 
     const toggleBookmark = async () => {
-        // 이전 상태 저장 (실패 시 복구용)
+        // 이미 처리 중인 경우 추가 요청 방지
+        if (isProcessing.current) {
+            return;
+        }
+
         const previousBookMarkNo = bookMarkNo;
+        isProcessing.current = true;
 
         try {
-            if (bookMarkNo !== null) {
-                // API 호출
-                await deleteBookmarkDelete(bookMarkNo);
-                // API 호출 성공 후 UI 업데이트
-                setBookMarkNo(null);
+            if (previousBookMarkNo !== null) {
+                // 삭제 API 호출
+                const response = await deleteBookmarkDelete(previousBookMarkNo);
+                if (response.message === "Success!") {
+                    setBookMarkNo(null);
+                } else {
+                    throw new Error("북마크 삭제 실패");
+                }
             } else {
-                // API 호출
+                // 등록 API 호출
                 const response = await getBookmarkRegister(postingNo);
-                // API 호출 성공 후 UI 업데이트
-                setBookMarkNo(response.bookMarkNo);
+                if (response.message === "Success!") {
+                    setBookMarkNo(postingNo);
+                } else {
+                    throw new Error("북마크 등록 실패");
+                }
             }
         } catch (error) {
-            // 실패 시 이전 상태로 복구
-            setBookMarkNo(previousBookMarkNo);
-            toast.error("북마크 처리 중 오류가 발생했습니다.");
+            toast.error("이미 등록된 공고이거나 잘못된 접근입니다.");
+            console.error("북마크 에러:", error);
+        } finally {
+            isProcessing.current = false;
         }
     };
 

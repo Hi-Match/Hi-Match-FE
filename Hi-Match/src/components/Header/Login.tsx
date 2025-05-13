@@ -39,7 +39,7 @@ const Login = () => {
             .get("/himatch/member/logout")
             .then(() => {
                 useAuthStore.getState().logout();
-                navigate("/");
+                window.location.href = "/";
             })
             .catch(() => {});
     };

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface ModalProps {
     isOpen: boolean;
@@ -8,6 +9,9 @@ interface ModalProps {
     onClose: () => void;
     onSubmit: () => void;
     children: React.ReactNode;
+    modalClassName?: string;
+    titleClassName?: string;
+    buttonClassName?: string;
 }
 
 const Modal = ({
@@ -18,6 +22,9 @@ const Modal = ({
     onClose,
     onSubmit,
     children,
+    modalClassName,
+    titleClassName,
+    buttonClassName,
 }: ModalProps) => {
     useEffect(() => {
         if (isOpen) {
@@ -34,21 +41,31 @@ const Modal = ({
     if (!isOpen) return null;
 
     return (
-        <div
-            className="modal_wrapper grid-center fixed top-0 left-0 z-999 h-screen w-screen bg-[rgba(0,0,0,0.2)]"
-            onClick={onClose}
-        >
+        <div className="modal_wrapper grid-center fixed top-0 left-0 z-999 h-screen w-screen bg-[rgba(0,0,0,0.2)] p-4">
             <div
-                className="modal w-102 space-y-12.5 rounded-[10px] bg-white p-7.5"
-                onClick={event => event.stopPropagation()}
+                className={twMerge(
+                    "modal w-102 space-y-12.5 rounded-[10px] bg-white p-7.5",
+                    modalClassName
+                )}
+                onClick={e => e.stopPropagation()}
             >
                 <div className="content_wrapper">
-                    <h3 className="mb-7.5 text-center text-lg font-semibold text-black">
+                    <h3
+                        className={twMerge(
+                            "mb-7.5 text-center text-lg font-semibold text-black",
+                            titleClassName
+                        )}
+                    >
                         {title}
                     </h3>
                     {children}
                 </div>
-                <div className="btn_wrapper space-x-2.5 [&>button]:h-10 [&>button]:min-h-10 [&>button]:w-[169px] [&>button]:px-5">
+                <div
+                    className={twMerge(
+                        "btn_wrapper space-x-2.5 [&>button]:h-10 [&>button]:min-h-10 [&>button]:w-[169px] [&>button]:px-5",
+                        buttonClassName
+                    )}
+                >
                     <button
                         type="button"
                         className="btn-white"
