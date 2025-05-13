@@ -10,7 +10,7 @@ const PersonalityTypeCard = ({ description }: PersonalityTypeCardProps) => (
                 components={{
                     h2: ({ ...props }) => (
                         <h2
-                            className="text-xl font-semibold leading-relaxed text-black/90"
+                            className="text-xl leading-relaxed font-semibold text-black w-full border-b border-black/10 pb-2"
                             {...props}
                         />
                     ),
@@ -21,13 +21,19 @@ const PersonalityTypeCard = ({ description }: PersonalityTypeCardProps) => (
                         />
                     ),
                     strong: ({ ...props }) => (
-                        <strong className="font-semibold " {...props} />
+                        <strong
+                            className="pr-1 text-lg leading-relaxed font-normal text-black/90"
+                            {...props}
+                        />
                     ),
                     li: ({ ...props }) => (
                         <li
-                            className="font-[400] text-base py-1 text-black/80"
+                            className="py-1 text-base font-[400] text-black/80"
                             {...props}
                         />
+                    ),
+                    p: ({ ...props }) => (
+                        <p className="text-base text-black/80 pt-2" {...props} />
                     ),
                 }}
             >
@@ -36,4 +42,5 @@ const PersonalityTypeCard = ({ description }: PersonalityTypeCardProps) => (
         </div>
     </div>
 );
+
 export default PersonalityTypeCard;

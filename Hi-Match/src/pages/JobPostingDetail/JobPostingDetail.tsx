@@ -59,9 +59,7 @@ const JobPostingDetail = () => {
                             <TagList tags={tags} />
                         </div>
                         <div className="flex flex-col gap-10">
-                            {company && (
-                                <CompanyProfileCard company={company} />
-                            )}
+                            <CompanyProfileCard company={company} />
                             <DeadlineBanner
                                 deadline={data.postingDeadLine}
                                 postingTitle={data.postingTitle}

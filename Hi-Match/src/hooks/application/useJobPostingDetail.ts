@@ -1,19 +1,25 @@
 import { useState, useEffect } from "react";
 import { getJobPostingDetail } from "@/apis/application";
 import axiosInstance from "@/apis/axiosInstance";
-
-const getCompanyInfo = async (companyNo: number) => {
-    const { data } = await axiosInstance.get(
-        `/himatch/company/info/detail-select?companyNo=${companyNo}`
-    );
-    return data;
-};
+import { toast } from "react-hot-toast";
 
 export const useJobPostingDetail = (postingNo: number, companyNo: number) => {
     const [data, setData] = useState<JobPostingDetail | null>(null);
     const [company, setCompany] = useState<CompanyInfo | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    const getCompanyInfo = async (companyNo: number) => {
+        try {
+            const { data } = await axiosInstance.get(
+                `/himatch/company/info/detail-select?companyNo=${companyNo}`
+            );
+            return data;
+        } catch (error) {
+            toast.error("데이터를 불러올 수 없습니다");
+            return null;
+        }
+    };
 
     useEffect(() => {
         if (!postingNo) return;
@@ -35,5 +41,5 @@ export const useJobPostingDetail = (postingNo: number, companyNo: number) => {
             .finally(() => setLoading(false));
     }, [postingNo]);
 
-    return { data, company, loading, error };
+    return { data, company, loading, error, getCompanyInfo };
 };

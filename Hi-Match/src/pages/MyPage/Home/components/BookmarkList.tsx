@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import BookmarkCardList from "@/pages/MyPage/Bookmark/components/BookmarkCardList";
 
 interface BookmarkListProps {
-  bookmarkList: Bookmark[];
+    bookmarkList: Bookmark[];
 }
 
 const BookmarkList = ({ bookmarkList }: BookmarkListProps) => {
@@ -12,9 +12,9 @@ const BookmarkList = ({ bookmarkList }: BookmarkListProps) => {
     const handleClickBookmark = () => {
         navigate("/mypage/bookmark");
     };
-    
+
     return (
-        <div className="bookmark_list">
+        <div className="bookmark_list flex flex-col gap-4">
             <div className="resume_title flex items-center justify-between">
                 <h3 className="text-2xl font-semibold text-black">
                     회원님이 북마크한 공고
@@ -27,7 +27,7 @@ const BookmarkList = ({ bookmarkList }: BookmarkListProps) => {
                     <ArrowRightIcon className="fill-gray02 h-4 w-4" />
                 </span>
             </div>
-                <BookmarkCardList bookmarks={bookmarkList} />
+            <BookmarkCardList bookmarks={bookmarkList} />
         </div>
     );
 };

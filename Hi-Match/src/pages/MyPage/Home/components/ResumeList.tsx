@@ -42,7 +42,7 @@ const ResumeList = ({ resumeList }: ResumeListProps) => {
                         className="resume hover: flex h-50 w-75 cursor-pointer flex-col justify-between rounded-[10px] border-2 border-solid border-blue-100 bg-white p-7.5 transition-all duration-300 ease-in-out hover:shadow-md"
                         onClick={() => handleClickResumeDetail(resumeNo)}
                     >
-                        <p className="resume_title text-lg font-medium text-black">
+                        <p className="resume_title text-xl font-medium text-black">
                             {resumeTitle}
                         </p>
                         <span className="text-gray01 resume_date text-sm">
