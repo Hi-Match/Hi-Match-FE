@@ -16,7 +16,7 @@ const sidebarMenu = [
     { label: "북마크한 공고", link: "/mypage/bookmark", Icon: StarIcon },
     {
         label: "인성 검사",
-        link: "/mypage/personality-test",
+        link: "/mypage/personality-result",
         Icon: PersonalityTestIcon,
     },
     { label: "내 정보", link: "/mypage/profile", Icon: UserIcon },

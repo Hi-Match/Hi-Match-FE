@@ -2,3 +2,4 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "./tailwind.css";
 @import "./editor.css";
+@import "./gradient.css";
