@@ -17,7 +17,13 @@ interface ApplicationListProps {
 
 const ApplicationList = ({ application }: ApplicationListProps) => {
     const navigate = useNavigate();
-    const keysToKeep = ["submit", "progress", "resumePass", "finalPass","fail"];
+    const keysToKeep = [
+        "submit",
+        "progress",
+        "resumePass",
+        "finalPass",
+        "fail",
+    ];
 
     const keyValueMap = [
         { key: "total", label: "전체" },
@@ -32,7 +38,7 @@ const ApplicationList = ({ application }: ApplicationListProps) => {
         navigate("/mypage/application");
     };
 
-    let filteredApplication = Object.keys(application)
+    const filteredApplication = Object.keys(application)
         .filter(key => keysToKeep.includes(key))
         .reduce((obj, key) => {
             obj[key] = application[key];
@@ -40,7 +46,7 @@ const ApplicationList = ({ application }: ApplicationListProps) => {
         }, {} as ApplicationCurrent);
 
     return (
-        <div className="application">
+        <div className="application flex flex-col gap-4">
             <div className="resume_title flex items-center justify-between">
                 <h3 className="text-2xl font-semibold text-black">지원 현황</h3>
                 <span
@@ -62,13 +68,13 @@ const ApplicationList = ({ application }: ApplicationListProps) => {
                             key={key}
                             className="resume hover: flex h-50 w-75 cursor-pointer flex-col justify-between rounded-[10px] border-2 border-solid border-blue-100 bg-white p-7.5 transition-all duration-300 ease-in-out hover:shadow-md"
                         >
-                            <p className="resume_title text-lg text-black font-black">
+                            <p className="resume_title text-xl text-black/80">
                                 {displayLabel}
                             </p>
                             <div className="text-center">
-                            <span className="text-gray01 text-7xl">
-                                {value}
-                            </span>
+                                <span className="text-gray01 text-7xl">
+                                    {value}
+                                </span>
                             </div>
                         </li>
                     );

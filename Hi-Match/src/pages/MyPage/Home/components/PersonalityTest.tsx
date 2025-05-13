@@ -20,7 +20,7 @@ const PersonalityTest = ({ code }: PersonalityTestProps) => {
     };
 
     return (
-        <div className="personality_test">
+        <div className="personality_test flex flex-col gap-4">
             <div className="resume_title flex items-center justify-between">
                 <h3 className="text-2xl font-semibold text-black">인성 검사</h3>
                 <span
@@ -34,7 +34,7 @@ const PersonalityTest = ({ code }: PersonalityTestProps) => {
             {code?.slogan ? (
                 <ul className="resume_list flex items-center space-x-6">
                     <li className="resume hover: flex h-50 w-75 cursor-pointer flex-col justify-between rounded-[10px] border-2 border-solid border-blue-100 bg-white p-7.5 transition-all duration-300 ease-in-out hover:shadow-md">
-                        <p className="resume_title text-lg font-black text-black">
+                        <p className="resume_title text-lg text-black">
                             {code?.slogan || "fds"}
                         </p>
                         
