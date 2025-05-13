@@ -78,3 +78,11 @@ interface ResumeEducation {
     eduEndDate: string;
     eduContent: string;
 }
+
+interface Resume {
+    resumeNo: number;
+    resumeTitle: string;
+    resumeDate: string;
+}
+
+type ResumeListResponse = Resume[];

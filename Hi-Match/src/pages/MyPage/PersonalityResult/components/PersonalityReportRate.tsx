@@ -22,40 +22,45 @@ const PersonalityReportRate = ({
         o: number;
     };
 }) => {
+    const personalityTypes = {
+        N: { text: "소통하는\n(Network)", value: rate.n },
+        F: { text: "집중하는\n(Focus)", value: rate.f },
+        D: { text: "주도적인\n(Drive)", value: rate.d },
+        B: { text: "안정적인\n(Balance)", value: rate.b },
+        C: { text: "창의적인\n(Creative)", value: rate.c },
+        L: { text: "분석적인\n(Logical)", value: rate.l },
+        S: { text: "수직적인\n(Structured)", value: rate.s },
+        O: { text: "수평적인\n(Open)", value: rate.o },
+    };
+
     const data = [
         {
             axis: "Network (N) ↔ Focus (F)",
-            value: rate.n,
-            left: "소통하는\n(Network)",
-            right: "집중하는\n(Focus)",
-            leftValue: rate.n,
-            rightValue: rate.f,
+            ...compareTypes(personalityTypes.N, personalityTypes.F),
         },
         {
             axis: "Drive (D) ↔ Balance (B)",
-            value: rate.d,
-            left: "주도적인\n(Drive)",
-            right: "안정적인\n(Balance)",
-            leftValue: rate.d,
-            rightValue: rate.b,
+            ...compareTypes(personalityTypes.D, personalityTypes.B),
         },
         {
             axis: "Creative (C) ↔ Logical (L)",
-            value: rate.c,
-            left: "창의적인\n(Creative)",
-            right: "분석적인\n(Logical)",
-            leftValue: rate.c,
-            rightValue: rate.l,
+            ...compareTypes(personalityTypes.C, personalityTypes.L),
         },
         {
             axis: "Structured (S) ↔ Open (O)",
-            value: rate.s,
-            left: "수직적인\n(Structured)",
-            right: "수평적인\n(Open)",
-            leftValue: rate.s,
-            rightValue: rate.o,
+            ...compareTypes(personalityTypes.S, personalityTypes.O),
         },
     ];
+
+    function compareTypes(
+        a: (typeof personalityTypes)[keyof typeof personalityTypes],
+        b: (typeof personalityTypes)[keyof typeof personalityTypes]
+    ) {
+        return {
+            value: Math.max(a.value, b.value),
+            text: a.value > b.value ? a.text : b.text,
+        };
+    }
 
     return (
         <div className="flex w-full flex-col gap-6 py-4">
@@ -70,12 +75,11 @@ const PersonalityReportRate = ({
                         type="category"
                         dataKey="axis"
                         tick={({ x, y, payload }) => {
-                            const { left, right, leftValue, rightValue } =
+                            const { text } =
                                 data.find(d => d.axis === payload.value) || {};
 
                             // 줄바꿈(\n) 기준으로 분리
-                            const leftLines = (left ?? "").split("\n");
-                            const rightLines = (right ?? "").split("\n");
+                            const lines = (text ?? "").split("\n");
 
                             return (
                                 <g transform={`translate(${x},${y})`}>
@@ -87,7 +91,7 @@ const PersonalityReportRate = ({
                                         fill="#888"
                                         fontSize="13"
                                     >
-                                        {leftLines.map((line, idx) => (
+                                        {lines.map((line, idx) => (
                                             <tspan
                                                 x={-5}
                                                 dy={idx === 0 ? 0 : 15}
@@ -96,32 +100,6 @@ const PersonalityReportRate = ({
                                                 {line}
                                             </tspan>
                                         ))}
-                                        <tspan
-                                            x={-5}
-                                            dy={15}
-                                        >{`(${leftValue}%)`}</tspan>
-                                    </text>
-                                    {/* 오른쪽 라벨 */}
-                                    <text
-                                        x={110}
-                                        y={-8}
-                                        textAnchor="start"
-                                        fill="#888"
-                                        fontSize="13"
-                                    >
-                                        {rightLines.map((line, idx) => (
-                                            <tspan
-                                                x={110}
-                                                dy={idx === 0 ? 0 : 15}
-                                                key={idx}
-                                            >
-                                                {line}
-                                            </tspan>
-                                        ))}
-                                        <tspan
-                                            x={110}
-                                            dy={15}
-                                        >{`(${rightValue}%)`}</tspan>
                                     </text>
                                 </g>
                             );

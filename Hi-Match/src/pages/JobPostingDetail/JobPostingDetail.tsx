@@ -8,12 +8,13 @@ import { toast } from "react-hot-toast";
 import { useEffect } from "react";
 import TagList from "./components/TagList";
 import { useParams } from "react-router-dom";
+import DeadlineBanner from "./components/DeadlineBanner";
 
 const JobPostingDetail = () => {
     const { id } = useParams();
     const postingNo = Number(id);
     const companyNo = Number(id);
-    
+
     const { data, company, loading, error } = useJobPostingDetail(
         postingNo,
         companyNo
@@ -39,7 +40,7 @@ const JobPostingDetail = () => {
             {data && (
                 <>
                     <JobImageGallery images={images as string[]} />
-                    <section className="mx-auto flex w-full max-w-[1272px] justify-between gap-10 overflow-hidden pt-14 max-[1399px]:px-20">
+                    <section className="mx-auto flex w-full max-w-[1272px] justify-between gap-10 overflow-hidden py-14 max-[1399px]:px-20">
                         <div className="flex flex-grow flex-col gap-10">
                             <JobSummary
                                 companyName={data.companyName}
@@ -57,7 +58,16 @@ const JobPostingDetail = () => {
                             />
                             <TagList tags={tags} />
                         </div>
-                        {company && <CompanyProfileCard company={company} />}
+                        <div className="flex flex-col gap-10">
+                            <CompanyProfileCard company={company} />
+                            <DeadlineBanner
+                                deadline={data.postingDeadLine}
+                                postingTitle={data.postingTitle}
+                                companyName={data.companyName}
+                                postingNo={postingNo}
+                                questions={data.postingQuestion}
+                            />
+                        </div>
                     </section>
                 </>
             )}

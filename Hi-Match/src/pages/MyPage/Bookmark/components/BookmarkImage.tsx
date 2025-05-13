@@ -4,7 +4,7 @@ import { useBookmarkDelete } from "../../../../hooks/bookmark/useBookmarkListDel
 
 const BookmarkImage = ({
     bookMarkNo,
-    postingNo,  //TODO : 추후 이미지 클릭시 공고 상세 설명으로 이동하기 위한 데이터 입니다.
+    postingNo,
     imageUrl,
     isBookmarked,
     title,
@@ -31,10 +31,11 @@ const BookmarkImage = ({
                 src={imageUrl}
                 alt={title}
                 draggable={false}
-                className="ratio-[3/4] h-full w-full rounded-xl object-cover shadow-sm drag-none"
+                className="aspect-[3/4] h-full w-full rounded-xl object-cover shadow-sm drag-none"
             />
             <DdayBadge deadline={deadline ?? ""} />
-            <button onClick={handleClick} className="absolute top-2 right-2 h-8 w-8 cursor-pointer rounded-full bg-black/40 text-2xl text-white/80">
+            <button onClick={handleClick} 
+            className="absolute top-2 right-2 h-8 w-8 cursor-pointer rounded-full bg-black/40 text-xl text-white/80">
                 {/* 별 아이콘 (채워짐/비어있음) */}
                 {isBookmarked ? "★" : "☆"}
             </button>

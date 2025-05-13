@@ -21,7 +21,6 @@ export const useJobPostings = (params: JobPostingParams) => {
         setError(null);
         getMemberJobList(params)
             .then(data => {
-                console.log("getMemberJobList 응답:", data);
                 setJobPostings(Array.isArray(data) ? data : data.list || []);
             })
             .catch(err => {

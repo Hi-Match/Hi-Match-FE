@@ -1,0 +1,36 @@
+.swiper-button-next,
+.swiper-button-prev {
+    color: #000 !important;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 16px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #000 !important;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    padding: 10px 0 !important;
+}
+
+.swiper-slide {
+    height: 300px; /* 슬라이드 높이 자동 조정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-slide img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}

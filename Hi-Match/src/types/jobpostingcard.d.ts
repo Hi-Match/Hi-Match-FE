@@ -7,7 +7,8 @@ interface JobPostingCardProps {
     location?: string;
     education?: string;
     companyType?: string;
-    postingNo?: number;
+    postingNo: number;
+    bookMarkNo: number | null;
 }
 
 interface JobPosting {
