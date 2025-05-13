@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import logo from "@/assets/images/header/logo-header.svg";
+import LogoIcon from "@/assets/images/header/logo-header.svg?react";
 import CompanyIcon from "@/assets/icons/company-icon.svg?react";
 import BadgeIcon from "@/assets/icons/badge-icon.svg?react";
 import SettingIcon from "@/assets/icons/settings-icon.svg?react";
@@ -17,6 +17,10 @@ const companyMenu = [
 const BizSidebar = () => {
     const navigate = useNavigate();
 
+    const handleClickRecruitPosting = () => {
+        navigate("/company/recruit/posting");
+    };
+
     const handleClickLogout = () => {
         axiosInstance
             .get("/himatch/company/member/logout")
@@ -33,8 +37,17 @@ const BizSidebar = () => {
             <div className="space-y-7.5">
                 <div className="himatch_logo flex w-full justify-center">
                     <Link to="/company/home">
-                        <img src={logo} alt="Hi Match" />
+                        <LogoIcon className="w-50" />
                     </Link>
+                </div>
+                <div className="grid-center">
+                    <button
+                        type="button"
+                        className="btn-white h-11 w-50"
+                        onClick={handleClickRecruitPosting}
+                    >
+                        채용 공고 등록하기
+                    </button>
                 </div>
                 <div className="company_menu_wrapper">
                     <p className="text-gray02 px-[15px] text-sm">회사 관리</p>
