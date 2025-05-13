@@ -9,7 +9,8 @@ const JobPostingCardList = ({ jobPostings }: { jobPostings: JobPosting[] }) => {
                     postingNo={jobPosting.postingNo}
                     imageUrl={jobPosting.companyImgA ?? undefined}
                     deadline={jobPosting.postingDeadLine}
-                    isBookmarked={true}
+                    isBookmarked={jobPosting.bookMarkNo !== null}
+                    bookMarkNo={jobPosting.bookMarkNo}
                     title={jobPosting.postingTitle}
                     company={jobPosting.companyName}
                     location={jobPosting.companyAddress ?? undefined}

@@ -12,6 +12,7 @@ const JobPostingCard = ({
     education,
     companyType,
     postingNo,
+    bookMarkNo,
 }: JobPostingCardProps) => {
     const navigate = useNavigate();
 
@@ -29,6 +30,8 @@ const JobPostingCard = ({
                 deadline={deadline}
                 isBookmarked={isBookmarked}
                 title={title}
+                postingNo={postingNo}
+                bookMarkNo={bookMarkNo}
             />
             <JobPostingCardInfo
                 title={title}
@@ -36,6 +39,8 @@ const JobPostingCard = ({
                 location={location}
                 education={education}
                 companyType={companyType}
+                postingNo={postingNo}
+                bookMarkNo={bookMarkNo}
             />
         </div>
     );

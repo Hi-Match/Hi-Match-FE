@@ -1,13 +1,13 @@
 import { UseBoolmarkToggle } from "@/hooks/bookmark/useBoolmarkToggle";
 
 interface ScrapButtonProps {
-    bookmarkNo: number | null;
+    bookMarkNo: number | null;
     postingNo: number;
 }
 
-const ScrapButton = ({ bookmarkNo, postingNo }: ScrapButtonProps) => {
+const ScrapButton = ({ bookMarkNo, postingNo }: ScrapButtonProps) => {
     const { isBookmarked, toggleBookmark } = UseBoolmarkToggle({
-        initialBookmarkNo: bookmarkNo,
+        initialBookMarkNo: bookMarkNo,
         postingNo,
     });
 
