@@ -15,13 +15,13 @@ const sidebarMenu = [
     { label: "홈", link: "/mypage/home", Icon: HomeIcon },
     { label: "이력서", link: "/mypage/resume", Icon: ResumeIcon },
     { label: "북마크한 공고", link: "/mypage/bookmark", Icon: StarIcon },
+    { label: "지원 내역", link: "/mypage/application", Icon: ListIcon },
     {
         label: "인성 검사",
         link: "/mypage/personality-result",
         Icon: PersonalityTestIcon,
     },
     { label: "내 정보", link: "/mypage/profile", Icon: UserIcon },
-    { label: "지원 내역", link: "/mypage/application", Icon: ListIcon },
 ];
 
 const UserSidebar = () => {
