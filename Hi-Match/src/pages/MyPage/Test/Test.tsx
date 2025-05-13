@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import TestTable from "./components/TestTable";
 import TestFooter from "./components/TestFooter";
 import { usePersonalityTest } from "../../../hooks/test/usePersonalityTest";
+import WorknetLink from "../PersonalityResult/components/WorknetLink";
 
 const Test = () => {
     const navigate = useNavigate();
@@ -69,6 +70,7 @@ const Test = () => {
                 canSubmit={canSubmit}
                 isSubmitting={isSubmitting}
             />
+            <WorknetLink />
         </div>
     );
 };
