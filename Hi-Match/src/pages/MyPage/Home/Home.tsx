@@ -19,8 +19,8 @@ const UserHome = () => {
     const { user } = useUserStore();
 
     return (
-        <div className="user_home w-full px-50">
-            <h2 className="mb-12.5 text-2xl font-semibold text-black">
+        <section className="mx-auto flex flex-col w-full max-w-[1272px] gap-10 overflow-hidden py-14 max-[1399px]:px-20">
+            <h2 className=" text-3xl font-semibold text-black">
                 {user?.memberName}님의 홈
             </h2>
             <div className="space-y-12.5">
@@ -29,7 +29,7 @@ const UserHome = () => {
                 <ApplicationList application={data?.application ?? []} />
                 <ResumeList resumeList={data?.resume ?? []} />
             </div>
-        </div>
+        </section>
     );
 };
 

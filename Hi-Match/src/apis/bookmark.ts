@@ -29,7 +29,7 @@ export const getBookmarkMaxPage = async (keyword: string) => {
  * @param keyword 검색 단어어
  * @returns 북마크 목록
  */
-export const getBookmarkSearch = async (page: number, keyword: String) => {
+export const getBookmarkSearch = async (page: number, keyword: string) => {
     const { data } = await axiosInstance.post(
         `/himatch/bookmark/search`,
         { 
