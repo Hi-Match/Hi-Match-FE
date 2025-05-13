@@ -33,6 +33,7 @@ import CompanyHome from "@/pages/CompanyHome/CompanyHome";
 import CompanyInfo from "@/pages/CompanyInfo/CompanyInfo";
 import BizLayout from "@/layout/BizLayout";
 import CompanySetting from "@/pages/CompanySetting/CompanySetting";
+import JobPostingDetail from "@/pages/JobPostingDetail/JobPostingDetail";
 import RecruitPosting from "@/pages/RecruitPosting/RecruitPosting";
 import JobPostingDetail from "@/pages/JobPostingDetail/JobPostingDetail";
 

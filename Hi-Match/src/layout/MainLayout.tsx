@@ -1,13 +1,16 @@
+import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import { ReactNode } from "react";
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
     return (
-        <div className="main_wrapper">
+        <main className="main_wrapper">
             <Header />
-            <main className="pt-20">{children}</main>
-        </div>
+            <section className="pt-12.5 pb-50">{children}</section>
+            <Footer />
+        </main>
     );
 };
 
-export default MainLayout;
+export default MainLayout; 
+
