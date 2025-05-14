@@ -2,7 +2,7 @@ import ApplicantsForm from "./components/ApplicantsForm";
 
 const Applicants = () => {
     return (
-        <div className="applicants space-y-7.5">
+        <div className="applicants space-y-7.5 mb-27.5 ">
             <ApplicantsForm />
         </div>
     );
