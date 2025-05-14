@@ -11,19 +11,30 @@ export const useResumeList = () => {
     const fetchResumes = async () => {
         try {
             setIsLoading(true);
-            const { data } = await axiosInstance.get<ResumeListResponse>(
-                "/himatch/resume/list"
-            );
-            // 데이터가 배열이 아니거나 undefined인 경우 빈 배열로 처리
-            setResumes(Array.isArray(data) ? data : []);
+            const response = await axiosInstance.get("/himatch/resume/list");
 
-            if (Array.isArray(data) && data.length > 0 && !selectedResumeNo) {
-                setSelectedResumeNo(data[0].resumeNo);
+            // 응답 데이터 검증 및 안전한 파싱
+            let parsedData;
+            if (typeof response.data === "string") {
+                try {
+                    parsedData = JSON.parse(response.data);
+                } catch {
+                    parsedData = [];
+                }
+            } else {
+                parsedData = response.data;
+            }
+
+            // 배열 형태 확인
+            const validData = Array.isArray(parsedData) ? parsedData : [];
+            setResumes(validData);
+
+            if (validData.length > 0 && !selectedResumeNo) {
+                setSelectedResumeNo(validData[0].resumeNo);
             }
         } catch (error) {
-            // 에러 발생 시 빈 배열로 처리
+            console.error("Resume list fetch error:", error);
             setResumes([]);
-            console.log(error);
         } finally {
             setIsLoading(false);
         }
