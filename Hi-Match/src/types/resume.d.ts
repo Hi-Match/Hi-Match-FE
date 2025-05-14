@@ -79,6 +79,14 @@ interface ResumeEducation {
     eduContent: string;
 }
 
+interface Resume {
+    resumeNo: number;
+    resumeTitle: string;
+    resumeDate: string;
+}
+
+type ResumeListResponse = Resume[];
+
 // 기업에서  자기소개서 조회 시
 interface ApplicantResumeData {
     applicationMemberCode: string | null; // 인성검사 코드
