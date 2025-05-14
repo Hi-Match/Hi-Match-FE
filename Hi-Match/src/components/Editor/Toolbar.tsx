@@ -7,6 +7,10 @@ import ItalicIcon from "@/assets/icons/italic-icon.svg?react";
 import ListIcon from "@/assets/icons/list-icon.svg?react";
 import LinkIcon from "@/assets/icons/link-icon.svg?react";
 import UnsetLinkIcon from "@/assets/icons/unset-link-icon.svg?react";
+import AddImageIcon from "@/assets/icons/add-image-icon.svg?react";
+import axiosInstance from "@/apis/axiosInstance";
+import { useRef } from "react";
+import toast from "react-hot-toast";
 
 interface ToolbarProps {
     editor: Editor | null;
@@ -37,6 +41,46 @@ const Toolbar = ({ editor }: ToolbarProps) => {
             .extendMarkRange("link")
             .setLink({ href: url, target: "_blank" })
             .run();
+    };
+
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const handleUploadClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    const handleImageUpload = async (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const file = event.target.files?.[0];
+        if (!file || !editor) return;
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        // 업로드 가능한 파일 형식
+        const allowedFiles = ["image/jpeg", "image/png"];
+        const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
+        if (MAX_FILE_SIZE < file.size) {
+            toast.error("10MB 이하의 이미지만 업로드할 수 있습니다.");
+            return;
+        } else if (!allowedFiles.includes(file.type)) {
+            toast.error("JPG, PNG 형식의 이미지 파일만 업로드할 수 있습니다.");
+            return;
+        } else {
+            await axiosInstance
+                .post("/himatch/resume/file", formData)
+                .then(response => {
+                    const url = response.data.file;
+                    editor.chain().focus().setImage({ src: url }).run();
+                })
+                .catch(() => {
+                    toast.error(
+                        "이미지 업로드에 실패했습니다. 다시 업로드 해 주세요."
+                    );
+                });
+        }
     };
 
     return (
@@ -115,7 +159,7 @@ const Toolbar = ({ editor }: ToolbarProps) => {
                     <ListIcon className="h-4 w-4" />
                 </button>
             </div>
-            <div className="flex-center space-x-2 pr-4">
+            <div className="flex-center border-gray02 space-x-2 border-r-1 border-solid pr-4">
                 <button
                     type="button"
                     onClick={setLink}
@@ -137,6 +181,22 @@ const Toolbar = ({ editor }: ToolbarProps) => {
                 >
                     <UnsetLinkIcon className="h-4 w-4" />
                 </button>
+            </div>
+            <div className="flex-center space-x-2 pr-4">
+                <button
+                    type="button"
+                    onClick={handleUploadClick}
+                    className="grid-center h-8 w-8 cursor-pointer p-1 focus:bg-gray-50"
+                >
+                    <AddImageIcon className="h-4 w-4" />
+                </button>
+                <input
+                    type="file"
+                    ref={fileInputRef}
+                    accept="image/jpeg, image/png"
+                    className="hidden"
+                    onChange={handleImageUpload}
+                />
             </div>
         </div>
     );

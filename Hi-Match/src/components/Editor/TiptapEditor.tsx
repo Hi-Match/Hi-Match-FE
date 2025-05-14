@@ -1,6 +1,7 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
+import Image from "@tiptap/extension-image";
 import { useEffect, useRef } from "react";
 import Toolbar from "./Toolbar";
 
@@ -19,6 +20,7 @@ const TiptapEditor = ({ content, onChange }: TiptapEditorProps) => {
                 defaultProtocol: "https",
                 protocols: ["http", "https"],
             }),
+            Image,
         ],
         editorProps: {
             attributes: {
