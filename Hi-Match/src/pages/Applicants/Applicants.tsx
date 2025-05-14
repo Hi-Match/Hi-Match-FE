@@ -1,9 +1,9 @@
-import RecruitFormList from "./components/RecruitFormList";
+import ApplicantsForm from "./components/ApplicantsForm";
 
 const Applicants = () => {
     return (
-        <div className="applicants block space-y-7.5 overflow-hidden rounded-[10px] border-1 border-solid border-gray-50 bg-white p-12.5 shadow-sm">
-            <RecruitFormList />
+        <div className="applicants space-y-7.5">
+            <ApplicantsForm />
         </div>
     );
 };
