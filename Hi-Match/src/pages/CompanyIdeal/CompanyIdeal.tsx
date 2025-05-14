@@ -1,4 +1,4 @@
-import InterrogationIcon from "@/assets/icons/interrogation-icon.svg?react";
+// import InterrogationIcon from "@/assets/icons/interrogation-icon.svg?react";
 import AIAnalysisCard from "../MyPage/PersonalityResult/components/AIAnalysisCard";
 import BinaryChoiceWrapper from "./components/BinaryChoiceWrapper";
 import { useCompanyIdeal } from "@/hooks/business/useCompanyIdeal";
@@ -29,7 +29,7 @@ const CompanyIdeal = () => {
             <section className="mx-auto flex w-full max-w-[1000px] min-w-[1000px] flex-col gap-16 rounded-[10px] border-1 border-solid border-gray-50 bg-white p-14 shadow-sm">
                 <hgroup className="flex items-center gap-2">
                     <h2 className="text-2xl font-medium">인재상 관리</h2>
-                    <InterrogationIcon />
+                    {/* <InterrogationIcon /> */}
                 </hgroup>
                 <BinaryChoiceWrapper />
                 {analysisDetail?.length ? (
