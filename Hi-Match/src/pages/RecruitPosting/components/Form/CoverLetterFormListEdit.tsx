@@ -1,16 +1,18 @@
 import PlusIcon from "@/assets/icons/plus-icon.svg?react";
-import CoverLetterForm from "./CoverLetterForm";
 import { useEffect } from "react";
+import CoverLetterFormEdit from "./CoverLetterFormEdit";
 
-interface CoverLetterFormListProps {
-    recruitPost: RecruitPostData;
-    setRecruitPost: React.Dispatch<React.SetStateAction<RecruitPostData>>;
+type RecruitPostEditData = RecruitPostData & { postingNo: number };
+
+interface CoverLetterFormListEditProps {
+    recruitPost: RecruitPostEditData;
+    setRecruitPost: React.Dispatch<React.SetStateAction<RecruitPostEditData>>;
 }
 
-const CoverLetterFormList = ({
+const CoverLetterFormListEdit = ({
     recruitPost,
     setRecruitPost,
-}: CoverLetterFormListProps) => {
+}: CoverLetterFormListEditProps) => {
     const forms = recruitPost.postingQuestion;
 
     useEffect(() => {
@@ -43,10 +45,8 @@ const CoverLetterFormList = ({
         } else {
             updated[index].question = value;
         }
-        setRecruitPost(prev => ({
-            ...prev,
-            postingQuestion: updated,
-        }));
+
+        setRecruitPost(prev => ({ ...prev, postingQuestion: updated }));
     };
 
     const handleRemoveForm = (index: number) => {
@@ -90,9 +90,10 @@ const CoverLetterFormList = ({
                     key={index}
                     className={`${index !== 0 && "border-gray03 w-full border-t-1 border-solid pt-7.5"}`}
                 >
-                    <CoverLetterForm
+                    <CoverLetterFormEdit
                         index={index}
                         length={form.questionLength}
+                        form={form}
                         onChange={(key, val) =>
                             handleUpdateForm(index, key, val)
                         }
@@ -108,4 +109,4 @@ const CoverLetterFormList = ({
     );
 };
 
-export default CoverLetterFormList;
+export default CoverLetterFormListEdit;

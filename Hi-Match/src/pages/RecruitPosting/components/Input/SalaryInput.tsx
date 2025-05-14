@@ -3,18 +3,37 @@ import Input from "@/components/Input/Input";
 import { useEffect, useState } from "react";
 
 interface SalaryInputProps {
+    salary?: string;
     setSalary: (val: string) => void;
 }
 
-const SalaryInput = ({ setSalary }: SalaryInputProps) => {
-    const [selectedSalary, setSelectedSalary] = useState<string>("");
-    const [money, setMoney] = useState<string>("");
-
+const SalaryInput = ({ salary, setSalary }: SalaryInputProps) => {
     const salaryOptions = ["면접 후 결정", "월급", "연봉"];
 
+    const [selectedSalary, setSelectedSalary] = useState("");
+    const [money, setMoney] = useState("");
+    const [isInitialized, setIsInitialized] = useState(false); // 🔑
+
+    // ✅ 초기에 한 번만 salary 파싱
     useEffect(() => {
-        setSalary(`${selectedSalary} ${money}`);
-    }, [money, selectedSalary, setSalary]);
+        if (isInitialized || !salary) return;
+
+        const matched = salaryOptions.find(option => salary.startsWith(option));
+        setSelectedSalary(matched ?? "");
+        setMoney(matched ? salary.replace(matched, "").trim() : "");
+        setIsInitialized(true); // ✅ 초기화 한 번만
+    }, [salary, isInitialized]);
+
+    // ✅ 상태 변화 시 외부 반영
+    useEffect(() => {
+        if (!isInitialized) return; // 초기화 전에는 setSalary 호출 안 함
+
+        if (selectedSalary === "면접 후 결정") {
+            setSalary("면접 후 결정");
+        } else {
+            setSalary(`${selectedSalary} ${money}`);
+        }
+    }, [selectedSalary, money, isInitialized]);
 
     const handleChangeMoney = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value.replace(/[^0-9]/g, "");
