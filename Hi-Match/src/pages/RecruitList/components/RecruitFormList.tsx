@@ -53,7 +53,7 @@ const RecruitFormList = () => {
 
     return (
         <div className="recruit_form_list">
-            <div className="space-y-7.5 rounded-[10px] border-1 border-solid border-gray-50 bg-white p-12.5 shadow-sm">
+            <div className="space-y-7.5 rounded-[10px] border-1 border-solid border-gray-50 bg-white p-12.5 shadow-sm mx-auto flex w-full max-w-[1000px] min-w-[1000px] flex-col gap-16 min-h-[80vh] ">
                 <h3 className="mb-7.5 text-xl font-semibold text-black">
                     채용중인 공고
                 </h3>

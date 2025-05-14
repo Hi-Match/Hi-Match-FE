@@ -1,6 +1,12 @@
 import BookmarkCard from "./BookmarkCard";
 
-const BookmarkCardList = ({ bookmarks }: { bookmarks: Bookmark[] }) => (
+const BookmarkCardList = ({
+    bookmarks,
+    showBookmarkButton,
+}: {
+    bookmarks: Bookmark[];
+    showBookmarkButton: boolean;
+}) => (
     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {bookmarks.map(bookmark => (
             <BookmarkCard
@@ -15,6 +21,7 @@ const BookmarkCardList = ({ bookmarks }: { bookmarks: Bookmark[] }) => (
                 location={bookmark.companyAddress}
                 education={bookmark.postingEducation}
                 companyType={bookmark.companyType}
+                showBookmarkButton={showBookmarkButton}
             />
         ))}
     </div>

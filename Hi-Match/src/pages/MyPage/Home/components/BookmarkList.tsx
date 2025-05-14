@@ -4,9 +4,13 @@ import BookmarkCardList from "@/pages/MyPage/Bookmark/components/BookmarkCardLis
 
 interface BookmarkListProps {
     bookmarkList: Bookmark[];
+    showBookmarkButton: boolean;
 }
 
-const BookmarkList = ({ bookmarkList }: BookmarkListProps) => {
+const BookmarkList = ({
+    bookmarkList,
+    showBookmarkButton,
+}: BookmarkListProps) => {
     const navigate = useNavigate();
 
     const handleClickBookmark = () => {
@@ -27,7 +31,10 @@ const BookmarkList = ({ bookmarkList }: BookmarkListProps) => {
                     <ArrowRightIcon className="fill-gray02 h-4 w-4" />
                 </span>
             </div>
-            <BookmarkCardList bookmarks={bookmarkList} />
+            <BookmarkCardList
+                bookmarks={bookmarkList}
+                showBookmarkButton={showBookmarkButton}
+            />
         </div>
     );
 };

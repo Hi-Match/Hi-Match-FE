@@ -1,4 +1,4 @@
-const BookmarkCardInfo = ({ title, company, location, education, companyType }: BookmarkCardProps) => {
+const BookmarkCardInfo = ({ title, company, location, education, companyType }: BookmarkCardInfoProps) => {
     return (
         <div>
             <div className="text-lg font-bold">{title}</div>

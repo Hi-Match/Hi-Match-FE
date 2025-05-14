@@ -16,7 +16,7 @@ export const useJobPostingDetail = (postingNo: number, companyNo: number) => {
             );
             return data;
         } catch (error) {
-            toast.error("데이터를 불러올 수 없습니다");
+            toast.error("기업 정보를 불러올 수 없습니다");
             return null;
         }
     };

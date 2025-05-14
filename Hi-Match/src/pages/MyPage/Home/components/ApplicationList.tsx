@@ -66,16 +66,14 @@ const ApplicationList = ({ application }: ApplicationListProps) => {
                     return (
                         <li
                             key={key}
-                            className="resume hover: flex h-50 w-75 cursor-pointer flex-col justify-between rounded-[10px] border-2 border-solid border-blue-100 bg-white p-7.5 transition-all duration-300 ease-in-out hover:shadow-md"
+                            className="resume hover: flex h-40 w-75 cursor-pointer flex-col justify-around gap-4 rounded-[10px] border border-[#F4F4F4] bg-white px-4 py-2 shadow-sm transition-all duration-300 ease-in-out hover:shadow-md"
                         >
-                            <p className="resume_title text-xl text-black/80">
+                            <p className="resume_title text-lg text-black/80">
                                 {displayLabel}
                             </p>
-                            <div className="text-center">
-                                <span className="text-gray01 text-7xl">
-                                    {value}
-                                </span>
-                            </div>
+                            <span className="text-4xl text-center text-black/70 py-4 pb-8">
+                                {value}
+                            </span>
                         </li>
                     );
                 })}
