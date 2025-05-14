@@ -3,11 +3,11 @@ import { Outlet } from "react-router-dom";
 
 const BizLayout = () => {
     return (
-        <div className="biz_wrapper flex h-screen w-full overflow-hidden">
+        <div className="biz_wrapper flex w-full">
             <nav className="sidebar_wrapper w-62.5">
                 <BizSidebar />
             </nav>
-            <main className="biz_content_wrapper relative flex w-full flex-1 justify-center bg-[#F4F6FA] p-12.5 overflow-y-auto">
+            <main className="biz_content_wrapper relative flex flex-1 justify-center bg-[#F4F6FA] p-12.5">
                 <Outlet />
             </main>
         </div>

@@ -23,9 +23,6 @@ interface PostingQuestion {
 }
 
 // 기업 채용 공고 상세 조회 시 postingQuestion와 postingIsFinish는 제외한 데이터
-type RecruitPostInfo = Omit<
-    RecruitPostData,
-    "postingQuestion" | "postingIsFinish"
-> & {
+type RecruitPostInfo = Omit<RecruitPostData, "postingQuestion"> & {
     tags?: string[];
 };
