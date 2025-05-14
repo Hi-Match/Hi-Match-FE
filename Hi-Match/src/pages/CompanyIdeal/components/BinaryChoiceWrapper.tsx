@@ -1,21 +1,18 @@
-import { useState } from "react";
 import BinaryChoiceButtons from "./BinaryChoiceButtons";
+import { useCompanyIdeal } from "@/hooks/business/useCompanyIdeal";
+import { useCompanyIdealStore } from "@/store/useCompanyIdealStore";
 
 const BinaryChoiceWrapper = () => {
-    const [selectedButtons, setSelectedButtons] = useState<{
-        [key: number]: "left" | "right" | null;
-    }>({
-        0: null,
-        1: null,
-        2: null,
-        3: null,
-    });
+    const { selectedButtons, setSelectedButton } = useCompanyIdealStore();
+    const { fetchIdealAnalysis } = useCompanyIdeal();
 
-    const handleButtonClick = (index: number, side: "left" | "right") => {
-        setSelectedButtons(prev => ({
-            ...prev,
-            [index]: side,
-        }));
+    const handleButtonClick = async (index: number, side: "left" | "right") => {
+        setSelectedButton(index, side);
+        const code = useCompanyIdealStore.getState().getIdealCode();
+        if (code.length === 4) {
+            const response = await fetchIdealAnalysis(code);
+            useCompanyIdealStore.getState().setAnalysisDetail(response.detail);
+        }
     };
 
     return (
