@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "@/apis/axiosInstance";
-import { toast } from "react-hot-toast";
 
 export const useResumeList = () => {
     const [resumes, setResumes] = useState<Resume[]>([]);
@@ -12,17 +11,30 @@ export const useResumeList = () => {
     const fetchResumes = async () => {
         try {
             setIsLoading(true);
-            const { data } = await axiosInstance.get<ResumeListResponse>(
-                "/himatch/resume/list"
-            );
-            setResumes(data);
+            const response = await axiosInstance.get("/himatch/resume/list");
 
-            // 기본적으로 첫 번째 이력서 선택
-            if (data.length > 0 && !selectedResumeNo) {
-                setSelectedResumeNo(data[0].resumeNo);
+            // 응답 데이터 검증 및 안전한 파싱
+            let parsedData;
+            if (typeof response.data === "string") {
+                try {
+                    parsedData = JSON.parse(response.data);
+                } catch {
+                    parsedData = [];
+                }
+            } else {
+                parsedData = response.data;
+            }
+
+            // 배열 형태 확인
+            const validData = Array.isArray(parsedData) ? parsedData : [];
+            setResumes(validData);
+
+            if (validData.length > 0 && !selectedResumeNo) {
+                setSelectedResumeNo(validData[0].resumeNo);
             }
         } catch (error) {
-            toast.error("이력서 목록을 불러오는데 실패했습니다.");
+            console.error("Resume list fetch error:", error);
+            setResumes([]);
         } finally {
             setIsLoading(false);
         }

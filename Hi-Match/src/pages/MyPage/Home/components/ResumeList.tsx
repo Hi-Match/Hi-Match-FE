@@ -39,7 +39,7 @@ const ResumeList = ({ resumeList }: ResumeListProps) => {
                 {resumeList.map(({ resumeNo, resumeTitle, resumeDate }) => (
                     <li
                         key={resumeNo}
-                        className="resume hover: flex h-50 w-75 cursor-pointer flex-col justify-between rounded-[10px] border-2 border-solid border-blue-100 bg-white p-7.5 transition-all duration-300 ease-in-out hover:shadow-md"
+                        className="resume hover: bg-gray-[#FCFCFC] flex h-50 w-75 cursor-pointer flex-col justify-between rounded-[10px] border border-[#F7F8F9] p-7.5 transition-all duration-300 ease-in-out hover:shadow-md shadow-sm"
                         onClick={() => handleClickResumeDetail(resumeNo)}
                     >
                         <p className="resume_title text-xl font-medium text-black">

@@ -6,9 +6,9 @@ import SearchBar from "../Application/components/SearchBar";
 import { useState } from "react";
 
 const UserBookmark = () => {
-    const [keyword, setKeyword] = useState(""); 
+    const [keyword, setKeyword] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
-    const { bookmarks } = useBookmarkSearch(currentPage,keyword);
+    const { bookmarks } = useBookmarkSearch(currentPage, keyword);
     let { totalPages } = useBookmarkMaxPage(keyword);
     if (totalPages === 0) totalPages++;
 
@@ -22,7 +22,10 @@ const UserBookmark = () => {
                     <SearchBar onSearch={setKeyword} />
                 </div>
             </div>
-            <BookmarkCardList bookmarks={bookmarks} />
+            <BookmarkCardList
+                bookmarks={bookmarks}
+                showBookmarkButton={true}
+            />
             <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
