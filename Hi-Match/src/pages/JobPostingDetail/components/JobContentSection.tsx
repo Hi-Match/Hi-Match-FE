@@ -1,5 +1,6 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import Image from "@tiptap/extension-image";
 
 interface JobContentSectionProps {
     postingContent: string;
@@ -14,7 +15,14 @@ const JobContentSection = ({
     postingQuestion,
 }: JobContentSectionProps) => {
     const editor = useEditor({
-        extensions: [StarterKit],
+        extensions: [
+            StarterKit,
+            Image.configure({
+                HTMLAttributes: {
+                    class: "max-w-full h-auto rounded-lg",
+                },
+            }),
+        ],
         content: postingContent,
         editable: false, // 읽기 전용으로 설정
     });
