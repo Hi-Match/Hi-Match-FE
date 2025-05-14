@@ -78,3 +78,7 @@ interface CompanyInfo {
         imgName: string;
     }>;
 }
+
+interface AIAnalysisCardProps {
+    detail: { title: string; detailContent: string[] }[];
+}

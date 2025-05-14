@@ -7,9 +7,9 @@ const BizLayout = () => {
             <nav className="sidebar_wrapper w-62.5">
                 <BizSidebar />
             </nav>
-            <section className="biz_content_wrapper relative flex flex-1 justify-center bg-[#F4F6FA] p-12.5">
+            <main className="biz_content_wrapper relative flex flex-1 justify-center bg-[#F4F6FA] p-12.5">
                 <Outlet />
-            </section>
+            </main>
         </div>
     );
 };
