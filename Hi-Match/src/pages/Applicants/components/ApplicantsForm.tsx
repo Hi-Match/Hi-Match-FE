@@ -1,13 +1,13 @@
-import { useState } from "react";
 import RecruitFormList from "./RecruitFormList";
 import ApplicantsList from "./ApplicantsList";
+import { useRecruitStore } from "@/store/recruitStore";
 
 const ApplicantsForm = () => {
-    const [selectedPostNo, setSelectedPostNo] = useState<number | null>(null);
+    const { selectedPostNo } = useRecruitStore();
 
     return (
-        <div className="mx-auto flex w-full max-w-[1000px] min-w-[1000px] flex-col gap-16 space-y-12.5 rounded-[10px] border-1 border-solid border-gray-50 bg-white p-14 shadow-sm min-h-[80vh]">
-            <RecruitFormList onSelectPost={setSelectedPostNo} />
+        <div className="w-full space-y-12.5 rounded-[10px] border border-solid border-gray-50 bg-white p-12.5 shadow-sm">
+            <RecruitFormList />
             <ApplicantsList postNo={selectedPostNo} />
         </div>
     );

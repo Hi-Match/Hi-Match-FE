@@ -41,6 +41,7 @@ import RecruitPostEdit from "@/pages/RecruitPosting/RecruitPostEdit";
 import Applicants from "@/pages/Applicants/Applicants";
 import CompanyIdeal from "@/pages/CompanyIdeal/CompanyIdeal";
 import PrivateRoute from "./PrivateRoute";
+import ApplicantResume from "@/pages/ApplicantResume/ApplicantResume";
 
 const AppRoutes = () => {
     return (
@@ -114,7 +115,6 @@ const AppRoutes = () => {
                     </Route>
                 </Route>
 
-
                 <Route element={<BizLayout />}>
                     <Route path="/company">
                         <Route path="home" element={<CompanyHome />} />
@@ -140,6 +140,10 @@ const AppRoutes = () => {
                         <Route path="ideal" element={<CompanyIdeal />} />
 
                         <Route path="applicants" element={<Applicants />} />
+                        <Route
+                            path="applicant/resume/:resumeNo"
+                            element={<ApplicantResume />}
+                        />
                     </Route>
                 </Route>
             </Route>

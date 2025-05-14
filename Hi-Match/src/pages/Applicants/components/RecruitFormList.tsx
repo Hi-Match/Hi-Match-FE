@@ -5,6 +5,7 @@ import ArrowLeftIcon from "@/assets/icons/angle-left-icon.svg?react";
 import ArrowRightIcon from "@/assets/icons/angle-right-icon.svg?react";
 import { useEffect, useState } from "react";
 import RecruitForm from "./RecruitForm";
+import { useRecruitStore } from "@/store/recruitStore";
 
 interface RecruitFormData {
     postingNo: number;
@@ -12,20 +13,23 @@ interface RecruitFormData {
     postingPart: string;
 }
 
-interface RecruitFormListProps {
-    onSelectPost?: (val: number) => void;
-}
-
-const RecruitFormList = ({ onSelectPost }: RecruitFormListProps) => {
+const RecruitFormList = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    const { selectedPostNo, setSelectedPostNo } = useRecruitStore();
 
     const getItemsPerSlide = () => {
         const width = window.innerWidth;
 
-        if (width >= 1280) return 5;
-        if (width >= 1024) return 4;
-        if (width >= 768) return 3;
-        return 2;
+        if (width >= 1280) {
+            return 5;
+        } else if (width >= 1024) {
+            return 4;
+        } else if (width >= 768) {
+            return 3;
+        } else {
+            return 2;
+        }
     };
 
     const [itemsPerSlide, setItemsPerSlide] = useState(getItemsPerSlide());
@@ -72,6 +76,17 @@ const RecruitFormList = ({ onSelectPost }: RecruitFormListProps) => {
     const isLoading = results.some(result => result.isLoading);
     const isError = results.some(result => result.isError);
 
+    useEffect(() => {
+        if (selectedPostNo && recruitFormData) {
+            const index = recruitFormData.findIndex(
+                item => item.postingNo === selectedPostNo
+            );
+            if (index !== -1) {
+                setCurrentIndex(Math.floor(index / itemsPerSlide));
+            }
+        }
+    }, [selectedPostNo, recruitFormData]);
+
     if (isLoading) return null;
     if (isError) {
         toast.error(
@@ -91,6 +106,10 @@ const RecruitFormList = ({ onSelectPost }: RecruitFormListProps) => {
 
     const handleClickNext = () => {
         if (currentIndex < totalSlides - 1) setCurrentIndex(currentIndex + 1);
+    };
+
+    const handleClick = (postingNo: number) => {
+        setSelectedPostNo(postingNo);
     };
 
     return (
@@ -128,36 +147,32 @@ const RecruitFormList = ({ onSelectPost }: RecruitFormListProps) => {
                     </button>
                 </div>
             </div>
-            <div className="">
-                <div className="relative transition-transform duration-300 ease-in-out">
-                    <ul
-                        className="flex max-w-345 flex-row items-start gap-5"
-                        style={{
-                            transform: `translateX(-${currentIndex * 17.5 * itemsPerSlide}rem)`,
-                            transition: "transform 0.4s ease",
-                        }}
-                    >
-                        {(recruitFormData ?? []).map(
-                            (
-                                { postingNo, postingTitle, postingPart },
-                                index
-                            ) => (
-                                <li
-                                    key={index}
-                                    className="recruit_form_wrapper w-65 min-w-65"
-                                >
-                                    <RecruitForm
-                                        postingNo={postingNo}
-                                        postingTitle={postingTitle}
-                                        postingPart={postingPart}
-                                        companyImage={companyImage}
-                                        onClick={onSelectPost}
-                                    />
-                                </li>
-                            )
-                        )}
-                    </ul>
-                </div>
+            <div className="relative transition-transform duration-300 ease-in-out">
+                <ul
+                    className="flex h-60 max-w-345 flex-row items-center gap-5"
+                    style={{
+                        transform: `translateX(-${currentIndex * 18.45 * itemsPerSlide}rem)`,
+                        transition: "transform 0.4s ease",
+                    }}
+                >
+                    {(recruitFormData ?? []).map(
+                        ({ postingNo, postingTitle, postingPart }, index) => (
+                            <li
+                                key={index}
+                                className="recruit_form_wrapper w-69 min-w-69"
+                            >
+                                <RecruitForm
+                                    postingNo={postingNo}
+                                    postingTitle={postingTitle}
+                                    postingPart={postingPart}
+                                    companyImage={companyImage}
+                                    onClick={handleClick}
+                                    isSelected={selectedPostNo === postingNo}
+                                />
+                            </li>
+                        )
+                    )}
+                </ul>
             </div>
         </div>
     );

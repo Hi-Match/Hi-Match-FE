@@ -1,10 +1,10 @@
 import axiosInstance from "@/apis/axiosInstance";
 import { useQuery } from "@tanstack/react-query";
-import ReceivedList from "./State/ReceivedList";
-import ReviewingList from "./State/ReviewingList";
-import ResumePassList from "./State/ResumePassList";
-import FinalPassList from "./State/FinalPassList";
-import RejectedList from "./State/RejectedList";
+import ReceivedList from "./Status/ReceivedList";
+import ReviewingList from "./Status/ReviewingList";
+import ResumePassList from "./Status/ResumePassList";
+import FinalPassList from "./Status/FinalPassList";
+import RejectedList from "./Status/RejectedList";
 
 type Application = {
     applicationNo: number;
