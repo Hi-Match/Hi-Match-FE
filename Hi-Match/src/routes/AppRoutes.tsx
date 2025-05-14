@@ -40,6 +40,7 @@ import RecruitPostDetail from "@/pages/RecruitPostDetail/RecruitPostDetail";
 import RecruitPostEdit from "@/pages/RecruitPosting/RecruitPostEdit";
 import Applicants from "@/pages/Applicants/Applicants";
 import CompanyIdeal from "@/pages/CompanyIdeal/CompanyIdeal";
+import PrivateRoute from "./PrivateRoute";
 
 const AppRoutes = () => {
     return (
@@ -84,53 +85,62 @@ const AppRoutes = () => {
                 </Route>
             </Route>
 
-            <Route element={<MyPageLayout />}>
-                <Route path="/mypage">
-                    <Route path="home" element={<UserHome />} />
+            <Route element={<PrivateRoute />}>
+                <Route element={<MyPageLayout />}>
+                    <Route path="/mypage">
+                        <Route path="home" element={<UserHome />} />
 
-                    <Route path="resume" element={<UserResume />} />
-                    <Route path="resume/:resumeNo" element={<ResumeDetail />} />
-                    <Route path="resume/write" element={<ResumeWrite />} />
-                    <Route
-                        path="resume/edit/:resumeNo"
-                        element={<ResumeEdit />}
-                    />
-
-                    <Route path="test" element={<Test />} />
-                    <Route
-                        path="personality-result"
-                        element={<PersonalityResult />}
-                    />
-
-                    <Route path="application" element={<Application />} />
-
-                    <Route path="bookmark" element={<UserBookmark />} />
-                    <Route path="profile" element={<UserProfile />} />
-                </Route>
-            </Route>
-
-            <Route element={<BizLayout />}>
-                <Route path="/company">
-                    <Route path="home" element={<CompanyHome />} />
-                    <Route path="info" element={<CompanyInfo />} />
-                    <Route path="setting" element={<CompanySetting />} />
-
-                    <Route path="recruit">
-                        <Route path="posting" element={<RecruitPosting />} />
-                        <Route path="list" element={<RecruitList />} />
+                        <Route path="resume" element={<UserResume />} />
                         <Route
-                            path="detail/:postNo"
-                            element={<RecruitPostDetail />}
+                            path="resume/:resumeNo"
+                            element={<ResumeDetail />}
                         />
+                        <Route path="resume/write" element={<ResumeWrite />} />
                         <Route
-                            path="edit/:postNo"
-                            element={<RecruitPostEdit />}
+                            path="resume/edit/:resumeNo"
+                            element={<ResumeEdit />}
                         />
+
+                        <Route path="test" element={<Test />} />
+                        <Route
+                            path="personality-result"
+                            element={<PersonalityResult />}
+                        />
+
+                        <Route path="application" element={<Application />} />
+
+                        <Route path="bookmark" element={<UserBookmark />} />
+                        <Route path="profile" element={<UserProfile />} />
                     </Route>
+                </Route>
 
-                    <Route path="ideal" element={<CompanyIdeal />} />
 
-                    <Route path="applicants" element={<Applicants />} />
+                <Route element={<BizLayout />}>
+                    <Route path="/company">
+                        <Route path="home" element={<CompanyHome />} />
+                        <Route path="info" element={<CompanyInfo />} />
+                        <Route path="setting" element={<CompanySetting />} />
+
+                        <Route path="recruit">
+                            <Route
+                                path="posting"
+                                element={<RecruitPosting />}
+                            />
+                            <Route path="list" element={<RecruitList />} />
+                            <Route
+                                path="detail/:postNo"
+                                element={<RecruitPostDetail />}
+                            />
+                            <Route
+                                path="edit/:postNo"
+                                element={<RecruitPostEdit />}
+                            />
+                        </Route>
+
+                        <Route path="ideal" element={<CompanyIdeal />} />
+
+                        <Route path="applicants" element={<Applicants />} />
+                    </Route>
                 </Route>
             </Route>
         </Routes>

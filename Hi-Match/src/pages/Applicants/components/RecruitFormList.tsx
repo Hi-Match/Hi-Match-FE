@@ -1,10 +1,10 @@
 import axiosInstance from "@/apis/axiosInstance";
-import RecruitForm from "@/pages/RecruitList/components/RecruitForm";
 import { useQueries } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import ArrowLeftIcon from "@/assets/icons/angle-left-icon.svg?react";
 import ArrowRightIcon from "@/assets/icons/angle-right-icon.svg?react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import RecruitForm from "./RecruitForm";
 
 interface RecruitFormData {
     postingNo: number;
@@ -12,10 +12,34 @@ interface RecruitFormData {
     postingPart: string;
 }
 
-const RecruitFormList = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const itemsPerSlide = 5;
+interface RecruitFormListProps {
+    onSelectPost?: (val: number) => void;
+}
 
+const RecruitFormList = ({ onSelectPost }: RecruitFormListProps) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const getItemsPerSlide = () => {
+        const width = window.innerWidth;
+
+        if (width >= 1280) return 5;
+        if (width >= 1024) return 4;
+        if (width >= 768) return 3;
+        return 2;
+    };
+
+    const [itemsPerSlide, setItemsPerSlide] = useState(getItemsPerSlide());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setItemsPerSlide(getItemsPerSlide());
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    // 채용 공고 가져오기
     const results = useQueries({
         queries: [
             {
@@ -70,7 +94,7 @@ const RecruitFormList = () => {
     };
 
     return (
-        <div className="recruit_form_list space-y-7.5 overflow-hidden">
+        <div className="recruit_form_list space-y-7.5 overflow-x-hidden">
             <div className="title flex items-center justify-between">
                 <h3 className="text-xl font-semibold text-black">
                     채용중인 공고
@@ -90,7 +114,13 @@ const RecruitFormList = () => {
                         type="button"
                         className="border-gray03 cursor-pointer rounded-l-none border-1 border-solid bg-white p-1"
                         onClick={handleClickNext}
-                        disabled={currentIndex === totalSlides - 1}
+                        disabled={
+                            currentIndex >=
+                            Math.ceil(
+                                (recruitFormData?.length ?? 0) / itemsPerSlide
+                            ) -
+                                1
+                        }
                     >
                         <ArrowRightIcon
                             className={`fill-gray01 h-6 w-6 ${currentIndex === totalSlides - 1 ? "fill-gray03" : "fill-gray01"}`}
@@ -98,7 +128,7 @@ const RecruitFormList = () => {
                     </button>
                 </div>
             </div>
-            <div className="overflow-hidden">
+            <div className="">
                 <div className="relative transition-transform duration-300 ease-in-out">
                     <ul
                         className="flex max-w-345 flex-row items-start gap-5"
@@ -121,6 +151,7 @@ const RecruitFormList = () => {
                                         postingTitle={postingTitle}
                                         postingPart={postingPart}
                                         companyImage={companyImage}
+                                        onClick={onSelectPost}
                                     />
                                 </li>
                             )
