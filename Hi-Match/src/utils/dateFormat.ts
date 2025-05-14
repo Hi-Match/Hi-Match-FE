@@ -69,3 +69,13 @@ export function getDday(isoDate: string): string {
     if (diff > 0) return `D-${diff}`;
     return `마감`;
 }
+
+// ISO 형식 날짜를 MM.DD 형식으로 변환
+export const formatDateMD = (isoDate: string) => {
+    const date = new Date(isoDate);
+    date.setHours(date.getHours() + 9);
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${month}.${day}`;
+};

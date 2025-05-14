@@ -69,37 +69,39 @@ const PostDetail = ({ recruitPost }: PostDetailProps) => {
                         <ArrowLeftIcon className="fill-gray01 h-6 w-6" />
                     </button>
                 </div>
-                {getDday(recruitPost.postingDeadLine) !== "마감" && (
-                    <div className="space-x-4">
-                        <button
-                            type="button"
-                            className="btn-gray h-11 px-4 font-medium text-black"
-                            onClick={handleClickDelete}
-                        >
-                            삭제하기
-                        </button>
-                        <button
-                            type="button"
-                            className="btn-white h-11 px-4 font-medium"
-                            onClick={handleClickEdit}
-                        >
-                            수정하기
-                        </button>
-                    </div>
-                )}
+                {getDday(recruitPost.postingDeadLine) !== "마감" &&
+                    !recruitPost.postingIsFinish && (
+                        <div className="space-x-4">
+                            <button
+                                type="button"
+                                className="btn-gray h-11 px-4 font-medium text-black"
+                                onClick={handleClickDelete}
+                            >
+                                삭제하기
+                            </button>
+                            <button
+                                type="button"
+                                className="btn-white h-11 px-4 font-medium"
+                                onClick={handleClickEdit}
+                            >
+                                수정하기
+                            </button>
+                        </div>
+                    )}
             </div>
             <div className="flex items-center justify-between">
                 <h3 className="text-xl font-semibold text-black">
                     {recruitPost.postingTitle}
                 </h3>
                 {formatDateYMD(recruitPost.postingDeadLine) === "20991231" ? (
-                    <span className="flex-center h-11 rounded-[5px] bg-blue-500 px-4 text-lg font-medium text-white">
+                    <span className="flex-center h-11 rounded-[22px] bg-blue-500 px-4 text-lg font-medium text-white">
                         상시채용
                     </span>
                 ) : (
                     <div className="deadline">
-                        {getDday(recruitPost.postingDeadLine) === "마감" ? (
-                            <span className="flex-center h-11 w-16 rounded-[5px] bg-red-400 text-lg font-semibold text-white">
+                        {getDday(recruitPost.postingDeadLine) === "마감" ||
+                        recruitPost.postingIsFinish ? (
+                            <span className="flex-center h-11 w-16 rounded-[22px] bg-red-400 text-lg font-semibold text-white">
                                 마감
                             </span>
                         ) : (
@@ -107,7 +109,7 @@ const PostDetail = ({ recruitPost }: PostDetailProps) => {
                                 <span className="text-base text-black">
                                     공고 마감까지
                                 </span>
-                                <span className="flex-center h-11 rounded-[5px] border-1 border-solid border-gray-300 px-4 text-lg font-medium">
+                                <span className="flex-center h-11 rounded-[22px] border-1 border-solid border-gray-300 px-4 text-lg font-medium">
                                     {getDday(recruitPost.postingDeadLine)}
                                 </span>
                             </div>
