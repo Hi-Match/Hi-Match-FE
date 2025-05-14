@@ -35,6 +35,9 @@ import BizLayout from "@/layout/BizLayout";
 import CompanySetting from "@/pages/CompanySetting/CompanySetting";
 import JobPostingDetail from "@/pages/JobPostingDetail/JobPostingDetail";
 import RecruitPosting from "@/pages/RecruitPosting/RecruitPosting";
+import RecruitList from "@/pages/RecruitList/RecruitList";
+import RecruitPostDetail from "@/pages/RecruitPostDetail/RecruitPostDetail";
+import RecruitPostEdit from "@/pages/RecruitPosting/RecruitPostEdit";
 
 const AppRoutes = () => {
     return (
@@ -110,10 +113,18 @@ const AppRoutes = () => {
                     <Route path="info" element={<CompanyInfo />} />
                     <Route path="setting" element={<CompanySetting />} />
 
-                    <Route
-                        path="recruit/posting"
-                        element={<RecruitPosting />}
-                    />
+                    <Route path="recruit">
+                        <Route path="posting" element={<RecruitPosting />} />
+                        <Route path="list" element={<RecruitList />} />
+                        <Route
+                            path="detail/:postNo"
+                            element={<RecruitPostDetail />}
+                        />
+                        <Route
+                            path="edit/:postNo"
+                            element={<RecruitPostEdit />}
+                        />
+                    </Route>
                 </Route>
             </Route>
         </Routes>
