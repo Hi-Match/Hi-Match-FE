@@ -38,6 +38,7 @@ import RecruitPosting from "@/pages/RecruitPosting/RecruitPosting";
 import RecruitList from "@/pages/RecruitList/RecruitList";
 import RecruitPostDetail from "@/pages/RecruitPostDetail/RecruitPostDetail";
 import RecruitPostEdit from "@/pages/RecruitPosting/RecruitPostEdit";
+import Applicants from "@/pages/Applicants/Applicants";
 
 const AppRoutes = () => {
     return (
@@ -125,6 +126,8 @@ const AppRoutes = () => {
                             element={<RecruitPostEdit />}
                         />
                     </Route>
+
+                    <Route path="applicants" element={<Applicants />} />
                 </Route>
             </Route>
         </Routes>

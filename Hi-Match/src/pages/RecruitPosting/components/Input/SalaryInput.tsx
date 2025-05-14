@@ -26,8 +26,6 @@ const SalaryInput = ({ salary, setSalary }: SalaryInputProps) => {
 
     // ✅ 상태 변화 시 외부 반영
     useEffect(() => {
-        if (!isInitialized) return; // 초기화 전에는 setSalary 호출 안 함
-
         if (selectedSalary === "면접 후 결정") {
             setSalary("면접 후 결정");
         } else {
