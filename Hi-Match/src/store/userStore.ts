@@ -16,6 +16,7 @@ interface UserStore {
     user: UserInfo | null;
     login: (user: UserInfo) => void;
     logout: () => void;
+    reset: () => void;
 }
 
 export const useUserStore = create<UserStore>()(
@@ -24,6 +25,7 @@ export const useUserStore = create<UserStore>()(
             user: null,
             login: userInfo => set({ user: userInfo }),
             logout: () => set({ user: null }),
+            reset: () => set({ user: null }),
         }),
         {
             name: "user-info",

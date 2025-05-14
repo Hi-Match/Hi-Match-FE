@@ -5,6 +5,7 @@ interface AuthStore {
     isAuthenticated: boolean;
     login: (isAuth: boolean) => void;
     logout: () => void;
+    reset: () => void;
 }
 
 export const useAuthStore = create<AuthStore>()(
@@ -13,6 +14,7 @@ export const useAuthStore = create<AuthStore>()(
             isAuthenticated: false,
             login: isAuth => set({ isAuthenticated: isAuth }),
             logout: () => set({ isAuthenticated: false }),
+            reset: () => set({ isAuthenticated: false }),
         }),
         {
             name: "auth-storage",

@@ -1,5 +1,6 @@
 import DdayBadge from "./DdayBadge";
 import ScrapButton from "./ScrapButton";
+import defaultJobPosting from "@/assets/images/default-jobposting.png";
 
 const JobPostingCardImage = ({
     imageUrl,
@@ -11,13 +12,10 @@ const JobPostingCardImage = ({
     return (
         <div className="relative max-h-[200px] w-full">
             <img
-                src={
-                    imageUrl ??
-                    "https://i.pinimg.com/736x/9c/50/83/9c50837ea495768f01a2e78dc98bf4e2.jpg"
-                }
+                src={imageUrl ?? defaultJobPosting}
                 alt={title}
                 draggable={false}
-                className="aspect-[3/4] drag-none h-full w-full rounded-xl object-cover shadow-sm"
+                className="drag-none aspect-[3/4] h-full w-full rounded-xl object-cover shadow-sm"
             />
             <DdayBadge deadline={deadline ?? ""} />
             <ScrapButton bookMarkNo={bookMarkNo} postingNo={postingNo} />

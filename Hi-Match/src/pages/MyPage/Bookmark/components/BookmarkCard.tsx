@@ -12,6 +12,7 @@ const BookmarkCard = ({
     location,
     education,
     companyType,
+    showBookmarkButton = true,
 }: BookmarkCardProps) => (
     <div className="ratio-[3/4] overflow-hidden flex flex-col gap-4 cursor-pointer hover:scale-105 transition-all duration-300">
         <BookmarkImage
@@ -21,6 +22,7 @@ const BookmarkCard = ({
             deadline={deadline}
             isBookmarked={isBookmarked}
             title={title}
+            showBookmarkButton={showBookmarkButton}
         />
         <BookmarkCardInfo
             title={title}
