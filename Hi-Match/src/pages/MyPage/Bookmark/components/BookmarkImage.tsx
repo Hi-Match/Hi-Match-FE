@@ -1,6 +1,7 @@
 import DdayBadge from "./DdayBadge";
 import { useNavigate } from "react-router-dom";
 import { useBookmarkDelete } from "../../../../hooks/bookmark/useBookmarkListDelete";
+import defaultJobPosting from "@/assets/images/default-jobposting.png";
 
 interface BookmarkCardProps {
     bookMarkNo?: number;
@@ -39,7 +40,7 @@ const BookmarkImage = ({
         <div className="relative max-h-[200px] w-full">
             <img
                 onClick={handleClickBookmark}
-                src={imageUrl}
+                src={imageUrl ?? defaultJobPosting}
                 alt={title}
                 draggable={false}
                 className="drag-none aspect-[3/4] h-full w-full rounded-xl object-cover shadow-sm"

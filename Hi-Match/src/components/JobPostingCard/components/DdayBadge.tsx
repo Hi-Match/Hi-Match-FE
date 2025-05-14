@@ -22,7 +22,7 @@ const DdayBadge = ({ deadline }: DdayBadgeProps) => {
     }
 
     return (
-        <span className="absolute top-2 left-2 rounded bg-white/90 px-2 py-1 text-xs font-semibold">
+        <span className="absolute top-2 left-2 rounded shadow-sm bg-white/90 px-2 py-1 text-xs font-semibold">
             {text}
         </span>
     );

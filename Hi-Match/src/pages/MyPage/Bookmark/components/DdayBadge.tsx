@@ -6,17 +6,23 @@ interface DdayBadgeProps {
 
 const DdayBadge = ({ deadline }: DdayBadgeProps) => {
     let text = "확인 안됨";
+
     if (deadline) {
-        const end = dayjs(deadline, "YYYY-MM-DDTHH:mm:ss");
+        const end = dayjs(deadline, "YYYYMMDDTHHmmss");
         if (end.isValid()) {
             const today = dayjs();
             const diff = end.startOf("day").diff(today.startOf("day"), "day");
-            text = diff < 0 ? "채용 시 마감" : `D-${diff}`;
+            text =
+                diff < 0
+                    ? "채용 시 마감"
+                    : diff >= 150
+                      ? "상시 채용"
+                      : `D-${diff}`;
         }
     }
 
     return (
-        <span className="absolute top-2 left-2 rounded bg-white/90 px-2 py-1 text-xs font-semibold ">
+        <span className="absolute top-2 left-2 rounded bg-white/90 px-2 py-1 text-xs font-semibold">
             {text}
         </span>
     );
