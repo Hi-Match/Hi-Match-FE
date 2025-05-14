@@ -1,5 +1,5 @@
 import CategoryInput from "@/components/Input/CategoryInput";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface WorkTypeInputProps {
     workType: string;
