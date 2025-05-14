@@ -2,6 +2,7 @@ import ArrowRightIcon from "@/assets/icons/angle-right-icon.svg?react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { formatDate } from "@/utils/dateFormat";
+import UserIcon from "@/assets/icons/User.svg?react";
 
 interface TestResult {
     slogan: string;
@@ -33,14 +34,18 @@ const PersonalityTest = ({ code }: PersonalityTestProps) => {
             </div>
             {code?.slogan ? (
                 <ul className="resume_list flex items-center space-x-6">
-                    <li className="resume hover: flex h-50 w-75 cursor-pointer flex-col justify-between rounded-[10px] border-2 border-solid border-blue-100 bg-white p-7.5 transition-all duration-300 ease-in-out hover:shadow-md">
-                        <p className="resume_title text-lg text-black">
+                    <li className="resume overflow-hidden hover: flex h-50 w-75 cursor-pointer flex-col justify-between rounded-[10px] bg-blue-400 px-7.5 py-5 transition-all duration-300 ease-in-out hover:shadow-md relative">
+                        <p className="resume_title text-lg text-white">
                             {code?.slogan || "fds"}
                         </p>
-                        
-                            <span className="text-gray01 text-sm">
-                                {formatDate(code?.lastDateTime)}
-                            </span>
+
+                        <span className="text-sm text-white/80">
+                            {formatDate(code?.lastDateTime)}
+                        </span>
+
+                        <UserIcon
+                            className="absolute right-0 bottom-0 w-[100px] h-[100px] translate-x-1/4 translate-y-1/5 text-white"
+                        />
                     </li>
                 </ul>
             ) : (
