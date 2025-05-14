@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "@/apis/axiosInstance";
-import { toast } from "react-hot-toast";
 
 export const useResumeList = () => {
     const [resumes, setResumes] = useState<Resume[]>([]);
@@ -15,14 +14,16 @@ export const useResumeList = () => {
             const { data } = await axiosInstance.get<ResumeListResponse>(
                 "/himatch/resume/list"
             );
-            setResumes(data);
+            // 데이터가 배열이 아니거나 undefined인 경우 빈 배열로 처리
+            setResumes(Array.isArray(data) ? data : []);
 
-            // 기본적으로 첫 번째 이력서 선택
-            if (data.length > 0 && !selectedResumeNo) {
+            if (Array.isArray(data) && data.length > 0 && !selectedResumeNo) {
                 setSelectedResumeNo(data[0].resumeNo);
             }
         } catch (error) {
-            toast.error("이력서 목록을 불러오는데 실패했습니다.");
+            // 에러 발생 시 빈 배열로 처리
+            setResumes([]);
+            console.log(error);
         } finally {
             setIsLoading(false);
         }
