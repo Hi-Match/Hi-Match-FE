@@ -3,10 +3,21 @@ import LogoIcon from "@/assets/images/header/logo-header.svg?react";
 import CompanyIcon from "@/assets/icons/company-icon.svg?react";
 import BadgeIcon from "@/assets/icons/badge-icon.svg?react";
 import SettingIcon from "@/assets/icons/settings-icon.svg?react";
+import DocumentIcon from "@/assets/icons/document-icon.svg?react";
+import UserIcon from "@/assets/icons/user-icon.svg?react";
 import LogoutIcon from "@/assets/icons/logout-icon.svg?react";
 import axiosInstance from "@/apis/axiosInstance";
 import { useAuthStore } from "@/store/authStore";
 import toast from "react-hot-toast";
+
+const recruitMenu = [
+    {
+        label: "채용 공고 관리",
+        link: "/company/recruit/list",
+        Icon: DocumentIcon,
+    },
+    { label: "지원자 관리", link: "/company/applicants", Icon: UserIcon },
+];
 
 const companyMenu = [
     { label: "기업 정보 관리", link: "/company/info", Icon: CompanyIcon },
@@ -48,6 +59,30 @@ const BizSidebar = () => {
                     >
                         채용 공고 등록하기
                     </button>
+                </div>
+                <div className="company_menu_wrapper">
+                    <p className="text-gray02 px-[15px] text-sm">채용 관리</p>
+                    <ul className="space-y-2.5">
+                        {recruitMenu.map(({ label, link, Icon }, index) => (
+                            <li key={index}>
+                                <NavLink
+                                    to={link}
+                                    className={({ isActive }) =>
+                                        `flex h-12 w-full items-center rounded-[5px] px-[15px] text-base ${isActive ? "bg-blue-50 font-semibold text-blue-500" : "text-gray01 font-medium hover:bg-gray-50"}`
+                                    }
+                                >
+                                    {({ isActive }) => (
+                                        <>
+                                            <Icon
+                                                className={`mr-2.5 h-5 w-5 ${isActive ? "fill-blue-500" : "fill-gray01"}`}
+                                            />
+                                            {label}
+                                        </>
+                                    )}
+                                </NavLink>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
                 <div className="company_menu_wrapper">
                     <p className="text-gray02 px-[15px] text-sm">회사 관리</p>
