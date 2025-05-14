@@ -4,6 +4,7 @@ interface RecruitFormProps {
     postingTitle: string;
     postingPart: string;
     onClick?: (val: number) => void;
+    isSelected?: boolean;
 }
 
 const RecruitForm = ({
@@ -12,10 +13,15 @@ const RecruitForm = ({
     postingTitle,
     postingPart,
     onClick,
+    isSelected,
 }: RecruitFormProps) => {
     return (
         <div
-            className="recruit_form group cursor-pointer rounded-[10px] border-1 border-solid border-gray-200"
+            className={`recruit_form group cursor-pointer rounded-[10px] border-1 border-solid border-gray-200 ${
+                isSelected
+                    ? "outline-2 outline-offset-2 outline-blue-400 outline-solid"
+                    : ""
+            }`}
             onClick={() => onClick?.(postingNo)}
         >
             <div className="h-35 w-full overflow-hidden rounded-t-[10px]">

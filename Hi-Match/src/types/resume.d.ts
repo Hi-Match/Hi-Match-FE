@@ -79,10 +79,30 @@ interface ResumeEducation {
     eduContent: string;
 }
 
-interface Resume {
-    resumeNo: number;
-    resumeTitle: string;
-    resumeDate: string;
+// 기업에서  자기소개서 조회 시
+interface ApplicantResumeData {
+    applicationMemberCode: string | null; // 인성검사 코드
+    applicationMemberSuitability: string | null; // 적합 | 부적합
+    applicationIMG?: string;
+    applicationName: string;
+    applicationEngName: string;
+    applicationBirthDay: string;
+    applicationGender?: string; // F/M
+    applicationMail: string;
+    applicationTel: string;
+    applicationAddress: string;
+    applicationAmbition?: string; // 포부 한마디
+    applicationPortFolio?: string;
+    applicationArmyType: string; // 군복무 타입(대상, 비대상, 면제)
+    applicationArmyPart?: string; // 소속
+    applicationArmyDate?: string; // 입대일
+    applicationArmyEnd?: string; // 제대일
+    applicationDisability?: string; // 장애명
+    applicationDisabilityType?: string; // 장애증상정도
+    applicationRewardingPatriotism?: string; // 보훈번호
+    applicationSchool: ResumeSchool[]; // 학력
+    applicationExperience?: ResumeExperience[]; // 경력
+    applicationCertificate?: ResumeCertificate[]; // 자격증
+    applicationEducation?: ResumeEducation[]; // 교육
+    applicationAward?: ResumeAward[]; // 수상
 }
-
-type ResumeListResponse = Resume[];
