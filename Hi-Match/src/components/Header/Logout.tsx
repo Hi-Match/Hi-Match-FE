@@ -26,7 +26,7 @@ const Logout = () => {
                 onClick={handleLogout}
                 className="text-gray01 mr-3 font-semibold hover:text-blue-500"
             >
-                로그아웃
+                로그인
             </button>
             <Link
                 to="/signup/user"
