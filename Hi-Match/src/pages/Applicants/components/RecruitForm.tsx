@@ -3,6 +3,7 @@ interface RecruitFormProps {
     companyImage: string;
     postingTitle: string;
     postingPart: string;
+    onClick?: (val: number) => void;
 }
 
 const RecruitForm = ({
@@ -10,9 +11,13 @@ const RecruitForm = ({
     companyImage,
     postingTitle,
     postingPart,
+    onClick,
 }: RecruitFormProps) => {
     return (
-        <div className="recruit_form group cursor-pointer rounded-[10px] border-1 border-solid border-gray-200">
+        <div
+            className="recruit_form group cursor-pointer rounded-[10px] border-1 border-solid border-gray-200"
+            onClick={() => onClick?.(postingNo)}
+        >
             <div className="h-35 w-full overflow-hidden rounded-t-[10px]">
                 <img
                     src={companyImage}
