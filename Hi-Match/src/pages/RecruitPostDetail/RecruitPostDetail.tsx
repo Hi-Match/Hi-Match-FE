@@ -14,7 +14,7 @@ const RecruitPostDetail = () => {
     const navigate = useNavigate();
 
     const { data } = useQuery({
-        queryKey: ["recruit-detail"],
+        queryKey: ["recruit-detail", postNo],
         queryFn: async () => {
             const response = await axiosInstance.get(
                 `/himatch/application/company/select?postingNo=${postNo}`
