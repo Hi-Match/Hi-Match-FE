@@ -31,6 +31,8 @@ const ApplicantStatus = () => {
 
     const { applicationStatus, applicationPf, applicationResult } = data;
 
+    console.log(applicationPf, applicationResult);
+
     return (
         <div className="applicant_status w-full space-y-7.5 rounded-[10px] border-1 border-solid border-gray-50 bg-white p-12.5 shadow-sm">
             {applicationStatus === "SUBMIT" && (
