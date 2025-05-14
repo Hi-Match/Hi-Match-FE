@@ -8,6 +8,7 @@ import axiosInstance from "@/apis/axiosInstance";
 import toast from "react-hot-toast";
 import PostDeleteModal from "./PostDeleteModal";
 import { useEffect, useState } from "react";
+import Image from "@tiptap/extension-image";
 
 interface PostDetailProps {
     recruitPost: RecruitPostInfo;
@@ -17,7 +18,7 @@ const PostDetail = ({ recruitPost }: PostDetailProps) => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const editor = useEditor({
-        extensions: [StarterKit],
+        extensions: [StarterKit, Image],
         content: recruitPost.postingContent,
         editable: false, // 읽기 전용으로 설정
     });
