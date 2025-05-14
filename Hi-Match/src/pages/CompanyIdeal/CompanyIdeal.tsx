@@ -25,8 +25,8 @@ const CompanyIdeal = () => {
     };
 
     return (
-        <>
-            <section className="mx-auto flex w-full max-w-[1000px] flex-col gap-16 rounded-2xl bg-white p-14 shadow-sm">
+        <div className="company_ideal mb-27.5">
+            <section className="mx-auto flex w-full max-w-[1000px] min-w-[1000px] flex-col gap-16 rounded-[10px] border-1 border-solid border-gray-50 bg-white p-14 shadow-sm">
                 <hgroup className="flex items-center gap-2">
                     <h2 className="text-2xl font-medium">인재상 관리</h2>
                     <InterrogationIcon />
@@ -36,15 +36,16 @@ const CompanyIdeal = () => {
                     <AIAnalysisCard detail={analysisDetail} />
                 ) : null}
             </section>
-            <div className="absolute right-0 bottom-0 left-0 flex items-center justify-end bg-white p-4">
+            <div className="fixed bottom-0 left-62.5 flex h-15 w-[calc(100%-250px)] items-center justify-end bg-white px-25 shadow-2xl">
                 <button
+                    type="button"
                     onClick={handleRegister}
-                    className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+                    className="btn-blue h-10 w-25 text-base"
                 >
                     설정 완료
                 </button>
             </div>
-        </>
+        </div>
     );
 };
 
