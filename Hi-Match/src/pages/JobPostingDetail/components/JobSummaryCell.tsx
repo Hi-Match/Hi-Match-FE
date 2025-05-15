@@ -9,8 +9,10 @@ interface JobSummaryCellProps {
 const JobSummaryCell = ({ className, title, content }: JobSummaryCellProps) => {
     return (
         <li className={twMerge("flex w-1/2 gap-2 py-1", className)}>
-            <span className="w-20 font-normal text-gray-500">{title}</span>
-            <span>{content}</span>
+            <span className="w-20 shrink-0 font-normal text-gray-500">
+                {title}
+            </span>
+            <span className="break-keep">{content}</span>
         </li>
     );
 };

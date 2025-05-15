@@ -13,12 +13,8 @@ import DeadlineBanner from "./components/DeadlineBanner";
 const JobPostingDetail = () => {
     const { id } = useParams();
     const postingNo = Number(id);
-    const companyNo = Number(id);
 
-    const { data, company, loading, error } = useJobPostingDetail(
-        postingNo,
-        companyNo
-    );
+    const { data, company, loading, error } = useJobPostingDetail(postingNo);
     const tags = Array.isArray(company?.tag)
         ? company!.tag.map((tag: { tagName: string }) => tag.tagName)
         : [];
@@ -34,6 +30,7 @@ const JobPostingDetail = () => {
         data?.companyImgB,
         data?.companyImgC,
     ].filter(Boolean);
+
     return (
         <MainLayout>
             {loading && <div>Loading...</div>}
