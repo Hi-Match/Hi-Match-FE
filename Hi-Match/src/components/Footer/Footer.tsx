@@ -25,6 +25,24 @@ const Footer = () => {
                                 대표자 정은아
                             </span>
                         </p>
+                        <p>
+                            <span>이메일 &#58; </span>
+                            <a
+                                href="mailto:eunah0507@naver.com"
+                                className="text-gray01 font-normal"
+                            >
+                                eunah0507@naver.com
+                            </a>
+                        </p>
+                        <p>
+                            <span>전화번호 &#58; </span>
+                            <a
+                                href="tel:010-2087-0112"
+                                className="text-gray01 font-normal"
+                            >
+                                010-2087-0112
+                            </a>
+                        </p>
                     </div>
                 </div>
                 <div className="flex flex-col space-y-7.5">
