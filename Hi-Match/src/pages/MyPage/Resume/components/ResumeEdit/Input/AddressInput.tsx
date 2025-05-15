@@ -14,7 +14,14 @@ const AddressInput = ({ resumeData, setResumeData }: AddressInputProps) => {
     };
 
     return (
-        <div className="address_wrapper space-y-2.5">
+        <div className="address_wrapper flex w-full flex-col">
+            <label
+                htmlFor="address"
+                className="mb-2.5 w-full font-semibold text-black"
+            >
+                주소
+                <span className="text-red-500"> &#42;</span>
+            </label>
             <PostInput
                 value={resumeData.resumeAddress}
                 onChange={fullAddress =>

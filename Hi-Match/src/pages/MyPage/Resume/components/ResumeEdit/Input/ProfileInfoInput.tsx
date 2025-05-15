@@ -66,7 +66,7 @@ const ProfileInfoInput = ({
             <div className="user_info space-y-2.5">
                 <div className="date_wrapper flex items-center [&>div]:flex-grow">
                     <span className="w-25 text-base font-semibold text-black">
-                        생년월일
+                        생년월일<span className="text-red-500"> &#42;</span>
                     </span>
                     <div className="input_wrapper">
                         <DatePicker
@@ -80,7 +80,7 @@ const ProfileInfoInput = ({
                 </div>
                 <div className="gender_wrapper flex items-center [&>div]:flex-grow">
                     <span className="w-25 text-base font-semibold text-black">
-                        성별
+                        성별<span className="text-red-500"> &#42;</span>
                     </span>
                     <div className="input_wrapper">
                         <GenderInput
@@ -93,7 +93,7 @@ const ProfileInfoInput = ({
                 </div>
                 <div className="email_wrapper flex items-center [&>div]:flex-grow">
                     <span className="w-25 text-base font-semibold text-black">
-                        이메일
+                        이메일<span className="text-red-500"> &#42;</span>
                     </span>
                     <div className="input_wrapper">
                         <EmailInput
@@ -106,7 +106,7 @@ const ProfileInfoInput = ({
                 </div>
                 <div className="phone_wrapper flex items-center [&>div]:flex-grow">
                     <span className="w-25 text-base font-semibold text-black">
-                        휴대폰 번호
+                        휴대폰 번호<span className="text-red-500"> &#42;</span>
                     </span>
                     <div className="input_wrapper">
                         <PhoneInput
