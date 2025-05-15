@@ -8,7 +8,7 @@ interface TagFormProps {
 }
 
 const TagForm = ({ tags, setTags }: TagFormProps) => {
-    const MAX_TAGS = 20;
+    const MAX_TAGS = 30;
 
     const handleClickTag = (tag: string) => {
         const exists = tags.some(t => t.tagName === tag);
@@ -18,7 +18,7 @@ const TagForm = ({ tags, setTags }: TagFormProps) => {
             setTags(filtered);
         } else {
             if (MAX_TAGS <= tags.length) {
-                toast.error("태그는 최대 20개까지 선택할 수 있습니다.");
+                toast.error("태그는 최대 30개까지 선택할 수 있습니다.");
                 return;
             }
             setTags([...tags, { tagName: tag }]);
