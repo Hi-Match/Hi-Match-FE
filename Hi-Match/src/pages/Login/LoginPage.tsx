@@ -8,6 +8,10 @@ const LoginPage = () => {
     const { state } = useLocation();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
         if (state) {
             setActiveTab(state.location);
         }
