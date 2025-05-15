@@ -116,7 +116,7 @@ const LoginForm = ({ user }: LoginFormProps) => {
                     message: "",
                 });
 
-                navigate("/company/home");
+                navigate("/company/info");
             })
             .catch(() => {
                 setValidationMessage({
