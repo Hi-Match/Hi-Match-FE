@@ -1,6 +1,7 @@
 import PlusIcon from "@/assets/icons/plus-icon.svg?react";
 import CoverLetterForm from "./CoverLetterForm";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 interface CoverLetterFormListProps {
     recruitPost: RecruitPostData;
@@ -23,6 +24,12 @@ const CoverLetterFormList = ({
     }, []);
 
     const handleAddForm = () => {
+        if (recruitPost.postingQuestion.length >= 3) {
+            toast.error("등록 가능한 자기소개서 문항은 최대 3개입니다.");
+
+            return;
+        }
+
         setRecruitPost(prev => ({
             ...prev,
             postingQuestion: [
