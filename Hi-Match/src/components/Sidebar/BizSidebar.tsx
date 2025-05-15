@@ -47,7 +47,7 @@ const BizSidebar = () => {
         <div className="sidebar_wrapper sticky top-0 left-0 z-99 flex h-screen flex-col justify-between border-r-1 border-solid border-gray-100 bg-white px-[15px] py-7.5">
             <div className="space-y-7.5">
                 <div className="himatch_logo flex w-full justify-center">
-                    <Link to="/company/home">
+                    <Link to="/company/info">
                         <LogoIcon className="w-50" />
                     </Link>
                 </div>
