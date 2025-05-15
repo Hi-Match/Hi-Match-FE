@@ -36,8 +36,8 @@ const BizSidebar = () => {
         axiosInstance
             .get("/himatch/company/member/logout")
             .then(() => {
-                useAuthStore.getState().logout();
                 navigate("/");
+                useAuthStore.getState().logout();
                 toast.success("로그아웃 되었습니다.");
             })
             .catch(() => {});
