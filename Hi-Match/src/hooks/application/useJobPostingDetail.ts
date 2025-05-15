@@ -3,7 +3,7 @@ import { getJobPostingDetail } from "@/apis/application";
 import axiosInstance from "@/apis/axiosInstance";
 import { toast } from "react-hot-toast";
 
-export const useJobPostingDetail = (postingNo: number, companyNo: number) => {
+export const useJobPostingDetail = (postingNo: number) => {
     const [data, setData] = useState<JobPostingDetail | null>(null);
     const [company, setCompany] = useState<CompanyInfo | null>(null);
     const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ export const useJobPostingDetail = (postingNo: number, companyNo: number) => {
             );
             return data;
         } catch (error) {
-            toast.error("기업 정보를 불러올 수 없습니다");
+            toast.error("데이터를 불러올 수 없습니다");
             return null;
         }
     };
@@ -26,16 +26,21 @@ export const useJobPostingDetail = (postingNo: number, companyNo: number) => {
         setLoading(true);
         setError(null);
 
-        Promise.all([getJobPostingDetail(postingNo), getCompanyInfo(companyNo)])
-            .then(([posting, companyInfo]) => {
+        getJobPostingDetail(postingNo)
+            .then(async posting => {
                 setData(posting);
-                setCompany(companyInfo);
+
+                // posting에서 companyNo 받아와서 회사 정보 조회
+                if (posting?.companyNo) {
+                    const companyInfo = await getCompanyInfo(posting.companyNo);
+                    setCompany(companyInfo);
+                }
             })
             .catch(err => {
                 setError(
                     err instanceof Error
                         ? err.message
-                        : "채용공고를 불러오지 못했습니다."
+                        : "채용 공고를 불러오지 못했습니다."
                 );
             })
             .finally(() => setLoading(false));
