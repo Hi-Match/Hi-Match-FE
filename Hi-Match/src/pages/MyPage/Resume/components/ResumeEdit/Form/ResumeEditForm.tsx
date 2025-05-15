@@ -63,28 +63,36 @@ const ResumeEditForm = ({ resumeData, setResumeData }: ResumeEditFormProps) => {
                 />
             </div>
             <div className="user_army space-y-7.5">
-                <h4 className="text-xl font-semibold text-black">병역사항</h4>
+                <h4 className="text-xl font-semibold text-black">
+                    병역사항<span className="text-red-500"> &#42;</span>
+                </h4>
                 <ArmyInput
                     resumeData={resumeData}
                     setResumeData={setResumeData}
                 />
             </div>
             <div className="user_disability space-y-7.5">
-                <h4 className="text-xl font-semibold text-black">장애사항</h4>
+                <h4 className="text-xl font-semibold text-black">
+                    장애사항<span className="text-red-500"> &#42;</span>
+                </h4>
                 <DisabilityInput
                     resumeData={resumeData}
                     setResumeData={setResumeData}
                 />
             </div>
             <div className="user_patiotism space-y-7.5">
-                <h4 className="text-xl font-semibold text-black">보훈여부</h4>
+                <h4 className="text-xl font-semibold text-black">
+                    보훈여부<span className="text-red-500"> &#42;</span>
+                </h4>
                 <PatriotismInput
                     resumeData={resumeData}
                     setResumeData={setResumeData}
                 />
             </div>
             <div className="user_school space-y-7.5">
-                <h4 className="text-xl font-semibold text-black">학력</h4>
+                <h4 className="text-xl font-semibold text-black">
+                    학력<span className="text-red-500"> &#42;</span>
+                </h4>
                 <SchoolInput
                     resumeSchool={resumeData.resumeSchool}
                     setResumeSchool={schools =>

@@ -153,6 +153,21 @@ const ResumeEdit = () => {
         mutate(cleanedResumeData);
     };
 
+    const isResumeValid = (data: ResumeDetailData): boolean => {
+        return (
+            data.resumeName.trim() !== "" &&
+            data.resumeEngName.trim() !== "" &&
+            data.resumeMail.trim() !== "" &&
+            data.resumeTel.trim() !== "" &&
+            data.resumeAddress.trim() !== "" &&
+            data.resumeBirthDay.trim() !== "" &&
+            data.resumeArmyType !== "" &&
+            data.resumeGender !== "" &&
+            data.resumeSchool.length > 0 &&
+            data.resumeSchool.some(school => !isEmptySchool(school))
+        );
+    };
+
     if (!data || !resumeData) return null;
 
     return (
@@ -190,8 +205,9 @@ const ResumeEdit = () => {
                     </button>
                     <button
                         type="button"
-                        className="btn-blue h-10 w-25 text-base"
+                        className={`h-10 w-25 text-base ${!isResumeValid(resumeData) ? "btn-disabled" : "btn-blue"}`}
                         onClick={handleClickResumeEdit}
+                        disabled={!isResumeValid(resumeData)}
                     >
                         완료
                     </button>
