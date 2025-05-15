@@ -36,7 +36,7 @@ const UserSidebar = () => {
         axiosInstance
             .get("/himatch/member/logout")
             .then(() => {
-                navigate("/");
+                navigate("/", { replace: true });
                 useAuthStore.getState().logout();
                 toast.success("로그아웃 되었습니다.");
             })
