@@ -1,3 +1,6 @@
+import ArrowLeftIcon from "@/assets/icons/angle-left-icon.svg?react";
+import ArrowRightIcon from "@/assets/icons/angle-right-icon.svg?react";
+
 interface PaginationProps {
     currentPage: number;
     totalPages: number;
@@ -39,7 +42,6 @@ const Pagination = ({
 
         const pages: (number | string)[] = [];
 
-        pages.push(1);
         if (showLeftDots) pages.push("...");
         for (let i = leftSibling; i <= rightSibling; i++) {
             pages.push(i);
@@ -57,17 +59,17 @@ const Pagination = ({
             <button
                 disabled={safeCurrentPage === 1}
                 onClick={() => onPageChange(safeCurrentPage - 1)}
-                className="rounded bg-blue-500 px-3 py-1  text-white disabled:bg-gray-300 hover:bg-blue-600 cursor-pointer disabled:cursor-default"
+                className="cursor-pointer rounded bg-blue-500 p-1 hover:bg-blue-600 disabled:cursor-default disabled:bg-gray-300"
                 aria-label="이전 페이지"
             >
-                &lt;
+                <ArrowLeftIcon className="h-6 w-6 fill-white" />
             </button>
             {pages.map((page, idx) =>
                 typeof page === "number" ? (
                     <button
                         key={page}
                         onClick={() => onPageChange(page)}
-                        className={`rounded px-2 py-1 cursor-pointer ${page === safeCurrentPage ? "text-semibold text-blue-500 underline" : "text-gray-400"}`}
+                        className={`cursor-pointer rounded px-2 py-1 ${page === safeCurrentPage ? "text-semibold text-blue-500 underline" : "text-gray-400"}`}
                     >
                         {page}
                     </button>
@@ -85,10 +87,10 @@ const Pagination = ({
             <button
                 disabled={safeCurrentPage >= safeTotalPages}
                 onClick={() => onPageChange(safeCurrentPage + 1)}
-                className="rounded bg-blue-500 px-3 py-1 text-white disabled:bg-gray-300 hover:bg-blue-600 cursor-pointer disabled:cursor-default"
+                className="cursor-pointer rounded bg-blue-500 p-1 text-white hover:bg-blue-600 disabled:cursor-default disabled:bg-gray-300"
                 aria-label="다음 페이지"
             >
-                &gt;
+                <ArrowRightIcon className="h-6 w-6 fill-white" />
             </button>
         </nav>
     );
