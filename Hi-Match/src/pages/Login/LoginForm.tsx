@@ -9,6 +9,9 @@ import AuthSaveInput from "./components/AuthSaveInput";
 import UserAuth from "./components/UserAuth";
 import BizAuth from "./components/BizAuth";
 import { useBizInfo } from "@/hooks/business/useBizInfo";
+import KakaoLogo from "@/assets/images/login/kakao-logo.svg?react";
+import NaverLogo from "@/assets/images/login/naver-logo.svg?react";
+import GoogleLogo from "@/assets/images/login/google-logo.svg?react";
 
 interface LoginFormProps {
     user: "user" | "business";
@@ -138,7 +141,7 @@ const LoginForm = ({ user }: LoginFormProps) => {
 
     return (
         <form
-            className="login_form grid-center w-full rounded-tr-[10px] rounded-b-[10px] bg-white py-[30px]"
+            className={`login_form grid-center w-full rounded-b-[10px] bg-white py-[30px] ${user === "user" ? "rounded-tr-[10px]" : "rounded-tl-[10px]"}`}
             onSubmit={event => handleSubmit(event)}
         >
             <div className="input_wrapper space-y-2.5">
@@ -174,6 +177,35 @@ const LoginForm = ({ user }: LoginFormProps) => {
                 </button>
             </div>
             {user === "user" ? <UserAuth /> : <BizAuth />}
+            {user === "user" && (
+                <>
+                    <div className="relative mt-2.5 mb-7.5 w-full">
+                        <div className="absolute top-[50%] left-0 h-[1px] w-full bg-gray-200"></div>
+                        <div className="relative z-1 mx-auto w-25 bg-white text-center">
+                            <span className="text-sm text-gray-400">
+                                간편 로그인
+                            </span>
+                        </div>
+                    </div>
+                    <ul className="mb-2.5 flex space-x-7.5">
+                        <li className="h-12.5 w-12.5">
+                            <button className="grid-center h-full w-full cursor-pointer bg-[#fae100]">
+                                <KakaoLogo className="h-6.25 w-6.25" />
+                            </button>
+                        </li>
+                        <li className="h-12.5 w-12.5">
+                            <button className="grid-center h-full w-full cursor-pointer bg-[#03c75a]">
+                                <NaverLogo className="h-6 w-6" />
+                            </button>
+                        </li>
+                        <li className="h-12.5 w-12.5">
+                            <button className="grid-center border-gray03 h-full w-full cursor-pointer border-1 border-solid bg-white">
+                                <GoogleLogo className="h-6.25 w-6.25" />
+                            </button>
+                        </li>
+                    </ul>
+                </>
+            )}
         </form>
     );
 };
