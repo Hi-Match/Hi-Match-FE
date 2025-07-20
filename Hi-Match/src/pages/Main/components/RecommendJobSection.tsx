@@ -39,6 +39,8 @@ const RecommendJobSection = ({
         }
     }, [error]);
 
+    if (!user) return null;
+
     return (
         <div className="flex flex-col gap-8">
             <div className="flex items-center justify-between">
@@ -50,13 +52,13 @@ const RecommendJobSection = ({
                 <div className="flex gap-2">
                     <button
                         onClick={prevPage}
-                        className="rounded-full border border-gray-300 bg-white p-2 text-black hover:bg-gray-100 cursor-pointer"
+                        className="cursor-pointer rounded-full border border-gray-300 bg-white p-2 text-black hover:bg-gray-100"
                     >
                         <IoIosArrowBack size={20} />
                     </button>
                     <button
                         onClick={nextPage}
-                        className="rounded-full border border-gray-300 bg-white p-2 text-black hover:bg-gray-100 cursor-pointer"
+                        className="cursor-pointer rounded-full border border-gray-300 bg-white p-2 text-black hover:bg-gray-100"
                     >
                         <IoIosArrowForward size={20} />
                     </button>

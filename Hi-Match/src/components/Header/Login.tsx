@@ -3,6 +3,7 @@ import { useAuthStore } from "@/store/authStore";
 import { useUserStore } from "@/store/userStore";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const mypageMenu = [
     { label: "마이페이지", link: "/mypage/home" },
@@ -36,7 +37,9 @@ const Login = () => {
         axiosInstance
             .get("/himatch/member/logout")
             .then(() => {
+                Cookies.remove("Refresh", { path: "/" });
                 useAuthStore.getState().logout();
+                useUserStore.getState().logout();
                 window.location.href = "/";
             })
             .catch(() => {});

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import LogoIcon from "@/assets/images/header/logo-header.svg?react";
 import { IoSearchOutline } from "react-icons/io5";
 import { useAuthStore } from "@/store/authStore";
@@ -8,7 +8,16 @@ import Logout from "./Logout";
 const Header = () => {
     const { isAuthenticated } = useAuthStore();
 
+    const location = useLocation();
     const navigate = useNavigate();
+
+    const handleClickLogo = () => {
+        if (location.pathname === "/") {
+            window.location.reload();
+        } else {
+            navigate("/");
+        }
+    };
 
     const handleClickBusiness = () => {
         navigate("/login", { state: { location: "business" } });
@@ -18,9 +27,12 @@ const Header = () => {
         <header className="sticky top-0 z-999 grid w-full place-items-center border-b-1 border-solid border-gray-200 bg-white">
             <div className="flex h-17.5 w-[90%] max-w-7xl items-center justify-between">
                 <div className="himatch_logo shrink-0">
-                    <Link to="/">
+                    <button
+                        className="cursor-pointer"
+                        onClick={handleClickLogo}
+                    >
                         <LogoIcon className="w-40" />
-                    </Link>
+                    </button>
                 </div>
                 <div className="flex items-center justify-between space-x-5">
                     {/* 검색 버튼 */}
